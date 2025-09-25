@@ -1,4 +1,4 @@
-"""
+THIS SHOULD BE A LINTER ERROR"""
 Neural Core - Núcleo do sistema ET Ultimate
 """
 
