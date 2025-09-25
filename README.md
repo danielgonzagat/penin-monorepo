@@ -6,7 +6,7 @@
 ![Sync](https://img.shields.io/badge/sync-bidirectional-blue)
 ![Agents](https://img.shields.io/badge/agents-8_active-green)
 ![Files](https://img.shields.io/badge/files-8-orange)
-![Lines](https://img.shields.io/badge/lines-158-yellow)
+![Lines](https://img.shields.io/badge/lines-231-yellow)
 
 **Sistema PENIN com Sincronização Bidirecional GitHub ↔ Servidor**  
 *Evolução Automática do Zero ao State-of-the-Art*
@@ -19,9 +19,9 @@
 
 | Métrica | Valor |
 |---------|-------|
-| **Última Sincronização** | 2025-09-25T19:12:20.760639 |
+| **Última Sincronização** | 2025-09-25T19:12:42.054470 |
 | **Total de Arquivos** | 8 |
-| **Total de Linhas** | 158 |
+| **Total de Linhas** | 231 |
 | **Agentes Ativos** | 8 |
 | **Modo de Operação** | Bidirecional 24/7 |
 
@@ -141,7 +141,7 @@ MIT License - Sistema de código aberto para evolução contínua
 <div align="center">
 
 **Sistema PENIN - Evolução Infinita**  
-*Sincronizado em 2025-09-25 19:12:20*  
+*Sincronizado em 2025-09-25 19:12:42*  
 *Versão: Auto-evolutiva*
 
 [GitHub](https://github.com/danielgonzagat/penin-monorepo) | 
