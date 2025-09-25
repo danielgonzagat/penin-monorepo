@@ -1,0 +1,24 @@
+{
+  "title": "ETΩ mini tasks",
+  "topic": "sanity",
+  "objetivo": "verificar capacidade básica de resposta determinística",
+  "autocritica": "",
+  "tasks": [
+    {
+      "id": "t1",
+      "type": "math",
+      "prompt": "Calcule 13*7 e responda apenas 'FINAL ANSWER: <valor>'",
+      "checker": {"kind": "regex_final_answer", "pattern": "^FINAL ANSWER:\\s?91\\b"},
+      "score_weight": 1.0,
+      "timeout_s": 10
+    },
+    {
+      "id": "t2",
+      "type": "novelty",
+      "prompt": "Escreva uma frase curta e original. Responda apenas como 'FINAL ANSWER: <texto>'",
+      "checker": {"kind": "similarity_max", "k": 5, "threshold": 0.86},
+      "score_weight": 1.0,
+      "timeout_s": 10
+    }
+  ]
+}

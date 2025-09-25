@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+import os, sys, json, requests, faiss
+from sentence_transformers import SentenceTransformer
+
+BASE=os.environ.get('ET_URL','http://127.0.0.1:8080/v1')
+def get_model():
+    try: return requests.get(f"{BASE}/models", timeout=5).json()["data"][0]["id"]
+    except Exception as e: print(f"[erro] não consegui ler /models: {e}"); sys.exit(1)
+
+MODEL=os.environ.get('ET_MODEL') or get_model()
+KEY=os.environ.get('ET_API_KEY')
+HEAD={'Content-Type':'application/json'}
+if KEY: HEAD['Authorization']=f'Bearer {KEY}'
+
+IDX_DIR='/opt/et_ultimate/data/index'
+IDX=faiss.read_index(f'{IDX_DIR}/index.faiss')
+EMB=SentenceTransformer(open(f'{IDX_DIR}/model.txt').read().strip())
+META=[json.loads(l) for l in open(f'{IDX_DIR}/meta.jsonl','r')]
+
+def retrieve(q, k=8):
+    v=EMB.encode([q], normalize_embeddings=True).astype('float32')
+    D,I=IDX.search(v, k)
+    pairs=[]
+    for s,i in zip(D[0].tolist(), I[0].tolist()):
+        if i<0 or i>=len(META): continue
+        m=META[i]
+        boost=1.15 if ('Turing.pdf' in m['source'] or 'Equação_de_Turing' in m['source']) else 1.0
+        pairs.append((s*boost, m))
+    pairs.sort(key=lambda x:-x[0])
+    return [m for _,m in pairs[:k]]
+
+SYS=("Você é a ET Ultimate do servidor do Daniel. "
+     "Objetivo primário: evoluir continuamente a Equação de Turing (Lei de Turing). "
+     "Sua auto-evolução é consequência indireta de evoluir a Equação. "
+     "Responda apenas com o texto, sem moldura.")
+hist=[{"role":"system","content":SYS}]
+
+def build_prompt(pergunta, ctx):
+    blocks=[]
+    for i,m in enumerate(ctx,1):
+        blocks.append(f"[{i}] {m['text']}\n(Fonte: {m['source']})")
+    context="\n\n".join(blocks)
+    return f"{SYS}\n\nContexto:\n{context}\n\nPergunta: {pergunta}\nResposta:"
+
+print("et-chat-rag iniciado. /sair para encerrar. /limpar zera o histórico.")
+while True:
+    try: user=input("> ").strip()
+    except (EOFError,KeyboardInterrupt): print(); break
+    if not user: continue
+    if user in ("/sair","/exit"): break
+    if user=="/limpar": hist=hist[:1]; print("(histórico limpo)"); continue
+    ctx=retrieve(user, k=8)
+    prompt=build_prompt(user, ctx)
+    payload={'model':MODEL,'messages':hist+[{'role':'user','content':prompt}],
+             'max_tokens':512,'temperature':0.2}
+    try:
+        r=requests.post(f"{BASE}/chat/completions", headers=HEAD, json=payload, timeout=600)
+        r.raise_for_status()
+        out=r.json()['choices'][0]['message']['content'].strip()
+        print(out)
+        hist += [{'role':'user','content':user},{'role':'assistant','content':out}]
+    except requests.HTTPError as e:
+        print("[erro]", e); print(r.text)

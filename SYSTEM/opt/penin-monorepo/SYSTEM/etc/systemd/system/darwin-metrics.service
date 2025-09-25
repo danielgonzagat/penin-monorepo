@@ -1,0 +1,30 @@
+[Unit]
+Description=Darwin v4 Metrics Exporter - Neurogênese Viva
+Documentation=https://prometheus.github.io/client_python/
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/darwin
+Environment=PYTHONPATH=/root/darwin
+ExecStart=/usr/bin/python3 /root/darwin/metrics/metrics_server.py --port 9092
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=15
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=darwin-metrics
+
+# Resource limits
+LimitNOFILE=1024
+MemoryMax=512M
+CPUQuota=100%
+
+[Install]
+WantedBy=multi-user.target

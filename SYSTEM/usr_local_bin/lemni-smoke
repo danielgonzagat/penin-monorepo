@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+echo "== API /health =="; curl -s http://localhost:18080/health | jq . || true
+echo "== /metrics =="
+curl -s http://localhost:18080/metrics | grep -E 'lemni_(latency_ms_bucket|linf_value|delta_V|oci_value|cost_per_1k_usd)' | head -n 20 || true
+echo "== dgm-stamp (services/api/app.py) =="; awk '/^# dgm-(mark|stamp)/{print}' /opt/lemniscata/services/api/app.py || true

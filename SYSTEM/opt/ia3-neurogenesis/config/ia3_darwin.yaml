@@ -1,0 +1,14 @@
+# Config de crescimento e métricas IA³ Darwin v2
+deeper_every_k_cycles: 5     # a cada k rodadas, tentar Net2Deeper se ainda não houver fc_mid
+alpha_lr: 0.0005             # taxa para α (MixedActivation)
+model_lr: 0.001              # taxa para pesos
+alpha_step_every: 4          # passos entre updates de α
+metrics_port: 9091           # porta /metrics
+ewc_lambda: 2.0              # força da regularização EWC
+mas_lambda: 1.0              # força da regularização MAS
+consciousness_threshold: 0.3  # limiar mínimo de consciência
+adaptation_threshold: 1e-3   # ganho mínimo em adaptação OOD
+evolution_threshold: 1e-3    # mudança mínima em α para evolução
+max_neurons: 1024            # limite máximo de neurônios
+growth_policy: "wider_then_deeper"  # estratégia de crescimento
+validation_frequency: 1      # validar IA³ a cada N ciclos

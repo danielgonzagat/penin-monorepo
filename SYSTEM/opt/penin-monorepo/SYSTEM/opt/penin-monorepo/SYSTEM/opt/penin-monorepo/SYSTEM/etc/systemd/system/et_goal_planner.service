@@ -1,0 +1,11 @@
+[Unit]
+Description=ETΩ Goal Planner
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/et_ultimate/agents/brain/et_goal_planner.py
+Restart=always
+User=etbot
+
+[Install]
+WantedBy=multi-user.target

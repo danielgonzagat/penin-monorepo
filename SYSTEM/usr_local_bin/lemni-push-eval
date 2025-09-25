@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+set -euo pipefail
+PGW="${PGW:-http://localhost:9091}"
+ARTIFACT_DIR="${1:?use: lemni-push-eval /opt/lemniscata/_artifacts/dgm/<ts>}"
+EV="${ARTIFACT_DIR%/}/eval.json"
+test -s "$EV" || { echo "sem $EV"; exit 2; }
+
+# Extrai campos do contrato
+read -r A DELTA DVPN OCI P95 COST ETH FAI AR CP CR <<EOF
+$(jq -r '[
+  (input_filename|split("/")|last),
+  .delta_Linf,
+  .dv_nonincrease,
+  .oci,
+  .slo.p95_ms,
+  .slo.cost_per_1k,
+  .ethics_ok,
+  (.rows[0].eval.faithfulness // 0),
+  (.rows[0].eval.answer_relevancy // 0),
+  (.rows[0].eval.context_precision // 0),
+  (.rows[0].eval.context_recall // 0)
+] | @tsv' "$EV")
+EOF
+
+# Pegamos parâmetros propostos, se existirem (labels opcionais)
+RAGK=$(jq -r '.rag_k // empty' "$EV" 2>/dev/null || echo "")
+EPS=$(jq -r '.epsilon_clip // empty' "$EV" 2>/dev/null || echo "")
+KLB=$(jq -r '.kl_beta // empty' "$EV" 2>/dev/null || echo "")
+OCIMIN=$(jq -r '.oci_min // empty' "$EV" 2>/dev/null || echo "")
+
+# Normalizações p/ score
+TAU="${TAU:-0.60}"; P95_BUDGET="${P95_BUDGET:-2000}"; COST_BUDGET="${COST_BUDGET:-0.002}"
+clamp01(){ awk 'function a(x){return (x<0)?0:((x>1)?1:x)}{print a($1)}'; }
+to01(){ awk -v b="$2" '{x=$1/b; if(x<0)x=0; if(x>1)x=1; print x}'; }
+
+S_LINF=$(awk -v d="$DELTA" 'BEGIN{v=(d-0)/0.02; if(v<0)v=0; if(v>1)v=1; print v}')
+S_DV=$([ "$DVPN" = "true" ] && echo 1 || echo 0)
+S_OCI=$(awk -v o="$OCI" -v t="$TAU" 'BEGIN{v=(o-t)/(1-t); if(v<0)v=0; if(v>1)v=1; print v}')
+S_P95=$(printf "%.6f\n" "$(awk -v p="$P95" -v b="$P95_BUDGET" 'BEGIN{v=(b-p)/b; if(v<0)v=0; if(v>1)v=1; print v}')")
+S_COST=$(printf "%.6f\n" "$(awk -v c="$COST" -v b="$COST_BUDGET" 'BEGIN{v=(b-c)/b; if(v<0)v=0; if(v>1)v=1; print v}')")
+S_SLO=$(awk -v a="$S_P95" -v b="$S_COST" 'BEGIN{print 0.5*a+0.5*b}')
+S_FACT="$FAI"
+
+SCORE=$(awk -v a="$S_LINF" -v b="$S_DV" -v c="$S_OCI" -v d="$S_SLO" -v e="$S_FACT" \
+  'BEGIN{print 100*(0.30*a + 0.20*b + 0.20*c + 0.20*d + 0.10*e)}')
+
+# Prepara labels
+L="artifact=\"$A\""
+[ -n "$RAGK" ]  && L="$L,rag_k=\"$RAGK\""
+[ -n "$EPS" ]   && L="$L,epsilon_clip=\"$EPS\""
+[ -n "$KLB" ]   && L="$L,kl_beta=\"$KLB\""
+[ -n "$OCIMIN" ]&& L="$L,oci_min=\"$OCIMIN\""
+
+# Exposição Prometheus (formato plaintext)
+payload=$(cat <<MET
+# TYPE lemni_eval_info gauge
+lemni_eval_info{$L} 1
+# TYPE lemni_eval_delta_linf gauge
+lemni_eval_delta_linf{$L} $DELTA
+# TYPE lemni_eval_dv_nonincrease gauge
+lemni_eval_dv_nonincrease{$L} $([ "$DVPN" = "true" ] && echo 1 || echo 0)
+# TYPE lemni_eval_oci gauge
+lemni_eval_oci{$L} $OCI
+# TYPE lemni_eval_slo_p95_ms gauge
+lemni_eval_slo_p95_ms{$L} $P95
+# TYPE lemni_eval_slo_cost_per_1k_usd gauge
+lemni_eval_slo_cost_per_1k_usd{$L} $COST
+# TYPE lemni_eval_ethics_ok gauge
+lemni_eval_ethics_ok{$L} $([ "$ETH" = "true" ] && echo 1 || echo 0)
+# TYPE lemni_eval_ragas_faithfulness gauge
+lemni_eval_ragas_faithfulness{$L} $FAI
+# TYPE lemni_eval_ragas_answer_relevancy gauge
+lemni_eval_ragas_answer_relevancy{$L} $AR
+# TYPE lemni_eval_ragas_context_precision gauge
+lemni_eval_ragas_context_precision{$L} $CP
+# TYPE lemni_eval_ragas_context_recall gauge
+lemni_eval_ragas_context_recall{$L} $CR
+# TYPE lemni_progress_score gauge
+lemni_progress_score{$L} $SCORE
+MET
+)
+
+# Empurra no namespace do artefato
+curl -s --data-binary "$payload" \
+  "$PGW/metrics/job/lemni-evals/artifact/$A" > /dev/null
+
+echo "[push] $A -> score=$(printf '%.1f' "$SCORE"), ΔL∞=$DELTA, ΔV_ok=$DVPN, OCI=$OCI, p95=$P95, cost=$COST"

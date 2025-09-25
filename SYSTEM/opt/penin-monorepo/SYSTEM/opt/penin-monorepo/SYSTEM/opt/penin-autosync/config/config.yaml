@@ -1,0 +1,313 @@
+# Configuração do Sistema de Sincronização Automática CPU → GitHub
+# Sistema PENIN - Monorepo com README Mestre Auto-Atualizado
+
+# Configurações do Repositório
+repo:
+  path: "/opt/penin-monorepo"
+  remote_url: "git@github.com:danielgonzagat/penin-monorepo.git"
+  default_branch: "main"
+  
+# Configurações de Sincronização
+sync:
+  # Tempo de coalescência (0 = imediato, 30-120 = agrupa commits)
+  coalesce_seconds: 0
+  
+  # Gerar README automaticamente
+  build_readme: true
+  
+  # Debounce para evitar commits excessivos
+  debounce_seconds: 5
+
+# Mapeamentos de Diretórios (CPU → Monorepo)
+mappings:
+  - src: "/opt/et_ultimate"
+    dst: "opt/et_ultimate"
+    description: "Sistema ET Ultimate - Cérebro Principal"
+    
+  - src: "/root/projetos"
+    dst: "projetos"
+    description: "Projetos Diversos"
+    
+  - src: "/opt/ml"
+    dst: "ml"
+    description: "Machine Learning Models"
+    
+  - src: "/opt/penin_omega"
+    dst: "penin_omega"
+    description: "Sistema PENIN Omega"
+
+# Padrões de Inclusão (arquivos que serão sincronizados)
+include_globs:
+  - "**/*.py"
+  - "**/*.md"
+  - "**/*.yaml"
+  - "**/*.yml"
+  - "**/*.json"
+  - "**/*.toml"
+  - "**/*.sh"
+  - "**/*.js"
+  - "**/*.ts"
+  - "**/*.jsx"
+  - "**/*.tsx"
+  - "**/*.css"
+  - "**/*.html"
+  - "**/*.txt"
+  - "**/*.cfg"
+  - "**/*.conf"
+  - "**/*.ini"
+  - "**/*.sql"
+  - "**/*.dockerfile"
+  - "**/*.Dockerfile"
+  - "**/*.gitignore"
+  - "**/*.gitattributes"
+  - "**/*.requirements.txt"
+  - "**/*.pyproject.toml"
+  - "**/*.setup.py"
+  - "**/*.Makefile"
+  - "**/*.cmake"
+  - "**/*.cpp"
+  - "**/*.c"
+  - "**/*.h"
+  - "**/*.hpp"
+  - "**/*.java"
+  - "**/*.go"
+  - "**/*.rs"
+  - "**/*.php"
+  - "**/*.rb"
+  - "**/*.swift"
+  - "**/*.kt"
+  - "**/*.scala"
+  - "**/*.r"
+  - "**/*.m"
+  - "**/*.pl"
+  - "**/*.lua"
+  - "**/*.vim"
+  - "**/*.emacs"
+  - "**/*.xml"
+  - "**/*.svg"
+  - "**/*.png"
+  - "**/*.jpg"
+  - "**/*.jpeg"
+  - "**/*.gif"
+  - "**/*.ico"
+  - "**/*.pdf"
+  - "**/*.zip"
+  - "**/*.tar"
+  - "**/*.gz"
+
+# Padrões de Exclusão (arquivos que NÃO serão sincronizados)
+ignore_globs:
+  # Python
+  - "**/__pycache__/**"
+  - "**/.ipynb_checkpoints/**"
+  - "**/.pytest_cache/**"
+  - "**/.mypy_cache/**"
+  - "**/.coverage"
+  - "**/htmlcov/**"
+  - "**/.tox/**"
+  - "**/.venv/**"
+  - "**/venv/**"
+  - "**/env/**"
+  - "**/.env/**"
+  - "**/site-packages/**"
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/*.egg-info/**"
+  - "**/*.pyc"
+  - "**/*.pyo"
+  - "**/*.pyd"
+  - "**/*.so"
+  
+  # Node.js
+  - "**/node_modules/**"
+  - "**/npm-debug.log*"
+  - "**/yarn-debug.log*"
+  - "**/yarn-error.log*"
+  - "**/.npm"
+  - "**/.yarn-integrity"
+  - "**/.yarn/cache"
+  - "**/.yarn/unplugged"
+  - "**/.yarn/build-state.yml"
+  - "**/.yarn/install-state.gz"
+  - "**/.pnp.*"
+  
+  # IDEs e Editores
+  - "**/.vscode/**"
+  - "**/.idea/**"
+  - "**/.cursor/**"
+  - "**/.sublime-*"
+  - "**/.atom/**"
+  - "**/.vim/**"
+  - "**/.emacs.d/**"
+  - "**/.spacemacs.d/**"
+  
+  # Sistemas Operacionais
+  - "**/.DS_Store"
+  - "**/Thumbs.db"
+  - "**/.directory"
+  - "**/.Trash-*"
+  - "**/.localized"
+  
+  # Logs e Temporários
+  - "**/*.log"
+  - "**/*.tmp"
+  - "**/*.temp"
+  - "**/*.swp"
+  - "**/*.swo"
+  - "**/*~"
+  - "**/.lock"
+  - "**/*.lock"
+  
+  # Segredos e Credenciais
+  - "**/.env*"
+  - "**/secrets/**"
+  - "**/credentials/**"
+  - "**/*.key"
+  - "**/*.pem"
+  - "**/*.p12"
+  - "**/*.pfx"
+  - "**/id_rsa*"
+  - "**/id_ed25519*"
+  - "**/id_ecdsa*"
+  - "**/.ssh/**"
+  - "**/.aws/**"
+  - "**/.gcp/**"
+  - "**/.azure/**"
+  
+  # Modelos e Artefatos Grandes
+  - "**/*.pt"
+  - "**/*.pth"
+  - "**/*.ckpt"
+  - "**/*.bin"
+  - "**/*.safetensors"
+  - "**/*.onnx"
+  - "**/*.h5"
+  - "**/*.hdf5"
+  - "**/*.pb"
+  - "**/*.tflite"
+  - "**/*.mlmodel"
+  - "**/*.coreml"
+  - "**/*.pkl"
+  - "**/*.pickle"
+  - "**/*.joblib"
+  - "**/*.npy"
+  - "**/*.npz"
+  
+  # Datasets e Dados Grandes
+  - "**/datasets/**"
+  - "**/data/**"
+  - "**/raw_data/**"
+  - "**/processed_data/**"
+  - "**/*.csv"
+  - "**/*.parquet"
+  - "**/*.feather"
+  - "**/*.arrow"
+  - "**/*.db"
+  - "**/*.sqlite"
+  - "**/*.sqlite3"
+  
+  # Caches e Builds
+  - "**/.cache/**"
+  - "**/cache/**"
+  - "**/.gradle/**"
+  - "**/target/**"
+  - "**/.cargo/**"
+  - "**/.rustup/**"
+  - "**/.cabal/**"
+  - "**/.stack/**"
+  
+  # Ferramentas de ML
+  - "**/wandb/**"
+  - "**/mlruns/**"
+  - "**/outputs/**"
+  - "**/runs/**"
+  - "**/logs/**"
+  - "**/checkpoints/**"
+  - "**/models/**"
+  - "**/weights/**"
+  - "**/artifacts/**"
+  
+  # Git e Versionamento
+  - "**/.git/**"
+  - "**/.gitmodules"
+  - "**/.gitignore"
+  - "**/.gitattributes"
+  
+  # Docker
+  - "**/docker-compose.override.yml"
+  - "**/.dockerignore"
+  
+  # Backup e Temporários
+  - "**/*.bak"
+  - "**/*.backup"
+  - "**/*.old"
+  - "**/*.orig"
+  - "**/*.rej"
+  - "**/*.patch"
+
+# Configurações do README Mestre
+readme:
+  template_path: "/opt/penin-autosync/docs/master_readme_template.md.j2"
+  output_path: "/opt/penin-monorepo/README.md"
+  sections_dir: "/opt/penin-autosync/docs/sections"
+  
+  # Informações do Projeto
+  project:
+    name: "PENIN Monorepo"
+    description: "Sistema PENIN - Evolução Contínua do Zero ao State-of-the-Art"
+    author: "Daniel Penin"
+    github_user: "danielgonzagat"
+    
+  # Seções do README
+  sections:
+    - "00-intro.md"
+    - "01-setup.md"
+    - "02-architecture.md"
+    - "03-components.md"
+    - "04-evolution.md"
+    - "05-sota.md"
+    - "06-roadmap.md"
+    - "07-contributing.md"
+
+# Configurações do Cursor API (para Agentes em Segundo Plano)
+cursor_api:
+  enabled: true
+  base_url: "https://api.cursor.com"
+  # Sua chave API será configurada via variável de ambiente CURSOR_API_KEY
+  
+  # Configurações dos Agentes
+  agents:
+    - name: "code-reviewer"
+      prompt: "Review code changes and suggest improvements for better performance, security, and maintainability"
+      trigger_on: ["pull_request", "push"]
+      
+    - name: "bug-fixer"
+      prompt: "Automatically detect and fix bugs in the codebase, focusing on common issues and edge cases"
+      trigger_on: ["issue", "error_log"]
+      
+    - name: "documentation-updater"
+      prompt: "Keep documentation updated with code changes, ensuring README and docstrings are current"
+      trigger_on: ["code_change", "new_feature"]
+      
+    - name: "security-scanner"
+      prompt: "Scan for security vulnerabilities and suggest fixes for potential security issues"
+      trigger_on: ["push", "pull_request"]
+
+# Configurações de Logging
+logging:
+  level: "INFO"
+  file: "/opt/penin-autosync/logs/sync.log"
+  max_size: "10MB"
+  backup_count: 5
+  
+# Configurações de Performance
+performance:
+  max_file_size: "100MB"
+  parallel_sync: true
+  max_workers: 4
+  
+# Configurações de Segurança
+security:
+  scan_secrets: true
+  block_large_files: true
+  max_file_size_mb: 100

@@ -1,0 +1,308 @@
+# /opt/et_ultimate/agents/brain/et_liga_copilotos.py
+
+import os
+import time
+import json
+import uuid
+import math
+import random
+from pathlib import Path
+from typing import Dict, Any, Optional, Tuple, List
+
+import requests
+
+# ======= Paths =======
+BEST = Path("/opt/et_ultimate/history/BEST_ETΩ.txt")
+MUTATIONS = Path("/opt/et_ultimate/workspace/LIGA_MUTACOES.jsonl")
+SCORE_LOG = Path("/opt/et_ultimate/history/etomega_scores.jsonl")
+
+for p in [BEST.parent, MUTATIONS.parent, SCORE_LOG.parent]:
+    p.mkdir(parents=True, exist_ok=True)
+
+# ======= Config =======
+# Timeout total de 10 minutos por requisição
+REQ_TIMEOUT = (10 * 60)  # segundos
+
+# Re tentativas com backoff exponencial
+MAX_RETRIES = 3
+BACKOFF_BASE = 1.0  # segundos
+
+# Modelos padrão (podem ser sobrescritos por env)
+MODEL_OPENAI = os.getenv("ET_OPENAI_MODEL", "gpt-4o")
+MODEL_DEEPSEEK = os.getenv("ET_DEEPSEEK_MODEL", "deepseek-chat")
+MODEL_MISTRAL = os.getenv("ET_MISTRAL_MODEL", "mistral-large-latest")
+MODEL_CLAUDE = os.getenv("ET_ANTHROPIC_MODEL", "claude-3-5-sonnet-latest")
+
+# Chaves via ambiente
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") or os.getenv("ET_OPENAI_API_KEY")
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
+MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+
+# Liga ativa de IAs (Grok e Gemini removidos)
+IAS = [
+    {"name": "chatgpt", "type": "openai", "api_key": OPENAI_API_KEY, "model": MODEL_OPENAI},
+    {"name": "deepseek", "type": "deepseek", "api_key": DEEPSEEK_API_KEY, "model": MODEL_DEEPSEEK},
+    {"name": "mistral", "type": "mistral", "api_key": MISTRAL_API_KEY, "model": MODEL_MISTRAL},
+    {"name": "claude",  "type": "anthropic", "api_key": ANTHROPIC_API_KEY, "model": MODEL_CLAUDE},
+]
+
+def mensagem_sistema() -> str:
+    return (
+        "Você é um agente de mutação da Equação de Turing (ETΩ). "
+        "Receba a expressão atual e gere UMA nova expressão (mutação) que maximize a métrica "
+        "'expected improvement' sem perder estabilidade. Responda SOMENTE com a expressão mutada."
+    )
+
+def _retry_sleep(i: int) -> None:
+    # backoff exponencial simples (1s, 2s, 4s) com jitter
+    delay = (BACKOFF_BASE * (2 ** (i - 1))) + random.uniform(0, 0.2)
+    time.sleep(delay)
+
+def _post_json(url: str, headers: Dict[str, str], payload: Dict[str, Any]) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
+    """
+    Faz POST JSON com retries e timeout REQ_TIMEOUT.
+    Retorna (json_dict, erro_str). Garante que nunca lança exceção para cima.
+    """
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            r = requests.post(url, headers=headers, json=payload, timeout=REQ_TIMEOUT)
+            if r.status_code >= 200 and r.status_code < 300:
+                try:
+                    return r.json(), None
+                except Exception as je:
+                    return None, f"json_decode_fail: {je}"
+            else:
+                # erro HTTP; tenta ler corpo pra log
+                body = r.text[:5000]
+                err = f"http_{r.status_code}: {body}"
+        except requests.Timeout:
+            err = "timeout"
+        except Exception as e:
+            err = f"network_error: {e}"
+        if attempt < MAX_RETRIES:
+            _retry_sleep(attempt)
+        else:
+            return None, err
+    # fallback (nunca chega aqui, mas por segurança)
+    return None, "unknown_error"
+
+def call_openai(prompt: str, api_key: str, model: str) -> Tuple[Optional[str], Optional[str]]:
+    if not api_key:
+        return None, "missing_api_key"
+    url = "https://api.openai.com/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": mensagem_sistema()},
+            {"role": "user", "content": prompt},
+        ],
+        "temperature": 0.7,
+    }
+    j, err = _post_json(url, headers, payload)
+    if err:
+        return None, err
+    try:
+        content = j["choices"][0]["message"]["content"].strip()
+        return content, None
+    except Exception as e:
+        return None, f"parse_fail: {e}"
+
+def call_deepseek(prompt: str, api_key: str, model: str) -> Tuple[Optional[str], Optional[str]]:
+    if not api_key:
+        return None, "missing_api_key"
+    url = "https://api.deepseek.com/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": mensagem_sistema()},
+            {"role": "user", "content": prompt},
+        ],
+        "temperature": 0.7,
+    }
+    j, err = _post_json(url, headers, payload)
+    if err:
+        return None, err
+    try:
+        content = j["choices"][0]["message"]["content"].strip()
+        return content, None
+    except Exception as e:
+        return None, f"parse_fail: {e}"
+
+def call_mistral(prompt: str, api_key: str, model: str) -> Tuple[Optional[str], Optional[str]]:
+    if not api_key:
+        return None, "missing_api_key"
+    url = "https://api.mistral.ai/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": mensagem_sistema()},
+            {"role": "user", "content": prompt},
+        ],
+        "temperature": 0.7,
+    }
+    j, err = _post_json(url, headers, payload)
+    if err:
+        return None, err
+    try:
+        content = j["choices"][0]["message"]["content"].strip()
+        return content, None
+    except Exception as e:
+        return None, f"parse_fail: {e}"
+
+def call_anthropic(prompt: str, api_key: str, model: str) -> Tuple[Optional[str], Optional[str]]:
+    if not api_key:
+        return None, "missing_api_key"
+    url = "https://api.anthropic.com/v1/messages"
+    headers = {
+        "x-api-key": api_key,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+    }
+    payload = {
+        "model": model,
+        "max_tokens": 2048,
+        "temperature": 0.7,
+        "system": mensagem_sistema(),
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    j, err = _post_json(url, headers, payload)
+    if err:
+        return None, err
+    try:
+        # Anthropic retorna {"content":[{"type":"text","text":"..."}], ...}
+        blocks = j.get("content", [])
+        texts = [b.get("text", "") for b in blocks if isinstance(b, dict)]
+        content = "\n".join(t.strip() for t in texts if t)
+        content = content.strip()
+        if not content:
+            return None, "empty_content"
+        return content, None
+    except Exception as e:
+        return None, f"parse_fail: {e}"
+
+def gerar_mutacao(ia: Dict[str, Any], prompt: str) -> str:
+    """
+    Retorna SEMPRE string.
+    Se sucesso: expressão mutada (string).
+    Se erro: "[erro:nome:motivo]".
+    """
+    name = ia.get("name", "unknown")
+    typ = ia.get("type")
+    api_key = ia.get("api_key")
+    model = ia.get("model")
+
+    if not api_key:
+        return f"[erro:{name}:missing_api_key]"
+
+    if typ == "openai":
+        content, err = call_openai(prompt, api_key, model)
+    elif typ == "deepseek":
+        content, err = call_deepseek(prompt, api_key, model)
+    elif typ == "mistral":
+        content, err = call_mistral(prompt, api_key, model)
+    elif typ == "anthropic":
+        content, err = call_anthropic(prompt, api_key, model)
+    else:
+        return f"[erro:{name}:tipo_nao_suportado]"
+
+    if err:
+        return f"[erro:{name}:{err}]"
+    if not content:
+        return f"[erro:{name}:empty]"
+    return content
+
+# ==== Avaliador Placeholder (determinístico simples) ====
+def score(eq: str) -> float:
+    """
+    Avaliador simples e determinístico apenas para ordenação local.
+    Substitua por chamada real ao benchmark determinístico da ETΩ.
+    """
+    # Heurística boba e determinística: mais curto e com alguns símbolos "bons".
+    eq_norm = eq.strip()
+    L = max(1, len(eq_norm))
+    bonus = 0.0
+    for sym, val in [("∑", 4.0), ("∏", 3.0), ("∫", 5.0), ("λ", 2.5), ("Ω", 2.5), ("→", 1.0)]:
+        bonus += eq_norm.count(sym) * val
+    # penaliza gigantismo
+    base = 1000.0 / L
+    return round(base + bonus, 6)
+
+def main():
+    base = BEST.read_text().strip() if BEST.exists() else "x^2 + y^2"
+    prompt = f"Otimize a expressão base, mantendo estabilidade numérica e simplicidade:\n{base}"
+
+    mutacoes: List[Dict[str, Any]] = []
+
+    for ia in IAS:
+        if not ia.get("api_key"):
+            # Skipa silencioso mas registra
+            m = {
+                "id": str(uuid.uuid4()),
+                "ts": time.time(),
+                "source": ia["name"],
+                "equation": f"[erro:{ia['name']}:missing_api_key]",
+                "score": float("-inf"),
+            }
+            mutacoes.append(m)
+            continue
+
+        print(f"🔁 [{ia['name']}] solicitando mutação...")
+        eq_mut = gerar_mutacao(ia, prompt)
+        s = score(eq_mut)
+
+        mutacoes.append({
+            "id": str(uuid.uuid4()),
+            "ts": time.time(),
+            "source": ia["name"],
+            "equation": eq_mut,
+            "score": s
+        })
+
+        # Log leve na tela
+        if eq_mut.startswith("[erro:"):
+            print(f"⚠️ [{ia['name']}] falhou: {eq_mut}")
+        else:
+            print(f"✅ [{ia['name']}] ok ({len(eq_mut)} chars, score={s})")
+
+    # Salva JSONL de mutações
+    with MUTATIONS.open("w", encoding="utf-8") as f:
+        for m in mutacoes:
+            f.write(json.dumps(m, ensure_ascii=False) + "\n")
+
+    # Seleciona melhor (ignora erros = score -inf)
+    melhor = max(mutacoes, key=lambda x: x["score"])
+    base_score = score(base)
+
+    # Atualiza BEST se ganhou
+    if melhor["score"] > base_score and not str(melhor["equation"]).startswith("[erro:"):
+        BEST.write_text(str(melhor["equation"]), encoding="utf-8")
+        best_note = " (ATUALIZADO)"
+    else:
+        best_note = " (MANTEVE BASE)"
+
+    # Score log append
+    with SCORE_LOG.open("a", encoding="utf-8") as f:
+        f.write(json.dumps({
+            "ts": time.time(),
+            "base": base,
+            "base_score": base_score,
+            "winner": melhor
+        }, ensure_ascii=False) + "\n")
+
+    print(f"🏁 Vencedor: {melhor['source']} | score={melhor['score']} |{best_note}")
+
+if __name__ == "__main__":
+    main()

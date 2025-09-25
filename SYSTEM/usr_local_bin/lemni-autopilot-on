@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+systemctl daemon-reload
+systemctl enable --now lemni-autopilot.timer
+systemctl start lemni-autopilot.service || true
+echo "[autopilot] ON"

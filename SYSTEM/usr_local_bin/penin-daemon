@@ -1,0 +1,5 @@
+#!/bin/bash
+while true; do
+    echo "[$(date)] PENIN Daemon rodando..."
+    sleep 60
+done

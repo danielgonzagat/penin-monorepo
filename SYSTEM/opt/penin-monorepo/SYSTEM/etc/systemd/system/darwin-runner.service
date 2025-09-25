@@ -1,0 +1,15 @@
+[Unit]
+Description=DARWIN Runner (berçário darwiniano: morte/vida WORM + janela de nascimentos)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /root/darwin/darwin_runner.py --config /root/darwin/darwin_policy.json
+Restart=always
+RestartSec=2
+WorkingDirectory=/root/darwin
+# Ambiente (opcional)
+Environment=DARWIN_CONFIG=/root/darwin/darwin_policy.json
+
+[Install]
+WantedBy=multi-user.target

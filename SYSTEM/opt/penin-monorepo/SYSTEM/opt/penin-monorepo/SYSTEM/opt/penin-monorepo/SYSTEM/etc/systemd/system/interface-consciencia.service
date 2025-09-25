@@ -1,0 +1,25 @@
+[Unit]
+Description=Interface de Consciência Unificada - Cérebro Único
+After=network.target cerebro-unico.service
+Requires=cerebro-unico.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/interface_consciencia_unificada.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Configurações de recursos
+MemoryLimit=512M
+CPUQuota=25%
+
+# Configurações de segurança
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

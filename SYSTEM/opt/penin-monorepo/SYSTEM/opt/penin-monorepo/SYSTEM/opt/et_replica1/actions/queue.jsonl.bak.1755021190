@@ -1,0 +1,5 @@
+{"type":"bash","args":{"script":"echo start_ok $(date) && python3 -V && which python3"}}
+{"type":"pip_install","args":{"packages":["tqdm","numpy"]}}
+{"type":"git_clone","args":{"repo":"https://github.com/sentence-transformers/semantic-text-similarity","dest":"./sts"}}
+{"type":"run_py","args":{"code":"import sys,platform; print('sanity py ok', sys.version.split()[0], platform.system())"}}
+{"type":"bash","args":{"script":"echo 'ls workspace:'; ls -la /opt/et_ultimate/workspace || true"}}

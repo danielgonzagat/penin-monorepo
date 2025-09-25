@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+REQ_FILE="/opt/et/queue/request.txt"
+if [ ! -s "$REQ_FILE" ]; then
+  echo "Sem pedidos pendentes."
+  exit 0
+fi
+echo "Pedido do agente (será executado como root se você aceitar):"
+echo "-----------------------------------------------------------------"
+cat "$REQ_FILE"
+echo "-----------------------------------------------------------------"
+read -r -p "Aprovar e executar? [yes/no] " A
+if [ "$A" = "yes" ]; then
+  bash -lc "$(cat "$REQ_FILE")"
+  : > "$REQ_FILE"
+  echo "Executado."
+else
+  echo "Negado."
+fi

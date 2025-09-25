@@ -1,0 +1,13 @@
+[Unit]
+Description=IA3 Darwin Gateway
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/bin/darwin_ia3_gateway.py
+Restart=no
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

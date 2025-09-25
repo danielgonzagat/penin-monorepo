@@ -1,0 +1,17 @@
+[Unit]
+Description=PENIN-Ω Unified Bridge
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/.penin_omega/modules
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /root/.penin_omega/modules/penin_unified_bridge.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

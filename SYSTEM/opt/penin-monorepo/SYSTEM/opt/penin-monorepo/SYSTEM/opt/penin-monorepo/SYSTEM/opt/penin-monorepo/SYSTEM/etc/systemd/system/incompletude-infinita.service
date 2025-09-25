@@ -1,0 +1,16 @@
+[Unit]
+Description=Incompletude Infinita Universal - Gödel 24/7
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/incompletude_infinita_autoexec.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/root/incompletude_infinita.log
+StandardError=append:/root/incompletude_infinita_error.log
+
+[Install]
+WantedBy=multi-user.target

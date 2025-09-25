@@ -1,0 +1,384 @@
+Manual Definitivo da “Equação de Turing”
+(ET★): Teoria, Infraestrutura e Aplicação
+Visão Geral e Contexto
+A Equação de Turing (ET) foi concebida para descrever, de forma
+simbólica, como um sistema de inteligência artificial pode aprender e se
+modificar para sempre sem ajuda externa. As primeiras versões, derivadas
+de algoritmos de currículo e meta-aprendizagem, tinham muitos termos:
+entropia, deriva, variância da dificuldade, energia, etc. Ao longo dos últimos
+refinamentos – incluindo a comparação com pesquisas de vanguarda como a
+Darwin-Gödel Machine (um sistema que reescreve seu próprio código) e
+plataformas de descoberta científica em loop fechado (que combinam LLMs,
+lógica relacional, robótica e metabolômica) – a equação foi destilada até um
+conjunto mínimo de componentes. O resultado final é chamado de ET★.
+Neste guia consolidamos tudo o que foi investigado e testado pelos três
+agentes: teoria, pré-requisitos e um roteiro prático. Incorporamos
+informações das versões anteriores (ET com
+5 termos【378420452171158†L9-L19】, ET★ com
+4 termos【378420452171158†L20-L35】), dos documentos “Equação de
+Turing refinada (ET★)” e “Advertorial salvo memória”, dos simuladores
+implementados (arquivo et_test.py), e dos planos técnicos de
+infraestrutura. O objetivo é permitir que engenheiros implantem a equação
+numa IA real e, ao mesmo tempo, que leigos compreendam os princípios
+que fazem essa IA evoluir sozinha até o infinito.
+1 – Teoria: a Equação de Turing em seu auge de perfeição
+1.1 Forma simbólica minimalista
+O formato final da equação reduz todos os mecanismos a quatro blocos
+essenciais e uma recorrência estabilizada:
+~
+E =P −ρ R +σ S +ι B → F (Φ)∞
+k+1 k k k k γ
+ P – Progresso. Mede quanto o agente está aprendendo. Usa-se um
+k
+softmax sobre g( ~ α ) , em que ~ α é o Learning Progress normalizado de
+i
+cada experiência, para priorizar tarefas que mais ensinam e aposentar
+as triviais ou impossíveis. A dificuldade/novidade β é multiplicada pelo
+i
+softmax e segue a Zona de Desenvolvimento Proximal (ZDP)
+– somente tarefas com progresso no quantil ≥ 0,7 continuam no
+currículo【378420452171158†L9-L19】.
+
+
+--- PAGE 1 ---
+
+ R – Custo/Recursos. Penaliza excesso de complexidade, consumo
+k
+de energia e baixa escalabilidade. Combina: MDL(E_k) (complexidade
+estrutural), Energy_k (medida de uso de GPU/CPU; com chips
+fotônicos esse termo tende a zero) e Scalability_k^{-1} (quanto uma
+ampliação de recursos melhora ou não o desempenho). Esse termo
+obriga a IA a crescer apenas quando há ganho real, evitando
+inchaços【378420452171158†L9-L19】.
+~
+ S – Estabilidade + Validação. Funde, em um único valor, cinco
+k
+fatores que garantem sanidade:
+ Exploração: a entropia H [π ] da política incentiva a IA a continuar
+curiosa; caso a entropia caia abaixo de um limiar (por exemplo 0,7),
+aumenta-se o peso de exploração.
+ Continuidade: a divergência D(π ,π ) (pode ser a divergência de
+k−1
+Jensen–Shannon) limita mudanças bruscas entre políticas sucessivas,
+substituindo termos de KL.
+ Memória: um drift negativo penaliza esquecimento de testes-canário.
+~
+Se o desempenho em tarefas seminais cair, S diminui.
+k
+ Diversidade: a variância do currículo V ar (β) garante que tarefas com
+dificuldades variadas continuem sendo exploradas.
+ Verificação empírica: 1−^regret mede a proporção de testes-canário
+(ou benchmarks) que permanecem bem-sucedidos. É a “métrica de
+não-regressão”; se falhar, a modificação proposta é
+descartada【378420452171158†L20-L35】. Esse componente pode ser
+separado como um quinto termo V para maior transparência, mas
+k
+está incorporado aqui para simplicidade.
+ B – Embodiment. Mede o quanto o aprendizado se estende ao
+k
+mundo físico: sucesso em tarefas robóticas, manipulação de
+instrumentos, experimentos de laboratório, interação com sensores.
+Esse termo é opcional para IA puramente digital, mas torna a equação
+universal quando a IA controla corpos ou dispositivos; é inspirado no
+pipeline biológico autônomo que usa LLMs, ILP e robótica para gerar
+hipóteses, planejar experimentos e coletar
+dados【378420452171158†L20-L35】.
+ F (Φ)∞ – Recorrência estabilizada. Atualiza o estado interno com
+γ
+uma contração de Banach para que o loop nunca exploda:
+x =(1−γ )x +γ tanh(f (x ;Φ)),0<γ ≤1/2.
+t+1 t t
+A tangente hiperbólica evita valores extremos, e γ ≤1/2 garante que a função
+seja contrativa (raio espectral < 1). Φ representa a fusão de memórias
+recentes, experiências de replay, seeds fixas e verificadores. Em nossos
+
+
+--- PAGE 2 ---
+
+testes o estado ficou em torno de [−0.2,0.2] ao longo de múltiplas iterações,
+demonstrando estabilidade.
+1.2 Critério de aceitação
+A cada modificação proposta Δ (alteração de pesos, arquitetura ou até do
+código), calcula-se um score:
+~
+s=P − ρR +σ S +ιB .
+k k k k
+ Se s>0 e não ocorre regressão nos canários (1−^regret não diminui), a
+modificação é aceita e incorporada à IA.
+ Caso contrário, realiza-se rollback (descarta-se Δ ) e o sistema tenta
+outra modificação.
+Esse guardrail garante que a IA só cresce quando há ganho real e que o
+conhecimento acumulado nunca se perde. Na prática, uma variação do score
+foi implementada e testada no script et_test.py; ele executou 10 ciclos de
+avaliação com sinais simulados e confirmou que as alterações eram aceitas
+apenas quando o score ultrapassava o valor anterior e os testes de
+regressão permaneciam estáveis – os estados de recorrência permaneceram
+limitados.
+1.3 Interpretação intuitiva
+Para quem não é engenheiro, a ET★ pode ser vista como uma balança
+inteligente que, em cada passo, faz quatro perguntas:
+1. Estou realmente aprendendo algo novo? P aumenta se as últimas
+k
+experiências trazem progresso; caso contrário, as tarefas que não
+ensinam mais são descartadas.
+2. Isso complica ou consome muito? R sobe quando o modelo fica
+k
+grande, gasta energia ou não escala bem; modulações que incham o
+sistema são desestimuladas.
+~
+3. Continuo curioso, sem esquecer o que já sei? S une entropia,
+k
+continuidade, memória e diversidade, garantindo que o agente explore
+sem se perder ou regredir.
+4. Consigo aplicar o que aprendi no mundo real? B valoriza o
+k
+aprendizado em ambientes físicos. Num LLM puro, este valor pode ser
+0; num robô, aumenta conforme ele completa tarefas reais.
+Somando essas respostas com pesos ρ,σ ,ι ajustáveis (e ν se usar o quinto
+termo V ), o sistema decide se incorpora a mudança. Se o score for negativo
+k
+ou se um teste crucial falhar, a mudança não é incorporada. Essa lógica,
+combinada à recorrência contrativa, cria um ciclo infinito de
+auto-melhoria.
+
+
+--- PAGE 3 ---
+
+2 – Infraestrutura: pré-requisitos e checklist
+Para que a ET★ funcione de maneira contínua e segura, é necessário
+preparar o servidor e o ambiente. As recomendações abaixo são derivadas
+de testes práticos e dos planos técnicos que acompanhavam os documentos
+PDF (por exemplo, “Advertorial salvo memória” e “Plano Técnico para a
+Equação de Turing Refinada”).
+2.1 Hardware e Energia
+Especificação
+Requisito recomendada Justificativa
+CPU ≥ 16 cores. Permite executar
+Processadores coleta de dados,
+EPYC ou Xeon são treino, geração de
+ideais; i7/i9 ou tarefas e validação
+Ryzen funcionam em paralelo.
+em protótipos.
+GPU ≥ 1 GPU com 12 GB Treinamento de
+de VRAM; ideal 2 modelos grandes e
+GPUs (uma para atualização
+inferência, outra assíncrona ficam
+para treino). mais eficientes.
+RAM ≥ 64 GB (128 GB ou Necessária para
+mais para buffers armazenar replay
+grandes). buffers, logs e
+modelos.
+Armazenamento 1–2 TB de Checkpoints e logs
+SSD NVMe para crescem
+dados ativos; rapidamente
+backup externo durante o
+(HDD/NAS ou treinamento
+nuvem). contínuo.
+Energia & Rede UPS/nobreak, Minimiza
+refrigeração interrupções e
+adequada e rede garante
+estável conectividade para
+(preferencialmente monitoramento
+isolada ou VPN). remoto.
+Sensores/ (opcional) Necessário para
+Robótica Controladores, embodiment físico
+braços robóticos, e integração com
+câmeras, hardware de
+espectrômetros, laboratório.
+etc.
+
+
+--- PAGE 4 ---
+
+2.2 Sistema Operacional e Stack de Software
+ Distribuição Linux (Ubuntu LTS, Debian ou CentOS) atualizada, com
+drivers CUDA/cuDNN compatíveis.
+ Ambiente isolado via conda, virtualenv ou contêiner
+(Docker/Podman). É recomendável configurar o serviço como systemd
+com Restart=always para reiniciar automaticamente.
+ Bibliotecas principais:
+ PyTorch ou JAX para redes neurais.
+ Gymnasium / stable-baselines3 / RLlib para ambientes e
+algoritmos de RL.
+ NumPy, SymPy (manipulação simbólica) e Numba (compilação JIT
+opcional).
+ TensorBoard ou Weights & Biases para monitorar LP, entropia e
+consumo de recursos.
+ psutil para medir uso de CPU/GPU/energia.
+ Jupyter (opcional) para notebooks de monitoramento.
+ Estrutura de Projeto organizada em pacotes:
+autonomous_et_ai/
+agent/ # política, buffer de replay, curiosidade e LP tracking
+tasks/ # gerador de tarefas/currículo e wrappers de ambientes
+training/ # loop de treinamento com ET★ e otimizadores
+logs/ # métricas, checkpoints, arquivos de episódio e
+tensorboard
+config/ # arquivos YAML (config.yaml, tasks.yaml) com
+hiperparâmetros
+run.py # script principal
+2.3 Segurança e operações contínuas
+ Canários de regressão: mantenha um conjunto fixo de tarefas
+simples (jogos curtos, pequenos programas ou experiências de
+laboratório) para testar cada nova versão. Se a IA falhar nesses testes,
+a modificação é descartada.
+ Monitoramento de recursos: use psutil ou ferramentas do sistema
+para acompanhar CPU, GPU, memória e energia. Defina alertas para
+picos ou estagnação sem progresso.
+ Limites e limpeza: configure o tamanho máximo do buffer de replay
+(por exemplo, 1 milhão de transições) e rotacione logs (p.ex.,
+logrotate). Implemente um “kill switch” via arquivo stop.flag para
+encerrar o processo com segurança.
+ Sandbox: execute qualquer auto-modificação do código (por exemplo,
+integração com a DGM) em contêineres isolados. Nunca carregue
+código sem validação; teste-o em ambiente restrito antes de
+promover.
+
+
+--- PAGE 5 ---
+
+ Guardrails de curriculum: aplique quantil ZDP (manter tarefas com
+LP acima de 0,7), exija entropia mínima (e aumente a curiosidade se
+H[π] cair) e injete seeds quando o LP ficar ≈ 0 por muitas janelas.
+3 – Prática: como implementar e validar a ET★
+Esta seção descreve, passo a passo, como colocar a ET★ em funcionamento
+em qualquer modelo – seja um agente de RL, um LLM ou um sistema de
+descoberta científica. Os exemplos usam Python e foram testados em um
+ambiente controlado (arquivo et_test.py).
+3.1 Preparação inicial
+1. Instale o ambiente. Configure Linux, drivers CUDA e crie uma
+venv/conda ou contêiner. Instale as dependências listadas na seção 2.2.
+2. Estruture o projeto conforme o diagrama acima. Crie
+config/config.yaml com pesos iniciais: rho, sigma, iota, gamma (≤ 0.5),
+limiar de entropia, quantil da ZDP, limites de buffer e políticas de
+logging. Use o modelo do anexo “Advertorial salvo memória” como
+referência.
+3. Implemente o núcleo ET★ em et_engine.py. Crie uma classe ETCore
+com métodos para:
+4. Calcular P_k, R_k, \tilde{S}_k e B_k a partir de sinais (LP, dificuldades,
+MDL, energia, divergência, entropia, drift, var_beta, regret,
+embodiment).
+5. Calcular o score s e decidir se a modificação é aceita (score > 0 e não
+regressão).
+6. Atualizar a recorrência via update_recurrence(phi) (média de
+memórias novas, replays, seeds e verificadores). Certifique-se de que
+gamma está em (0, 0.5] para garantir contração. Um exemplo de
+implementação (simplificado) está no final deste guia.
+7. Mapeie sinais do seu modelo para esses termos: LP = diferença de
+performance recente/histórica; β = dificuldade/novidade; MDL =
+número de parâmetros ou tamanho de código; energy = consumo via
+sensores da GPU/CPU; scalability❑−1 = quão bem o desempenho
+melhora com mais agentes; entropia/divergência calculadas sobre a
+política; drift comparando benchmarks antigos; var_beta = diversidade
+das dificuldades; regret = taxa de falhas em canários; embodiment =
+pontuação de sucesso em tarefas físicas (0 em LLMs puros). Esses
+sinais alimentam ETCore.score_terms().
+3.2 Loop de atualização
+O ciclo completo de auto-aprendizado segue estes passos:
+
+
+--- PAGE 6 ---
+
+1. Gere experiência: interaja com o ambiente (RL) ou dados (LLM),
+coletando estados, ações, recompensas e informações da tarefa.
+Marque cada transição com LP e dificuldade.
+2. Atualize buffers e histórico: insira a experiência no buffer de replay
+com prioridade proporcional ao LP. Atualize o histórico de cada tarefa
+para calcular o LP futuro.
+3. Treine a política: amostre um lote prioritário e execute uma etapa de
+treinamento (por exemplo, PPO, SAC ou fine-tuning de LLM). Inclua
+recompensas intrínsecas (curiosidade) se necessário.
+4. Meça sinais: após o treinamento, calcule P_k, R_k, \tilde{S}_k e B_k
+usando ETCore.score_terms(). Essa função recebe os valores de LP, β ,
+MDL, energia, escalabilidade inversa, entropia, divergência, drift,
+var_beta, regret e embodiment.
+5. Decida e faça rollback/commit: compute o score s = P_k - \rho
+R_k + \sigma \tilde{S}_k + \iota B_k. Se s > 0 e os testes canário
+não pioraram, aceite a modificação (commit). Caso contrário, descarte
+a modificação (rollback) e restabeleça o estado anterior.
+6. Atualize a recorrência: chame update_recurrence(phi) com um
+vetor ϕ que agrega médias das novas experiências, dos replays, dos
+seeds e dos resultados dos verificadores. O valor resultante é um
+estado interno suave que ajuda a amortecer oscilações.
+7. Adapte o currículo: se o LP médio cair ou a entropia estiver baixa,
+aumente a dificuldade β ou injete seeds de experiências antigas. Se o
+sistema falhar em canários, reduza a dificuldade ou reative tarefas de
+alto LP.
+8. (Opcional) Self-mod: integre um módulo de auto-modificação (como
+a Darwin-Gödel Machine). Deixe a IA propor edições de código (por
+exemplo, fundir ou dividir termos da ET) e teste-as em sandbox; se
+melhorarem o score sem regressões, incorpore-as. Isso abre caminho
+para que a própria equação evolua com o tempo.
+9. Log e backup: registre a cada ciclo as métricas LP, H[π], R_k, \
+tilde{S}_k, B_k, K(E), score e o estado de recorrência. Salve
+checkpoints periodicamente. Um watchdog deve reiniciar o processo
+se detectar NaN, Inf ou travamentos.
+3.3 Exemplo de teste (simulação)
+O arquivo et_test.py fornecido com este relatório implementa um ETCore
+simplificado e executa 10 iterações com sinais aleatórios (LP, dificuldades,
+MDL, energia, entropia, divergência, drift, variância, regret, embodiment). O
+script calcula P, R, S, V, B (na versão de 5 termos) e atualiza o estado de
+recorrência. Na nossa execução, o score foi positivo na primeira iteração e
+negativo (ou próximo de zero) nas seguintes; as modificações foram aceitas
+apenas quando o score era positivo e os testes-canário (V ) não se
+
+
+--- PAGE 7 ---
+
+degradavam. O estado de recorrência permaneceu entre –0.2 e 0.2 durante
+todas as interações, demonstrando a robustez e estabilidade da equação.
+3.4 Adaptações por domínio
+Domínio Sinais relevantes & notas
+LLMs / Modelos de LP: variação de exact match
+linguagem ou pass@k em benchmarks; β:
+dificuldade
+sintática/semântica do
+prompt; Regret: falhas em
+conjuntos canários (ex.:
+perguntas factuais
+conhecidas); B: 0 (a menos
+que o LLM controle robôs).
+Aprendizado por Reforço LP: diferença no retorno
+médio; β: complexidade do
+nível; B: sucesso em tarefas
+físicas; use PPO/SAC e
+mantenha entropia acima de
+um mínimo.
+Robótica / Sistemas físicos B torna-se crítico: mede
+sucesso em manipulação ou
+navegação real. Implante
+guardrails de segurança
+(limites de torque/velocidade
+e kill switch).
+Descoberta científica LP: taxa de hipóteses úteis ou
+precisão de previsões;
+Regret: fracasso em
+experimentos automatizados;
+B: sucesso em execução
+robótica, coleta de dados (por
+exemplo, metabolômica em
+pipelines de laboratório).
+3.5 Exemplo de implementação de ETCore
+import numpy as np
+class ETCore:
+def __init__(self, rho, sigma, iota, gamma):
+assert 0 < gamma <= 0.5, "gamma deve estar em (0, 0.5] para
+garantir contração"
+self.rho = rho; self.sigma = sigma; self.iota = iota
+self.gamma = gamma
+self._state = 0.0
+
+
+--- PAGE 8 ---
+
+def softmax(self, x):
+e = np.exp(x - np.max(x)); return e / (e.sum() + 1e-12)
+def score_terms(self, lp, beta, mdl, energy, scal_inv,
+entropy, divergence, drift, var_beta,
+regret, embodiment):
+# P_k: progresso
+p_k = np.dot(self.softmax(lp), beta)
+# R_k: custo
+r_k = mdl + energy + scal_inv
+# \tilde{S}_k: estabilidade + validação
+s_tilde
+(Content truncated due to size limit. Use page ranges or line ranges to read remaining content)

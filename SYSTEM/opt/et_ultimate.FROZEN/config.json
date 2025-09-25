@@ -1,0 +1,11 @@
+{
+  "owner_id": "daniel",
+  "server_ip": "92.38.150.138",
+  "ultimate_mode": true,
+  "unlimited_powers": true,
+  "anti_sabotage_protection": true,
+  "auto_evolution": true,
+  "transcendence_enabled": true,
+  "api_port": 8080,
+  "log_level": "INFO"
+}

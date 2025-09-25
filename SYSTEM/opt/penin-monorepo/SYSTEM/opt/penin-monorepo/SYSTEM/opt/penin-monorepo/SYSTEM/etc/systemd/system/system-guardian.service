@@ -1,0 +1,33 @@
+[Unit]
+Description=System Guardian - Monitoramento e Proteção 24/7
+Documentation=https://github.com/system-guardian
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/python3 /root/system_guardian.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=system-guardian
+
+# Configurações de segurança
+NoNewPrivileges=false
+PrivateTmp=false
+ProtectSystem=false
+ProtectHome=false
+
+# Configurações de recursos
+LimitNOFILE=65536
+LimitNPROC=32768
+
+# Configurações de ambiente
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/root
+
+[Install]
+WantedBy=multi-user.target

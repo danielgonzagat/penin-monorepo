@@ -1,0 +1,5 @@
+#!/bin/bash
+# Python com Incompletude Infinita
+export PYTHONPATH="/usr/local/lib/python3.10/dist-packages:$PYTHONPATH"
+python3 -c "from incompletude_infinita import apply_incompletude; import builtins; builtins.apply_incompletude = apply_incompletude" 2>/dev/null
+exec python3 "$@"

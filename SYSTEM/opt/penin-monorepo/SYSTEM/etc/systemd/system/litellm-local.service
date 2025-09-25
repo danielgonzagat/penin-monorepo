@@ -1,0 +1,17 @@
+[Unit]
+Description=LiteLLM Proxy (local OpenAI-compatible)
+After=network.target llama-local.service
+
+[Service]
+Type=simple
+Environment=CONFIG=/root/fusion-agi/litellm.config.yaml
+Environment=HOST=0.0.0.0
+Environment=PORT=8010
+ExecStart=/root/fusion-agi/start_litellm_proxy.sh
+Restart=always
+RestartSec=5
+User=root
+WorkingDirectory=/root/fusion-agi
+
+[Install]
+WantedBy=multi-user.target

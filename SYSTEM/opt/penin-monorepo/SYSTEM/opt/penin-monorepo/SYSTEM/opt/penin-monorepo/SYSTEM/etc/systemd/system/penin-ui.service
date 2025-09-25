@@ -1,0 +1,15 @@
+[Unit]
+Description=PENIN-Ω-MAX UI (Gradio streaming)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/penin-construtor
+EnvironmentFile=/etc/default/penin-ui
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /root/penin-construtor/ui/gradio_app.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

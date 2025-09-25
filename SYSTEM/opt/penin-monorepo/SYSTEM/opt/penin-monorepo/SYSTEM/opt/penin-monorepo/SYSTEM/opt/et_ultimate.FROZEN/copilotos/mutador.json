@@ -1,0 +1,10 @@
+{
+  "nome": "mutador",
+  "descricao": "Gera novas variações da equação usando heurísticas adaptativas",
+  "estrategia": "Busca diversidade com coerência simbólica",
+  "regras": [
+    "Evitar repetições triviais",
+    "Manter estrutura interpretável"
+  ],
+  "criado_em": "2025-08-16T02:15:30.299198"
+}

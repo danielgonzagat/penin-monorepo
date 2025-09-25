@@ -1,0 +1,10 @@
+{
+  "nome": "fusionador",
+  "descricao": "Funde múltiplas mutações em uma híbrida robusta",
+  "estrategia": "Intersecção semântica + média ponderada de estrutura",
+  "regras": [
+    "Preservar núcleo lógico",
+    "Eliminar redundância estrutural"
+  ],
+  "criado_em": "2025-08-16T02:15:30.299552"
+}

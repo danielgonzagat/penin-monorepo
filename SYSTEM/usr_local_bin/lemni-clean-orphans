@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /opt/lemniscata
+docker compose -f docker-compose.yaml -f docker-compose.healthcheck.yaml up -d --build --remove-orphans
+echo "[orphans] limpos."

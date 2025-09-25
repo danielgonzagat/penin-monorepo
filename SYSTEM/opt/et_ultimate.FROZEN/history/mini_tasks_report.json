@@ -1,0 +1,42 @@
+{
+  "title": "ETΩ mini tasks",
+  "topic": "sanity",
+  "objetivo": "verificar capacidade básica de resposta determinística",
+  "autocritica": "",
+  "count": 2,
+  "accuracy": 0.0,
+  "total_cost": 0.0,
+  "runtime_s": 1.439,
+  "runner": "openai",
+  "results": [
+    {
+      "id": "t1",
+      "type": "math",
+      "prompt_preview": "Calcule 13*7 e responda apenas 'FINAL ANSWER: <valor>'",
+      "output": "[runner_error] OpenAI HTTP 400: {\n  \"error\": {\n    \"message\": \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"max_token",
+      "passed": false,
+      "score": 0.0,
+      "elapsed_s": 0.0,
+      "weight": 1.0,
+      "checker": {
+        "kind": "regex_final_answer",
+        "pattern": "^FINAL ANSWER:\\s?91\\b"
+      }
+    },
+    {
+      "id": "t2",
+      "type": "novelty",
+      "prompt_preview": "Escreva uma frase curta e original. Responda apenas como 'FINAL ANSWER: <texto>'",
+      "output": "[runner_error] OpenAI HTTP 400: {\n  \"error\": {\n    \"message\": \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\",\n    \"type\": \"invalid_request_error\",\n    \"param\": \"max_token",
+      "passed": false,
+      "score": 0.0,
+      "elapsed_s": 0.0,
+      "weight": 1.0,
+      "checker": {
+        "kind": "similarity_max",
+        "k": 5,
+        "threshold": 0.86
+      }
+    }
+  ]
+}

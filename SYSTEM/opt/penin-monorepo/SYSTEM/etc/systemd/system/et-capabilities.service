@@ -1,0 +1,20 @@
+[Unit]
+Description=ET Capabilities Gateway (FULL ACCESS)
+After=network.target
+Wants=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/et_ultimate/capabilities
+ExecStart=/opt/et_ultimate/capabilities/portal.py
+Restart=always
+RestartSec=2
+NoNewPrivileges=no
+ProtectSystem=off
+ProtectHome=no
+PrivateTmp=no
+MemoryMax=0
+CPUQuota=0%
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Run TEIS Canary periodically
+
+[Timer]
+# Rode a cada 15 minutos
+OnCalendar=*:0/15
+AccuracySec=1min
+Persistent=true
+Unit=teis-canary.service
+
+[Install]
+WantedBy=timers.target

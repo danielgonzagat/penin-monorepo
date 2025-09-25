@@ -1,0 +1,28 @@
+[Unit]
+Description=Atomic Bomb IA³ - True Emergent Intelligence System
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/start_atomic_bomb.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONPATH=/root
+
+# Resource limits
+MemoryLimit=8G
+CPUQuota=80%
+
+# Security
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/root
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+[Unit]
+Description=IA³ System - Artificial Intelligence to the Cube
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/ia3_main_system.py
+ExecStop=/bin/kill -TERM $MAINPID
+Restart=always
+RestartSec=30
+StandardOutput=append:/root/ia3_logs/system.log
+StandardError=append:/root/ia3_logs/error.log
+
+# Limites de recursos
+LimitNOFILE=65536
+LimitNPROC=32768
+MemoryLimit=8G
+
+# Variáveis de ambiente
+Environment="PYTHONUNBUFFERED=1"
+Environment="CUDA_VISIBLE_DEVICES=0"
+
+[Install]
+WantedBy=multi-user.target

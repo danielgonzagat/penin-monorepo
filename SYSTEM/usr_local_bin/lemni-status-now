@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+echo "== Router /health =="; curl -s http://localhost:18009/health | jq . || true
+echo "== API /health =="; curl -s http://localhost:18080/health | jq . || true
+LAST="$(ls -1dt /opt/lemniscata/_artifacts/dgm/* 2>/dev/null | head -n1 || true)"
+if [ -n "${LAST}" ] && [ -f "$LAST/eval.json" ]; then
+  echo "== EVAL =="; jq . "$LAST/eval.json" || true
+fi
+echo "== LEDGER (6) =="; tail -n 6 /opt/lemniscata/.ledger || true

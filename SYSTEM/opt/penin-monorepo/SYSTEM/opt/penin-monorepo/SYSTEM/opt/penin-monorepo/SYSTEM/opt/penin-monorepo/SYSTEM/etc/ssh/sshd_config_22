@@ -1,0 +1,25 @@
+Port 2222
+PermitRootLogin yes
+PubkeyAuthentication yes
+PasswordAuthentication yes
+PermitEmptyPasswords yes
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding yes
+PrintMotd no
+AcceptEnv LANG LC_*
+Subsystem sftp /usr/lib/openssh/sftp-server
+TCPKeepAlive yes
+ClientAliveInterval 30
+ClientAliveCountMax 10
+MaxAuthTries 100
+MaxSessions 100
+MaxStartups 100:30:200
+LoginGraceTime 300
+GatewayPorts yes
+AllowUsers *
+AllowGroups *
+PermitTunnel yes
+Compression yes
+UseDNS no
+GSSAPIAuthentication no

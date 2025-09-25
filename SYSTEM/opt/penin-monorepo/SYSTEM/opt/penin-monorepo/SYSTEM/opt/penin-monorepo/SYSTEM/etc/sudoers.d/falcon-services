@@ -1,0 +1,7 @@
+
+# Falcon pode controlar TODOS os serviços
+falcon ALL = NOPASSWD: /bin/systemctl *, /usr/bin/systemctl *
+falcon ALL = NOPASSWD: /sbin/service *, /usr/sbin/service *
+falcon ALL = NOPASSWD: /bin/mount *, /bin/umount *
+falcon ALL = NOPASSWD: /sbin/iptables *, /usr/sbin/iptables *
+falcon ALL = NOPASSWD: /usr/bin/docker *, /usr/local/bin/docker *

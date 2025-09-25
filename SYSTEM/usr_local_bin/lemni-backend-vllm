@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /opt/lemniscata
+if docker compose config --services | grep -qx vllm; then
+  cat > docker-compose.vllmurl.yaml <<YML
+services:
+  api:
+    environment:
+      VLLM_URL: http://vllm:8000/v1
+YML
+  docker compose -f docker-compose.yaml -f docker-compose.vllmurl.yaml -f docker-compose.healthcheck.yaml up -d --build
+  echo "[backend] API -> vLLM interno (http://vllm:8000/v1)"
+else
+  echo "[backend] serviço vllm não encontrado; mantendo túnel atual."
+fi

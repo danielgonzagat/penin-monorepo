@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+KEY="${VLLM_API_KEY:-lemni}"
+for URL in "http://host.docker.internal:18001" "http://localhost:18001"; do
+  echo "[remote] test ${URL}"
+  curl -s -o /dev/null -w "health=%{http_code}\n" "${URL}/health" || true
+  curl -s -H "Authorization: Bearer ${KEY}" "${URL}/v1/models" | jq . 2>/dev/null || true
+done

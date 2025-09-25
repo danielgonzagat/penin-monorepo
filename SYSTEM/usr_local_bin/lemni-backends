@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -euo pipefail
+curl -s http://localhost:18009/health | jq '{ok,gpu_health,cpu_health,cpu_base,gpu_base}'

@@ -1,0 +1,33 @@
+[Unit]
+Description=IA Unificada - Sistema de Fusão Completa
+Documentation=https://github.com/danielgonzagat/ia-unificada
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/sistema_fusao_unificada.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Configurações de recursos
+MemoryLimit=32G
+CPUQuota=2000%
+
+# Configurações de ambiente
+Environment=PYTHONPATH=/root
+Environment=PYTHONUNBUFFERED=1
+
+# Configurações de segurança
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/root
+
+[Install]
+WantedBy=multi-user.target

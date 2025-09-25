@@ -1,0 +1,12 @@
+[Unit]
+Description=Darwin Birth Window Checker
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/darwinctl birth-window --rebuild --plugin /usr/local/bin/darwin_spawn_agent.sh --reason "scheduled_birth_check"
+StandardOutput=append:/var/log/darwin-birthd.log
+StandardError=append:/var/log/darwin-birthd.log
+
+[Install]
+WantedBy=multi-user.target

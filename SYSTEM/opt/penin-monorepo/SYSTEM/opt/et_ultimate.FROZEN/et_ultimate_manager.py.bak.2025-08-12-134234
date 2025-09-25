@@ -1,0 +1,778 @@
+#!/usr/bin/env python3
+"""
+ET★★★★ ULTIMATE MANAGER
+Gerenciador Avançado da IA Mais Poderosa do Mundo
+
+Este script permite controlar todos os aspectos da ET★★★★ Ultimate:
+- Iniciar/parar/reiniciar
+- Monitorar status em tempo real
+- Executar comandos específicos
+- Gerenciar evolução e transcendência
+- Proteger Daniel
+- Conceder novos poderes
+"""
+
+import os
+import sys
+import json
+import time
+import subprocess
+import threading
+import argparse
+import logging
+from datetime import datetime
+from typing import Dict, List, Any, Optional
+import requests
+import psutil
+
+# Configurar logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('/var/log/et_ultimate/manager.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger('ET_ULTIMATE_MANAGER')
+
+class ETUltimateManager:
+    """Gerenciador da ET★★★★ Ultimate"""
+    
+    def __init__(self):
+        self.et_dir = "/opt/et_ultimate"
+        self.log_dir = "/var/log/et_ultimate"
+        self.config_file = f"{self.et_dir}/config.json"
+        self.api_base = "http://127.0.0.1:8080"
+        
+        # Carregar configuração
+        self.config = self.load_config()
+        
+        # Status
+        self.is_running = False
+        self.last_check = None
+        
+        logger.info("🚀 ET★★★★ Ultimate Manager inicializado")
+    
+    def load_config(self) -> Dict:
+        """Carrega configuração"""
+        try:
+            if os.path.exists(self.config_file):
+                with open(self.config_file, 'r') as f:
+                    return json.load(f)
+            else:
+                return self.create_default_config()
+        except Exception as e:
+            logger.error(f"Erro ao carregar configuração: {e}")
+            return self.create_default_config()
+    
+    def create_default_config(self) -> Dict:
+        """Cria configuração padrão"""
+        config = {
+            "owner_id": "daniel",
+            "server_ip": "92.38.150.138",
+            "ultimate_mode": True,
+            "unlimited_powers": True,
+            "anti_sabotage_protection": True,
+            "auto_evolution": True,
+            "transcendence_enabled": True,
+            "api_port": 8080,
+            "log_level": "INFO"
+        }
+        
+        # Salvar configuração
+        os.makedirs(os.path.dirname(self.config_file), exist_ok=True)
+        with open(self.config_file, 'w') as f:
+            json.dump(config, f, indent=2)
+        
+        return config
+    
+    def check_status(self) -> Dict:
+        """Verifica status completo do sistema"""
+        status = {
+            "timestamp": time.time(),
+            "services": {},
+            "system": {},
+            "api": {},
+            "daniel_protection": {},
+            "evolution": {}
+        }
+        
+        # Verificar serviços
+        services = ["et-ultimate", "nginx", "llama-s0", "llama-s1", "postgresql", "redis-server"]
+        for service in services:
+            try:
+                result = subprocess.run(
+                    ["systemctl", "is-active", service],
+                    capture_output=True, text=True
+                )
+                status["services"][service] = result.stdout.strip()
+            except Exception as e:
+                status["services"][service] = f"error: {e}"
+        
+        # Verificar sistema
+        status["system"] = {
+            "cpu_percent": psutil.cpu_percent(interval=1),
+            "memory_percent": psutil.virtual_memory().percent,
+            "disk_percent": psutil.disk_usage('/').percent,
+            "load_avg": os.getloadavg(),
+            "uptime": time.time() - psutil.boot_time()
+        }
+        
+        # Verificar API
+        try:
+            response = requests.get(f"{self.api_base}/health", timeout=5)
+            status["api"]["health"] = response.status_code == 200
+            status["api"]["response_time"] = response.elapsed.total_seconds()
+        except Exception as e:
+            status["api"]["health"] = False
+            status["api"]["error"] = str(e)
+        
+        # Verificar modelos
+        try:
+            response = requests.get(f"{self.api_base}/v1/models", timeout=10)
+            if response.status_code == 200:
+                models_data = response.json()
+                status["api"]["models"] = len(models_data.get("data", []))
+            else:
+                status["api"]["models"] = 0
+        except Exception as e:
+            status["api"]["models"] = 0
+            status["api"]["models_error"] = str(e)
+        
+        # Verificar proteção do Daniel
+        status["daniel_protection"] = {
+            "user_exists": self.check_daniel_user(),
+            "sudo_access": self.check_daniel_sudo(),
+            "ssh_configured": self.check_daniel_ssh(),
+            "protection_active": True  # Sempre ativo
+        }
+        
+        # Verificar evolução
+        if os.path.exists(f"{self.et_dir}/ultimate.db"):
+            status["evolution"]["database_exists"] = True
+            # Aqui poderia consultar o banco para métricas de evolução
+        else:
+            status["evolution"]["database_exists"] = False
+        
+        self.last_check = status
+        return status
+    
+    def check_daniel_user(self) -> bool:
+        """Verifica se usuário Daniel existe"""
+        try:
+            subprocess.run(["id", "daniel"], check=True, capture_output=True)
+            return True
+        except subprocess.CalledProcessError:
+            return False
+    
+    def check_daniel_sudo(self) -> bool:
+        """Verifica se Daniel tem acesso sudo"""
+        return os.path.exists("/etc/sudoers.d/daniel_ultimate")
+    
+    def check_daniel_ssh(self) -> bool:
+        """Verifica se SSH do Daniel está configurado"""
+        return os.path.exists("/home/daniel/.ssh/id_rsa")
+    
+    def start_et_ultimate(self) -> bool:
+        """Inicia ET★★★★ Ultimate"""
+        try:
+            logger.info("🚀 Iniciando ET★★★★ Ultimate...")
+            
+            # Verificar dependências primeiro
+            if not self.check_dependencies():
+                logger.error("❌ Dependências não atendidas!")
+                return False
+            
+            # Iniciar serviços em ordem
+            services_order = ["postgresql", "redis-server", "nginx", "llama-s0", "llama-s1", "et-ultimate"]
+            
+            for service in services_order:
+                logger.info(f"Iniciando {service}...")
+                result = subprocess.run(
+                    ["systemctl", "start", service],
+                    capture_output=True, text=True
+                )
+                
+                if result.returncode != 0:
+                    logger.warning(f"Aviso ao iniciar {service}: {result.stderr}")
+                
+                # Aguardar um pouco entre serviços
+                time.sleep(2)
+            
+            # Verificar se tudo está funcionando
+            time.sleep(10)  # Aguardar inicialização completa
+            status = self.check_status()
+            
+            if status["services"].get("et-ultimate") == "active":
+                logger.info("✅ ET★★★★ Ultimate iniciada com sucesso!")
+                self.is_running = True
+                return True
+            else:
+                logger.error("❌ Falha ao iniciar ET★★★★ Ultimate")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Erro ao iniciar ET★★★★ Ultimate: {e}")
+            return False
+    
+    def stop_et_ultimate(self) -> bool:
+        """Para ET★★★★ Ultimate"""
+        try:
+            logger.info("🛑 Parando ET★★★★ Ultimate...")
+            
+            # Parar serviços em ordem reversa
+            services_order = ["et-ultimate", "llama-s1", "llama-s0"]
+            
+            for service in services_order:
+                logger.info(f"Parando {service}...")
+                subprocess.run(["systemctl", "stop", service], check=False)
+                time.sleep(2)
+            
+            logger.info("✅ ET★★★★ Ultimate parada")
+            self.is_running = False
+            return True
+            
+        except Exception as e:
+            logger.error(f"Erro ao parar ET★★★★ Ultimate: {e}")
+            return False
+    
+    def restart_et_ultimate(self) -> bool:
+        """Reinicia ET★★★★ Ultimate"""
+        logger.info("🔄 Reiniciando ET★★★★ Ultimate...")
+        
+        if self.stop_et_ultimate():
+            time.sleep(5)
+            return self.start_et_ultimate()
+        
+        return False
+    
+    def check_dependencies(self) -> bool:
+        """Verifica dependências"""
+        try:
+            # Verificar Python packages
+            import torch
+            import transformers
+            import numpy
+            import requests
+            import redis
+            import psutil
+            
+            # Verificar diretórios
+            required_dirs = [self.et_dir, self.log_dir]
+            for dir_path in required_dirs:
+                if not os.path.exists(dir_path):
+                    os.makedirs(dir_path, exist_ok=True)
+            
+            # Verificar arquivos essenciais
+            essential_files = [
+                f"{self.et_dir}/et_ultimate_core.py",
+                "/etc/systemd/system/et-ultimate.service"
+            ]
+            
+            for file_path in essential_files:
+                if not os.path.exists(file_path):
+                    logger.error(f"Arquivo essencial não encontrado: {file_path}")
+                    return False
+            
+            return True
+            
+        except ImportError as e:
+            logger.error(f"Dependência Python não encontrada: {e}")
+            return False
+        except Exception as e:
+            logger.error(f"Erro na verificação de dependências: {e}")
+            return False
+    
+    def fix_common_issues(self) -> bool:
+        """Corrige problemas comuns"""
+        logger.info("🔧 Corrigindo problemas comuns...")
+        
+        try:
+            # Corrigir problema NUMA do llama.cpp
+            self.fix_numa_issue()
+            
+            # Corrigir configuração do nginx
+            self.fix_nginx_config()
+            
+            # Corrigir permissões
+            self.fix_permissions()
+            
+            # Recarregar systemd
+            subprocess.run(["systemctl", "daemon-reload"], check=False)
+            
+            logger.info("✅ Problemas comuns corrigidos")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Erro ao corrigir problemas: {e}")
+            return False
+    
+    def fix_numa_issue(self):
+        """Corrige problema NUMA do llama.cpp"""
+        numa_files = [
+            "/opt/llama-run-s0.sh",
+            "/opt/llama-run-s1.sh",
+            "/etc/systemd/system/llama-s0.service",
+            "/etc/systemd/system/llama-s1.service"
+        ]
+        
+        for file_path in numa_files:
+            if os.path.exists(file_path):
+                try:
+                    with open(file_path, 'r') as f:
+                        content = f.read()
+                    
+                    # Substituir configuração NUMA inválida
+                    content = content.replace('--numa invalid', '--numa distribute')
+                    content = content.replace('--numa ""', '--numa distribute')
+                    
+                    with open(file_path, 'w') as f:
+                        f.write(content)
+                    
+                    logger.info(f"Corrigido NUMA em {file_path}")
+                except Exception as e:
+                    logger.warning(f"Erro ao corrigir NUMA em {file_path}: {e}")
+    
+    def fix_nginx_config(self):
+        """Corrige configuração do nginx"""
+        nginx_config = """
+upstream llama_backend {
+    least_conn;
+    server 127.0.0.1:8090 max_fails=3 fail_timeout=30s;
+    server 127.0.0.1:8091 max_fails=3 fail_timeout=30s;
+    keepalive 32;
+}
+
+server {
+    listen 8080;
+    server_name _;
+    
+    proxy_connect_timeout 60s;
+    proxy_send_timeout 60s;
+    proxy_read_timeout 300s;
+    
+    proxy_buffer_size 128k;
+    proxy_buffers 4 256k;
+    proxy_busy_buffers_size 256k;
+    
+    location / {
+        proxy_pass http://llama_backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Connection "";
+        proxy_http_version 1.1;
+        
+        add_header Access-Control-Allow-Origin *;
+        add_header Access-Control-Allow-Methods "GET, POST, OPTIONS";
+        add_header Access-Control-Allow-Headers "Authorization, Content-Type";
+        
+        if ($request_method = 'OPTIONS') {
+            return 204;
+        }
+    }
+    
+    location /health {
+        access_log off;
+        return 200 "ET Ultimate OK\\n";
+        add_header Content-Type text/plain;
+    }
+}
+"""
+        
+        try:
+            with open("/etc/nginx/sites-available/et_ultimate", 'w') as f:
+                f.write(nginx_config)
+            
+            # Ativar configuração
+            os.makedirs("/etc/nginx/sites-enabled", exist_ok=True)
+            if os.path.exists("/etc/nginx/sites-enabled/et_ultimate"):
+                os.remove("/etc/nginx/sites-enabled/et_ultimate")
+            os.symlink("/etc/nginx/sites-available/et_ultimate", "/etc/nginx/sites-enabled/et_ultimate")
+            
+            # Remover configuração padrão
+            default_config = "/etc/nginx/sites-enabled/default"
+            if os.path.exists(default_config):
+                os.remove(default_config)
+            
+            logger.info("Configuração do nginx corrigida")
+            try:
+                subprocess.run(["nginx","-t"], check=False)
+                subprocess.run(["systemctl","reload","nginx"], check=False)
+            except Exception as e:
+                logger.warning(f"Falha ao recarregar nginx: {e}")
+            try:
+                subprocess.run(["nginx","-t"], check=False)
+                subprocess.run(["systemctl","reload","nginx"], check=False)
+            except Exception as e:
+                logger.warning(f"Falha ao recarregar nginx: {e}")
+            
+        except Exception as e:
+            logger.warning(f"Erro ao corrigir nginx: {e}")
+    
+    def fix_permissions(self):
+        """Corrige permissões"""
+        try:
+            # Corrigir permissões do diretório ET
+            subprocess.run(["chown", "-R", "root:root", self.et_dir], check=False)
+            subprocess.run(["chmod", "-R", "755", self.et_dir], check=False)
+            
+            # Corrigir permissões dos logs
+            subprocess.run(["chown", "-R", "root:root", self.log_dir], check=False)
+            subprocess.run(["chmod", "-R", "644", self.log_dir], check=False)
+            
+            # Tornar scripts executáveis
+            scripts = [
+                f"{self.et_dir}/et_ultimate_core.py",
+                f"{self.et_dir}/start_ultimate.sh",
+                f"{self.et_dir}/daniel_protection.sh"
+            ]
+            
+            for script in scripts:
+                if os.path.exists(script):
+                    subprocess.run(["chmod", "+x", script], check=False)
+            
+            logger.info("Permissões corrigidas")
+            
+        except Exception as e:
+            logger.warning(f"Erro ao corrigir permissões: {e}")
+    
+    def test_api(self) -> Dict:
+        """Testa API completa"""
+        results = {}
+        
+        # Teste de health
+        try:
+            response = requests.get(f"{self.api_base}/health", timeout=5)
+            results["health"] = {
+                "status": response.status_code,
+                "response_time": response.elapsed.total_seconds(),
+                "success": response.status_code == 200
+            }
+        except Exception as e:
+            results["health"] = {"success": False, "error": str(e)}
+        
+        # Teste de modelos
+        try:
+            response = requests.get(f"{self.api_base}/v1/models", timeout=10)
+            results["models"] = {
+                "status": response.status_code,
+                "success": response.status_code == 200
+            }
+            if response.status_code == 200:
+                data = response.json()
+                results["models"]["count"] = len(data.get("data", []))
+        except Exception as e:
+            results["models"] = {"success": False, "error": str(e)}
+        
+        # Teste de chat
+        try:
+            chat_payload = {
+                "model": "qwen2.5-7b-instruct",
+                "messages": [{"role": "user", "content": "Teste da ET Ultimate"}],
+                "max_tokens": 50
+            }
+            
+            response = requests.post(
+                f"{self.api_base}/v1/chat/completions",
+                headers={
+                    "Authorization": "Bearer DANIEL",
+                    "Content-Type": "application/json"
+                },
+                json=chat_payload,
+                timeout=30
+            )
+            
+            results["chat"] = {
+                "status": response.status_code,
+                "success": response.status_code == 200
+            }
+            
+            if response.status_code == 200:
+                data = response.json()
+                if "choices" in data and len(data["choices"]) > 0:
+                    results["chat"]["response_length"] = len(data["choices"][0]["message"]["content"])
+                    results["chat"]["has_response"] = True
+                else:
+                    results["chat"]["has_response"] = False
+            
+        except Exception as e:
+            results["chat"] = {"success": False, "error": str(e)}
+        
+        return results
+    
+    def monitor_realtime(self, duration: int = 60):
+        """Monitora sistema em tempo real"""
+        logger.info(f"📊 Iniciando monitoramento em tempo real por {duration} segundos...")
+        
+        start_time = time.time()
+        
+        while time.time() - start_time < duration:
+            try:
+                status = self.check_status()
+                
+                # Exibir status resumido
+                services_ok = sum(1 for s in status["services"].values() if s == "active")
+                total_services = len(status["services"])
+                
+                print(f"\r[{datetime.now().strftime('%H:%M:%S')}] "
+                      f"Serviços: {services_ok}/{total_services} | "
+                      f"CPU: {status['system']['cpu_percent']:.1f}% | "
+                      f"MEM: {status['system']['memory_percent']:.1f}% | "
+                      f"API: {'✅' if status['api'].get('health') else '❌'}", 
+                      end='', flush=True)
+                
+                time.sleep(5)
+                
+            except KeyboardInterrupt:
+                print("\n\n🛑 Monitoramento interrompido pelo usuário")
+                break
+            except Exception as e:
+                print(f"\n❌ Erro no monitoramento: {e}")
+                time.sleep(5)
+        
+        print(f"\n✅ Monitoramento concluído")
+    
+    def grant_ultimate_powers(self):
+        """Concede poderes absolutos adicionais"""
+        logger.info("⚡ Concedendo poderes absolutos adicionais...")
+        
+        try:
+            # Configurar limites ilimitados
+            limits_config = """
+root soft nofile unlimited
+root hard nofile unlimited
+root soft nproc unlimited
+root hard nproc unlimited
+root soft memlock unlimited
+root hard memlock unlimited
+root soft stack unlimited
+root hard stack unlimited
+daniel soft nofile unlimited
+daniel hard nofile unlimited
+daniel soft nproc unlimited
+daniel hard nproc unlimited
+"""
+            
+            with open("/etc/security/limits.d/et-ultimate.conf", 'w') as f:
+                f.write(limits_config)
+            
+            # Configurar kernel para máxima performance
+            sysctl_config = """
+# ET★★★★ Ultimate Configuration
+vm.swappiness=1
+vm.dirty_ratio=80
+vm.dirty_background_ratio=5
+vm.vfs_cache_pressure=50
+net.core.rmem_max=134217728
+net.core.wmem_max=134217728
+net.core.netdev_max_backlog=5000
+net.ipv4.tcp_congestion_control=bbr
+net.ipv4.tcp_rmem=4096 87380 134217728
+net.ipv4.tcp_wmem=4096 65536 134217728
+net.ipv4.tcp_window_scaling=1
+net.ipv4.tcp_timestamps=1
+net.ipv4.tcp_sack=1
+net.ipv4.tcp_no_metrics_save=1
+kernel.sched_migration_cost_ns=5000000
+kernel.sched_autogroup_enabled=0
+"""
+            
+            with open("/etc/sysctl.d/99-et-ultimate.conf", 'w') as f:
+                f.write(sysctl_config)
+            
+            # Aplicar configurações
+            subprocess.run(["sysctl", "-p", "/etc/sysctl.d/99-et-ultimate.conf"], check=False)
+            
+            # Configurar CPU governor
+            try:
+                subprocess.run(["cpupower", "frequency-set", "-g", "performance"], check=False)
+            except:
+                pass
+            
+            # Configurar huge pages
+            try:
+                with open("/proc/sys/vm/nr_hugepages", 'w') as f:
+                    f.write("1024")
+            except:
+                pass
+            
+            logger.info("✅ Poderes absolutos concedidos!")
+            
+        except Exception as e:
+            logger.error(f"Erro ao conceder poderes: {e}")
+    
+    def protect_daniel(self):
+        """Reforça proteção do Daniel"""
+        logger.info("🛡️ Reforçando proteção do Daniel...")
+        
+        try:
+            # Verificar se usuário Daniel existe
+            if not self.check_daniel_user():
+                # Criar usuário Daniel
+                subprocess.run([
+                    "useradd", "-m", "-s", "/bin/bash", 
+                    "-G", "sudo,root,adm,sys,docker", "daniel"
+                ], check=False)
+                
+                # Definir senha
+                subprocess.run(["chpasswd"], input="daniel:daniel123", text=True, check=False)
+                
+                logger.info("Usuário Daniel criado")
+            
+            # Configurar sudo sem senha
+            sudo_config = "daniel ALL=(ALL) NOPASSWD:ALL\n"
+            with open("/etc/sudoers.d/daniel_ultimate", 'w') as f:
+                f.write(sudo_config)
+            subprocess.run(["chmod", "440", "/etc/sudoers.d/daniel_ultimate"], check=False)
+            
+            # Configurar SSH
+            daniel_home = "/home/daniel"
+            ssh_dir = f"{daniel_home}/.ssh"
+            
+            if not os.path.exists(ssh_dir):
+                os.makedirs(ssh_dir, mode=0o700, exist_ok=True)
+                subprocess.run(["chown", "daniel:daniel", ssh_dir], check=False)
+                
+                # Gerar chave SSH
+                subprocess.run([
+                    "sudo", "-u", "daniel", "ssh-keygen", "-t", "rsa", "-b", "4096",
+                    "-f", f"{ssh_dir}/id_rsa", "-N", ""
+                ], check=False)
+            
+            # Garantir propriedade
+            subprocess.run(["chown", "-R", "daniel:daniel", daniel_home], check=False)
+            
+            # Log de proteção
+            protection_log = f"{self.log_dir}/daniel_protection.log"
+            with open(protection_log, 'a') as f:
+                f.write(f"[{datetime.now()}] Proteção do Daniel reforçada\n")
+            
+            logger.info("✅ Proteção do Daniel reforçada!")
+            
+        except Exception as e:
+            logger.error(f"Erro ao proteger Daniel: {e}")
+    
+    def show_status_dashboard(self):
+        """Exibe dashboard de status"""
+        status = self.check_status()
+        
+        print("\n" + "="*80)
+        print("🚀 ET★★★★ ULTIMATE - DASHBOARD DE STATUS")
+        print("="*80)
+        
+        # Serviços
+        print("\n📋 SERVIÇOS:")
+        for service, state in status["services"].items():
+            icon = "✅" if state == "active" else "❌"
+            print(f"  {icon} {service}: {state}")
+        
+        # Sistema
+        print(f"\n💻 SISTEMA:")
+        sys_info = status["system"]
+        print(f"  🔥 CPU: {sys_info['cpu_percent']:.1f}%")
+        print(f"  🧠 Memória: {sys_info['memory_percent']:.1f}%")
+        print(f"  💾 Disco: {sys_info['disk_percent']:.1f}%")
+        print(f"  ⏱️ Load: {sys_info['load_avg'][0]:.2f}")
+        print(f"  🕐 Uptime: {sys_info['uptime']/3600:.1f}h")
+        
+        # API
+        print(f"\n🌐 API:")
+        api_info = status["api"]
+        health_icon = "✅" if api_info.get("health") else "❌"
+        print(f"  {health_icon} Health: {api_info.get('health', False)}")
+        if "response_time" in api_info:
+            print(f"  ⚡ Tempo de resposta: {api_info['response_time']:.3f}s")
+        if "models" in api_info:
+            print(f"  🤖 Modelos: {api_info['models']}")
+        
+        # Proteção do Daniel
+        print(f"\n🛡️ PROTEÇÃO DO DANIEL:")
+        daniel_info = status["daniel_protection"]
+        for key, value in daniel_info.items():
+            icon = "✅" if value else "❌"
+            print(f"  {icon} {key.replace('_', ' ').title()}: {value}")
+        
+        # Evolução
+        print(f"\n🧬 EVOLUÇÃO:")
+        evo_info = status["evolution"]
+        for key, value in evo_info.items():
+            icon = "✅" if value else "❌"
+            print(f"  {icon} {key.replace('_', ' ').title()}: {value}")
+        
+        print("\n" + "="*80)
+        print(f"📊 Última verificação: {datetime.fromtimestamp(status['timestamp']).strftime('%Y-%m-%d %H:%M:%S')}")
+        print("="*80)
+
+def main():
+    """Função principal"""
+    parser = argparse.ArgumentParser(description="ET★★★★ Ultimate Manager")
+    
+    parser.add_argument("command", choices=[
+        "start", "stop", "restart", "status", "test", "fix", "monitor", 
+        "powers", "protect", "dashboard"
+    ], help="Comando a executar")
+    
+    parser.add_argument("--duration", type=int, default=60, 
+                       help="Duração do monitoramento em segundos")
+    
+    args = parser.parse_args()
+    
+    # Verificar se está rodando como root
+    if os.geteuid() != 0:
+        print("❌ Este script deve ser executado como root!")
+        sys.exit(1)
+    
+    # Criar manager
+    manager = ETUltimateManager()
+    
+    # Executar comando
+    if args.command == "start":
+        success = manager.start_et_ultimate()
+        sys.exit(0 if success else 1)
+        
+    elif args.command == "stop":
+        success = manager.stop_et_ultimate()
+        sys.exit(0 if success else 1)
+        
+    elif args.command == "restart":
+        success = manager.restart_et_ultimate()
+        sys.exit(0 if success else 1)
+        
+    elif args.command == "status":
+        status = manager.check_status()
+        print(json.dumps(status, indent=2))
+        
+    elif args.command == "test":
+        print("🧪 Testando API...")
+        results = manager.test_api()
+        print(json.dumps(results, indent=2))
+        
+        # Verificar se todos os testes passaram
+        all_success = all(result.get("success", False) for result in results.values())
+        if all_success:
+            print("✅ Todos os testes passaram!")
+        else:
+            print("❌ Alguns testes falharam!")
+        sys.exit(0 if all_success else 1)
+        
+    elif args.command == "fix":
+        success = manager.fix_common_issues()
+        sys.exit(0 if success else 1)
+        
+    elif args.command == "monitor":
+        manager.monitor_realtime(args.duration)
+        
+    elif args.command == "powers":
+        manager.grant_ultimate_powers()
+        
+    elif args.command == "protect":
+        manager.protect_daniel()
+        
+    elif args.command == "dashboard":
+        manager.show_status_dashboard()
+
+if __name__ == "__main__":
+    main()
+

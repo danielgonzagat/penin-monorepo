@@ -1,0 +1,4 @@
+check process et_brain with pidfile /var/run/et_brain.pid
+    start program = "/bin/systemctl start et_brain_operacional"
+    stop program  = "/bin/systemctl stop et_brain_operacional"
+    if 5 restarts within 5 cycles then timeout

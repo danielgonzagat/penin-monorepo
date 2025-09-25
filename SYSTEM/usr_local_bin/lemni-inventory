@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+set +H
+ROOTS=("$@"); [ ${#ROOTS[@]} -gt 0 ] || ROOTS=(/opt/lemniscata "$HOME/lemniscata" "$HOME/projects" /workspace /srv)
+OUT_MD="/tmp/lemni_repo_inventory.md"; : > "$OUT_MD"
+echo "# Inventário de repositórios" >> "$OUT_MD"
+for R in "${ROOTS[@]}"; do
+  [ -d "$R" ] || continue
+  while IFS= read -r -d "" g; do
+    dir=$(dirname "$g")
+    ( cd "$dir" && \
+      url=$(git remote get-url origin 2>/dev/null || echo "sem-remote") && \
+      echo "- \`$dir\`  →  $url" >> "$OUT_MD" ) || true
+  done < <(find "$R" -type d -name .git -print0 2>/dev/null)
+done
+echo ">> MD: $OUT_MD"

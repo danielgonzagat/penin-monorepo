@@ -1,0 +1,15 @@
+[Unit]
+Description=IA³ Metrics Exporter - Embrião Neural
+After=network.target
+
+[Service]
+Type=simple
+Environment=IA3_HOME=/opt/ia3
+ExecStart=/opt/ia3/bin/ia3_metrics_exporter.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/opt/ia3/logs/metrics_exporter.log
+StandardError=append:/opt/ia3/logs/metrics_exporter.log
+
+[Install]
+WantedBy=multi-user.target

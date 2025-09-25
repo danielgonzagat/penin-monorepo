@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+/usr/local/bin/lemni-outer-loop
+/usr/local/bin/lemni-promote || true
+echo "---- LEDGER (3 últimas) ----"
+tail -n 3 /opt/lemniscata/.ledger || true
+echo "---- API HEALTH ----"
+curl -sf http://localhost:18080/health >/dev/null && echo "API OK" || echo "API FAIL"
+echo "---- PROVA DE VIDA ----"
+curl -s -X POST http://localhost:18080/ask \
+  -H 'Content-Type: application/json' \
+  -d '{"messages":[{"role":"user","content":"Confirme em 1 linha: IAAA ativa, ΣEA e DGM com promoção Shadow→Main."}]}' \
+  | jq -r .output

@@ -1,0 +1,16 @@
+#!/bin/bash
+# AGI Command Wrapper
+# Suporta: agi fusion, agi_fusion
+
+if [[ "$1" == "fusion" ]]; then
+    shift
+    exec /usr/local/bin/agi_fusion "$@"
+else
+    echo "Usage: agi fusion [options]"
+    echo "Available commands:"
+    echo "  agi fusion           - Start interactive chat"
+    echo "  agi fusion --status  - Show system status"
+    echo "  agi fusion --once msg- Process single message"
+    echo "  agi fusion --evolve  - Trigger evolution"
+    echo "  agi_fusion           - Same as above"
+fi

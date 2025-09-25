@@ -1,0 +1,29 @@
+{
+  "domains": {
+    "RL": {
+      "final_performance": 0.95,
+      "acceptance_rate": 0.625,
+      "mean_score": 3.1179508024894522,
+      "stability": 0.005539629951540089
+    },
+    "LLM": {
+      "final_performance": 0.95,
+      "acceptance_rate": 0.6375,
+      "mean_score": 2.6329309787322503,
+      "stability": 0.005539629951540089
+    },
+    "Robotics": {
+      "final_performance": 0.1,
+      "acceptance_rate": 0.0,
+      "mean_score": 3.505225321435932,
+      "stability": 0.028831406486676987
+    },
+    "Scientific Discovery": {
+      "final_performance": 0.95,
+      "acceptance_rate": 0.3625,
+      "mean_score": 3.3187029374183274,
+      "stability": 0.007628073151196185
+    }
+  },
+  "best_domain": "RL"
+}

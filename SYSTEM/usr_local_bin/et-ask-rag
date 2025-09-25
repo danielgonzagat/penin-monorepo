@@ -1,0 +1,76 @@
+#!/opt/et_ultimate/venv/bin/python3
+import os, sys, json, requests
+from pathlib import Path
+try:
+    import faiss, numpy as np
+    from sentence_transformers import SentenceTransformer
+except Exception:
+    faiss = None
+
+BASE = os.getenv("ET_URL", "http://127.0.0.1:8080/v1").rstrip("/")
+KEY  = os.getenv("ET_API_KEY", "DANIEL")
+MODEL_ENV = os.getenv("ET_MODEL", "")
+IDX  = Path("/opt/et_ultimate/index/etomega.faiss")
+META = Path("/opt/et_ultimate/index/etomega_meta.json")
+PROMPT = Path("/opt/et_ultimate/prompts/et_omega.txt")
+
+def get_model():
+    if MODEL_ENV:
+        return MODEL_ENV
+    r = requests.get(f"{BASE}/models", timeout=10)
+    r.raise_for_status()
+    return r.json()["data"][0]["id"]
+
+def load_ctx():
+    if not (faiss and IDX.exists() and META.exists()):
+        return None, None
+    index = faiss.read_index(str(IDX))
+    meta  = json.load(open(META, encoding="utf-8"))
+    raw = meta.get("chunks", [])
+    chunks = []
+    for c in raw:
+        if isinstance(c, dict):
+            chunks.append(str(c.get("text","")))
+        else:
+            chunks.append(str(c))
+    return index, chunks
+
+def topk(q, k=6):
+    idx, chunks = load_ctx()
+    if not idx or not chunks:
+        return ""
+    st = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+    q_emb = st.encode([q], normalize_embeddings=True, convert_to_numpy=True).astype("float32")
+    D, I = idx.search(q_emb, k)
+    picked = []
+    for i in I[0]:
+        if 0 <= i < len(chunks):
+            picked.append(chunks[i])
+    return "\\n\\n---\\n\\n".join(picked)
+
+def main():
+    if len(sys.argv) < 2:
+        print("uso: et-ask-rag 'sua pergunta...'", file=sys.stderr); sys.exit(1)
+    q = " ".join(sys.argv[1:])
+    system_prompt = PROMPT.read_text(encoding="utf-8") if PROMPT.exists() else ""
+    ctx = topk(q, 6)
+    user = f"Contexto:\\n{ctx}\\n\\nPergunta: {q}" if ctx else q
+    payload = {"model": get_model(), "messages":[
+        {"role":"system","content":system_prompt},
+        {"role":"user","content":user}
+    ]}
+    r = requests.post(f"{BASE}/chat/completions",
+                      headers={"Authorization": f"Bearer {KEY}", "Content-Type": "application/json"},
+                      json=payload, timeout=120)
+    r.raise_for_status()
+    data = r.json()
+    # imprime SEMPRE o texto da resposta
+    print(data["choices"][0]["message"]["content"])
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        # Mostra erro legível
+        print(f"[erro] {e}", file=sys.stderr)
+        sys.exit(2)

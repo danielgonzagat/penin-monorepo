@@ -1,0 +1,11 @@
+[Unit]
+Description=ETΩ Chat Interface
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/et_ultimate/agents/interface/et_chat.py
+Restart=always
+User=etbot
+
+[Install]
+WantedBy=multi-user.target

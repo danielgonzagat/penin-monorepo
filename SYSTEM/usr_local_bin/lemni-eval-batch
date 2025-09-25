@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+art="${1:-}"           # _artifacts/dgm/<TS>
+[ -n "$art" ] || { echo "[eval-batch] use: lemni-eval-batch _artifacts/dgm/<TS>"; exit 2; }
+rep="$art/report.json"
+test -s "$rep" || { echo "[eval-batch] sem $rep"; exit 3; }
+
+# coleta /health para p95/custo 'slo' (stub: usa valores do report.json + saúde)
+P95="$(jq -r '.p95_ms // 2000' "$rep")"
+COST="$(jq -r '.cost   // 0.002' "$rep")"
+OCI="$(jq -r '.oci    // 0.60' "$rep")"
+DLINF="$(jq -r '.l    // 0.0' "$rep")"
+OK_HEALTH="$(curl -s -o /dev/null -w "%{http_code}" http://localhost:18080/health || true)"
+
+jq -n --argfile r "$rep" \
+  --argjson p95 "$P95" --argjson cost "$COST" --argjson oci "$OCI" --argjson dlinf "$DLINF" --arg okh "${OK_HEALTH:-000}" '
+{
+  delta_Linf: $dlinf,
+  dv_nonincrease: ($r.kl + $r.frob <= 0),
+  oci: $oci,
+  slo: { p95_ms: $p95, cost_per_1k: $cost, ok: ($p95 <= 2000 and $cost <= 0.002 and ($okh=="200")) },
+  ethics_ok: ($r.ethics_ok // true),
+  gates_ok: ( ($dlinf>0) and ($r.kl + $r.frob <= 0) and ($oci>=0.60) and ($p95<=2000) and ($cost<=0.002) and ($r.ethics_ok // true) )
+}' > "$art/eval.json"
+
+echo "[eval-batch] wrote $art/eval.json"

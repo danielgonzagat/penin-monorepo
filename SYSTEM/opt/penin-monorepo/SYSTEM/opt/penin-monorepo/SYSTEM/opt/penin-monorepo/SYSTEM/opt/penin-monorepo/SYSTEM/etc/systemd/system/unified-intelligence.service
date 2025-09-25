@@ -1,0 +1,25 @@
+[Unit]
+Description=Unified Intelligence System 24/7
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/unified_intelligence_24_7.py
+ExecStop=/bin/kill -TERM $MAINPID
+Restart=always
+RestartSec=10
+StandardOutput=append:/root/unified_logs/system.log
+StandardError=append:/root/unified_logs/error.log
+
+# Limites de recursos
+LimitNOFILE=65536
+LimitNPROC=32768
+
+# Variáveis de ambiente
+Environment="PYTHONUNBUFFERED=1"
+Environment="CUDA_VISIBLE_DEVICES=0"
+
+[Install]
+WantedBy=multi-user.target

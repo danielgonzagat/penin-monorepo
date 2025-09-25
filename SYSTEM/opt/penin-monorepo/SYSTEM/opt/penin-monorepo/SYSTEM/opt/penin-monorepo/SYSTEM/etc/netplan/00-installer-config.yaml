@@ -1,0 +1,14 @@
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    id0:
+      addresses:
+      - 92.38.150.138/24
+      gateway4: 92.38.150.1
+      match:
+        macaddress: 4C:D9:8F:CA:EA:94
+      nameservers:
+        addresses:
+        - 8.8.8.8
+        search: []
+  version: 2

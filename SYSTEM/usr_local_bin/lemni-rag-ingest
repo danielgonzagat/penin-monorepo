@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+RAG="http://localhost:17000"
+ingest_file(){ 
+  f="$1"
+  echo "[ingest] $f"
+  curl -s -X POST "$RAG/upsert_file" \
+    -F "file=@${f}" -F "source=${f}" >/dev/null || true
+}
+# PDFs principais
+for f in \
+  "/opt/lemniscata/uploads/Lemniscata de Penin/Relatório Completo_ Evolução Infinita da Lemniscata de Penin.pdf" \
+  "/opt/lemniscata/uploads/Lemniscata de Penin/Lemniscata de Penin_ Equação P = ∞(E + N − iN).pdf" \
+  "/opt/lemniscata/Relatório Consolidado_ Nova Arquitetura Lemnisiana R∞ (R50+ΣEA, All-in-One).pdf" \
+  "/opt/lemniscata/0) Resumo Executivo (Visão Geral Consolidada).pdf" \
+  "/opt/lemniscata/Relatório Nova Arquitetura (1).pdf"; do
+  [ -f "$f" ] && ingest_file "$f" || true
+done
+# MDs
+for f in /opt/lemniscata/*.md /opt/lemniscata/**/*.md; do
+  [ -f "$f" ] && ingest_file "$f" || true
+done
+echo "[ingest] done"

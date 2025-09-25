@@ -1,0 +1,15 @@
+[Unit]
+Description=PENIN-Ω-MAX Agent (CLI interactive)
+After=network.target local-falcon.service
+
+[Service]
+User=root
+WorkingDirectory=/root/penin-construtor
+EnvironmentFile=/etc/default/penin-agent
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /root/penin-construtor/penin_go.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,34 @@
+mode: autonomous              # sem aprovação humana
+unsafe_allow_all_shell: true  # permite QUALQUER comando de shell
+unsafe_full_write: true       # permite escrever em qualquer caminho
+
+kill_switch:
+  enabled: true               # desliga se tudo começar a falhar
+  error_rate_window: 20
+  max_fail_ratio: 0.8         # bem permissivo (mude se quiser)
+
+budgets:
+  max_actions_per_hour: 999
+  max_parallel_actions: 4
+  action_timeouts:
+    shell_seconds: 120
+    patch_seconds: 60
+    restart_seconds: 30
+    tests_seconds: 90
+
+allowed_paths:
+  read:  ["/"]                # tudo
+  write: ["/"]                # tudo
+
+edit_globs: ["*"]             # qualquer extensão
+
+services:
+  manage:
+    - et-evolver
+    - et-capabilities
+    - et-supervisor
+
+tests:
+  endpoint: "http://127.0.0.1:8080/v1/models"
+  rag_cli: "/usr/local/bin/et-ask-rag"
+  evolver_log_unit: "et-evolver"

@@ -1,0 +1,24 @@
+[Unit]
+Description=Tunnel CPU->RunPod vLLM (L18001->G8000)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=root
+Restart=always
+RestartSec=1
+Environment="RUNPOD_IP=64.247.196.118"      # ajuste se mudar
+Environment="RUNPOD_PORT=17911"            # ajuste se mudar
+Environment="KEY=/root/.ssh/runpod_tunnel_ed25519"
+
+# -g permite que hosts remotos acessem a porta local encaminhada
+# -L 18001:127.0.0.1:8000 faz a 18001 ouvir em todas as ifaces do HOST
+ExecStart=/usr/bin/autossh -M 0 -N -g \
+  -o ServerAliveInterval=30 -o ServerAliveCountMax=3 \
+  -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+  -o UserKnownHostsFile=/root/.ssh/known_hosts_runpod \
+  -i ${KEY} -p ${RUNPOD_PORT} \
+  -L 18001:127.0.0.1:8000 root@${RUNPOD_IP}
+
+[Install]
+WantedBy=multi-user.target

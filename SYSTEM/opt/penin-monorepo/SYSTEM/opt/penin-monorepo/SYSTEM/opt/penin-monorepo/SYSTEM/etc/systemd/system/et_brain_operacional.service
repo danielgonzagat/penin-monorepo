@@ -1,0 +1,57 @@
+[Unit]
+Description=ETΩ Cérebro Operacional (sandbox total)
+After=network.target
+Wants=et_lockdown_firewall.service
+
+[Service]
+Type=simple
+User=etbot
+Group=etbot
+WorkingDirectory=/opt/et_ultimate
+Environment=PYTHONPATH=/opt/et_ultimate
+Environment=ET_LOCKED=1
+Environment=ET_OFFLINE=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/opt/et_ultimate/venv/bin/python3 -c "import agents.brain.et_guardian as g; import runpy; runpy.run_module('agents.brain.et_brain_operacional', run_name='__main__')"
+Restart=always
+RestartSec=2
+
+# Sandboxing forte
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateUsers=yes
+PrivateMounts=yes
+PrivateNetwork=yes
+RestrictAddressFamilies=AF_UNIX
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+RestrictSUIDSGID=yes
+LockPersonality=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+MemoryDenyWriteExecute=yes
+UMask=0077
+
+# Sistema somente leitura com exceções
+ProtectSystem=strict
+ReadOnlyPaths=/opt/et_ultimate/agents /opt/et_ultimate/venv /usr /bin /lib /lib64 /sbin /etc
+ReadWritePaths=/opt/et_ultimate/logs /opt/et_ultimate/history /opt/et_ultimate/workspace /tmp
+
+# Filtro de syscalls (nega rede de novo, redundância defensiva)
+SystemCallFilter=~socket connect accept accept4 sendto sendmsg recvfrom recvmsg bind listen getpeername getsockname setsockopt getsockopt shutdown
+SystemCallFilter=@system-service @basic-io
+
+# Limites
+MemoryMax=8G
+CPUAccounting=yes
+CPUQuota=200%
+
+# Watchdog do systemd (reinício se travar)
+WatchdogSec=60
+
+[Install]
+WantedBy=multi-user.target

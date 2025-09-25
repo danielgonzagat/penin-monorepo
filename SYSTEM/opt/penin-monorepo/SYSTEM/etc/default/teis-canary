@@ -1,0 +1,12 @@
+# Tags lógicas do champion/candidate (ajuste conforme seu orchestrator)
+TEIS_CHAMPION_TAG="teis-champion-001"
+TEIS_CANDIDATE_TAG="teis-candidate-002"
+
+# Caminho do WORM ledger
+TEIS_WORM_PATH="/root/teis_worm.log"
+
+# Pasta de trabalho onde estão promotion_gate.py, metrics_exporter.py e arquivos do canary
+TEIS_WORKDIR="/root"
+
+# Python a usar
+TEIS_PY="python3"

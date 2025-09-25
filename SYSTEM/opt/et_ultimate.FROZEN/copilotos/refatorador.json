@@ -1,0 +1,10 @@
+{
+  "nome": "refatorador",
+  "descricao": "Simplifica e reestrutura equações complexas",
+  "estrategia": "Redução algébrica e recomposição modular",
+  "regras": [
+    "Reduzir símbolos desnecessários",
+    "Preservar comportamento global"
+  ],
+  "criado_em": "2025-08-16T02:15:30.299665"
+}

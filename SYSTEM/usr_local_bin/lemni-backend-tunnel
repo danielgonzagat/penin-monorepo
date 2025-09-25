@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /opt/lemniscata
+cat > docker-compose.vllm.yaml <<'YML'
+services:
+  api:
+    environment:
+      VLLM_URL: http://host.docker.internal:18001/v1
+YML
+docker compose -f docker-compose.yaml -f docker-compose.vllm.yaml -f docker-compose.healthcheck.yaml up -d --build
+/usr/local/bin/lemni-status

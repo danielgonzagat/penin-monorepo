@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -e
+cd /opt/lemniscata
+best="tuning/best.json"
+[ -s "$best" ] || { echo "sem tuning/best.json"; exit 0; }
+k=$(jq -r '.rag_k // empty' "$best")
+tmp=$(mktemp)
+echo "# gerado por lemni-apply-tuning" > "$tmp"
+echo "rag:" >> "$tmp"
+echo "  k_default: ${k:-3}" >> "$tmp"
+# merge
+m=$(mktemp)
+/usr/bin/env python3 - <<PY
+import sys,yaml
+base=yaml.safe_load(open("configs/lemniscata.yaml")) or {}
+over=yaml.safe_load(open("$tmp")) or {}
+def rmerge(a,b):
+  return {**a, **{k:rmerge(a.get(k,{}),v) if isinstance(v,dict) else v for k,v in b.items()}} if isinstance(a,dict) and isinstance(b,dict) else b
+out=rmerge(base,over)
+yaml.safe_dump(out, open("$m","w"), sort_keys=False, allow_unicode=True)
+PY
+mv "$m" configs/lemniscata.yaml
+git add configs/lemniscata.yaml || true
+git diff --cached --quiet || git commit -m "tuning: apply best rag_k=$(printf %s "${k:-3}")" || true
+docker compose -f docker-compose.yaml -f docker-compose.override.yaml -f docker-compose.healthcheck.yaml up -d --build

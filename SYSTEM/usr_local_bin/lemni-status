@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /opt/lemniscata
+echo "=== BACKENDS ==="
+if [ -n "$(docker compose ps -q vllm 2>/dev/null)" ]; then
+  echo "[vLLM]:"; docker compose exec -T vllm sh -lc 'curl -s -o /dev/null -w "health=%{http_code}\n" http://localhost:8000/health || true'
+  docker compose exec -T vllm sh -lc 'curl -s http://localhost:8000/v1/models | jq -r ".data[0].id" || true'
+fi
+if [ -n "$(docker compose ps -q ollama 2>/dev/null)" ]; then
+  echo "[Ollama]:"; docker compose exec -T ollama sh -lc 'curl -s -o /dev/null -w "tags=%{http_code}\n" http://localhost:11434/api/tags || true'
+fi
+echo "=== API ==="; curl -fsS http://localhost:18080/health || true; echo
+echo "=== LEDGER (10) ==="; tail -n 10 /opt/lemniscata/.ledger 2>/dev/null || echo "(sem ledger)"
+last="$(ls -1dt /opt/lemniscata/_artifacts/dgm/* 2>/dev/null | head -n1 || true)"
+echo "=== ULTIMO DGM ==="; echo "${last:-sem artifacts}"

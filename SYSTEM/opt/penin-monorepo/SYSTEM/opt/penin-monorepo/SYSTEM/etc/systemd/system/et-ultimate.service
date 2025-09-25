@@ -1,0 +1,11 @@
+[Unit]
+Description=ET Ultimate Core (placeholder)
+After=network.target
+[Service]
+Type=simple
+WorkingDirectory=/opt/et_ultimate
+ExecStart=/opt/et_ultimate/venv/bin/python3 /opt/et_ultimate/et_ultimate_core.py
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

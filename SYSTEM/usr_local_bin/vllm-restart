@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+tmux kill-session -t vllm 2>/dev/null || true
+tmux new -s vllm -d "/root/start_vllm.sh"
+for i in {1..90}; do ss -ltnp | grep -q ':8000' && break; sleep 1; done
+for i in {1..180}; do curl -s http://localhost:8000/v1/models >/dev/null && { echo "vLLM OK na :8000"; exit 0; }; sleep 1; done
+echo "ERRO: /v1/models não respondeu"; exit 1

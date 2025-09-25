@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+command -v jq >/dev/null || { echo "precisa do jq"; exit 1; }
+
+API="${LEMNI_API:-http://localhost:18080}"
+RAGK="${RAG_K:-2}"
+SYS="${SYSTEM_PROMPT:-Você é um assistente técnico em PT-BR. Seja claro, útil e honesto.}"
+HIST="${LEMNI_HIST:-/opt/lemniscata/_chat/session.jsonl}"
+mkdir -p "$(dirname "$HIST")"
+: > "$HIST"
+jq -n --arg s "$SYS" '{role:"system",content:$s}' >> "$HIST"
+
+echo "Conectado em $API/ask  (RAG_K=$RAGK). Ctrl+D para sair."
+while IFS= read -rp $'\nVocê: ' user; do
+  [ -z "${user// }" ] && continue
+  jq -n --arg c "$user" '{role:"user",content:$c}' >> "$HIST"
+  MSGS=$(jq -s 'map({role,content})' "$HIST")
+  REQ=$(jq -n --argjson M "$MSGS" --argjson k "$RAGK" '{messages:$M, rag_k: ($k|tonumber)}')
+  RESP=$(curl -sS "$API/ask" -H 'Content-Type: application/json' -d "$REQ" || echo '{}')
+  TXT=$(jq -r '.output // .answer // "(sem resposta)"' <<<"$RESP")
+  printf "\nModelo: %s\n" "$TXT"
+  jq -n --arg a "$TXT" '{role:"assistant",content:$a}' >> "$HIST"
+done

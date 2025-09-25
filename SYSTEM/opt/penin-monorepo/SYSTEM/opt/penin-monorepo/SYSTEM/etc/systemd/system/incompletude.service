@@ -1,0 +1,15 @@
+[Unit]
+Description=Incompletude Infinita Monitor
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/.incompletude_daemon.py
+Restart=always
+RestartSec=10
+Environment="PYTHONPATH=/usr/local/lib/python3.10/dist-packages"
+
+[Install]
+WantedBy=multi-user.target

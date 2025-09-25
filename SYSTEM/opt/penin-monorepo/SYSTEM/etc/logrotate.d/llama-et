@@ -1,0 +1,9 @@
+# gira logs diariamente, guarda 7 dias
+/var/log/llama-server.log /var/log/et-loop.log {
+  daily
+  rotate 7
+  missingok
+  notifempty
+  compress
+  copytruncate
+}

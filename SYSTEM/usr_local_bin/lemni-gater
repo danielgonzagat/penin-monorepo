@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+REP="${1:-/tmp/lemni_report.json}"; test -s "$REP" || { echo "[gates] sem $REP"; exit 2; }
+tau="${TAU:-0.60}"; p95_budget="${P95_MS:-2000}"; cost_budget="${COST_BUDGET:-0.002}"
+read -r L KL F OCI P95 COST <<VARS
+$(jq -r '[.l,.kl,.frob,.oci,.p95_ms,.cost] | @tsv' "$REP")
+VARS
+L=${L:-0}; KL=${KL:-0}; F=${F:-0}; OCI=${OCI:-1}; P95=${P95:-0}; COST=${COST:-0}
+python3 - "$KL" "$F" "$OCI" "$tau" "$P95" "$COST" "$p95_budget" "$cost_budget" <<'PY'
+import sys
+kl,fr,oci,tau,p95,cost,p95b,cb = map(float, sys.argv[1:])
+dv = 0.5*kl + 0.5*fr + max(0.0, tau-oci)**2
+assert dv <= 0.0 + 1e-12, "Lyapunov ΔV>0"
+assert oci >= tau, "OCI<τ"
+assert p95 <= p95b, "p95>budget"
+assert cost <= cb, "custo>budget"
+PY

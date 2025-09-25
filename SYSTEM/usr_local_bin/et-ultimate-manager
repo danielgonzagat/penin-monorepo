@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+exec "/opt/et_ultimate/venv/bin/python3" "/opt/et_ultimate/et_ultimate_manager.py" "$@"

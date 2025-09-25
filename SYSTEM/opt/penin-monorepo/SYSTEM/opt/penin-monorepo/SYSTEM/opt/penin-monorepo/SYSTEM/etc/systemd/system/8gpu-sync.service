@@ -1,0 +1,10 @@
+[Unit]
+Description=File Sync to 8GPU Server
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/root/scripts/8gpu-connection/sync_files.sh
+StandardOutput=journal
+StandardError=journal

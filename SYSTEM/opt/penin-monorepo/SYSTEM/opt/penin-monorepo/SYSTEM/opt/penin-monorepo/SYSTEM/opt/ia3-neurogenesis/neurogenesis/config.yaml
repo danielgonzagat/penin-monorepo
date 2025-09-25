@@ -1,0 +1,28 @@
+seed: 42
+device: cpu
+dataset:
+  kind: synthetic_identity
+  n_features: 16
+  n_targets: 16
+  n_samples: 4096
+train:
+  batch_size: 64
+  epochs_warmup: 1
+  steps_per_cycle: 100
+  lr: 1.5e-3
+  weight_decay: 0.0
+neurogenesis:
+  hidden_init: 1
+  birth_per_cycle: 1
+  deaths_per_birth: 10
+  ia3_threshold: 0.66
+  max_hidden: 4096
+stability:
+  ewc_lambda: 2.0
+  mas_lambda: 1.0
+metrics:
+  port: 9094
+paths:
+  state_dir: /var/lib/ia3-neurogenesis
+  brain_state: /var/lib/ia3-neurogenesis/brain_state.pt
+  worm_log: /var/log/ia3_neurogenesis.worm

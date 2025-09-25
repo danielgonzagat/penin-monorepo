@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+REP="${1:-/tmp/eval.json}"
+jq -er '
+  .delta_Linf as $d
+| .dv_nonincrease as $v
+| .oci as $o
+| .slo.ok as $s
+| if ($d>0 and $v==true and ($o>=0.60) and $s==true)
+  then "PASS"
+  else
+    ("FAIL " +
+     "(ΔL∞="+($d|tostring)+", dv_nonincrease="+($v|tostring)+
+     ", oci="+($o|tostring)+", slo_ok="+($s|tostring)+")") | halt_error(1)
+  end' "$REP" >/dev/null && echo "PASS" || { echo "FAIL"; exit 2; }

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /opt/lemniscata
+ts=$(date -u +%Y%m%dT%H%M%SZ)
+rel="_artifacts/releases/lemni-${ts}"; mkdir -p "$rel"
+git rev-parse --short HEAD > "$rel/git_commit.txt" || echo "no-git" > "$rel/git_commit.txt"
+cp -a configs "$rel/" 2>/dev/null || true
+cp -a docker-compose*.yaml "$rel/" 2>/dev/null || true
+tail -n 200 .ledger > "$rel/ledger_tail.txt" || true
+last="$(ls -1dt _artifacts/dgm/* 2>/dev/null | head -n1 || true)"
+[ -n "$last" ] && cp -a "$last" "$rel/dgm_last"
+tar -cJf "${rel}.tar.xz" -C "$(dirname "$rel")" "$(basename "$rel")"
+echo "[release] ${rel}.tar.xz"

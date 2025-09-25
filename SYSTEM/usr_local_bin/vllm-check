@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+KEY="463709632f58792af084c59f5585302e"
+echo -n "health="; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:18001/health
+curl -s http://localhost:18001/v1/models -H "Authorization: Bearer $KEY" | jq -r '.data[0].id'
+curl -s -X POST http://localhost:18001/v1/chat/completions \
+  -H "Content-Type: application/json" -H "Authorization: Bearer $KEY" \
+  -d '{"model":"qwen2.5-7b-instruct","messages":[
+        {"role":"system","content":"Responda em PT-BR, objetivo e técnico."},
+        {"role":"user","content":"Confirme em 1 linha: GPU via túnel OK."}
+      ],"max_tokens":32}' | jq -r '.choices[0].message.content'

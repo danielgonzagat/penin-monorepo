@@ -1,0 +1,17 @@
+[Unit]
+Description=SSH Tunnel to 8GPU Server
+After=network.target
+Wants=network.target
+
+[Service]
+Type=forking
+User=root
+ExecStart=/root/scripts/8gpu-connection/ssh_tunnel.sh
+ExecStop=/bin/kill -TERM $(cat /var/run/8gpu-tunnel.pid 2>/dev/null) 2>/dev/null || true
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

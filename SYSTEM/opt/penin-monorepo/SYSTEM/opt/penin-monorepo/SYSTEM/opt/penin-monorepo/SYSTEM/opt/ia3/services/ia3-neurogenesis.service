@@ -1,0 +1,38 @@
+[Unit]
+Description=Sistema Celular IA³ Neuroevolutivo
+Documentation=https://github.com/ia3-system
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/ia3
+Environment=PYTHONPATH=/opt/ia3/bin
+Environment=IA3_HOME=/opt/ia3
+Environment=IA3_METRICS_PORT=9093
+Environment=IA3_ROUNDS=0
+Environment=IA3_DATA_DIM=16
+Environment=IA3_OUT_DIM=8
+Environment=IA3_ROUND_STEPS=100
+Environment=IA3_PASS=0.50
+Environment=OMP_NUM_THREADS=8
+ExecStart=/usr/bin/python3 /opt/ia3/bin/ia3_neurogenesis.py
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ia3-neurogenesis
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=4G
+CPUQuota=800%
+
+[Install]
+WantedBy=multi-user.target

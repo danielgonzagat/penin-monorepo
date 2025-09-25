@@ -1,0 +1,18 @@
+[Unit]
+Description=ET Autonomous Supervisor (no-approval)
+After=et-capabilities.service
+Requires=et-capabilities.service
+
+[Service]
+User=root
+WorkingDirectory=/opt/et_ultimate/supervisor
+ExecStart=/opt/et_ultimate/supervisor/et_supervisor.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=no
+ProtectSystem=off
+ProtectHome=no
+PrivateTmp=no
+
+[Install]
+WantedBy=multi-user.target

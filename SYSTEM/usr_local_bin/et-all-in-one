@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ==== CONFIG BÁSICA ====
+ROOT="/opt/et_ultimate"
+VENV="$ROOT/venv"
+AGENTS="$ROOT/agents/brain"
+LOGDIR="$ROOT/logs"
+RUNDIR="$ROOT/run"
+HIST="$ROOT/history"
+WORK="$ROOT/workspace"
+
+mkdir -p "$LOGDIR" "$RUNDIR" "$HIST" "$WORK"
+
+# ==== KEYS (exporte as suas reais ANTES de rodar) ====
+: "${OPENAI_API_KEY:?Defina OPENAI_API_KEY no ambiente}"
+: "${DEEPSEEK_API_KEY:?Defina DEEPSEEK_API_KEY no ambiente}"
+: "${MISTRAL_API_KEY:?Defina MISTRAL_API_KEY no ambiente}"
+
+# ==== AJUSTES DE TEMPO/REDE ====
+export ET_HTTP_TIMEOUT=600          # 10 min p/ chamadas LLM
+export ET_MAX_RETRIES=3             # 3 tentativas (com backoff)
+export ET_PARALLEL_JOBS=3           # concorrência básica
+export ET_LOG_DIR="$LOGDIR"
+export ET_RUN_DIR="$RUNDIR"
+
+# ==== ATIVAR VENV ====
+source "$VENV/bin/activate"
+
+# ==== SANITY: COMPILAR TUDO (sem backups) ====
+/opt/et_ultimate/venv/bin/python3 -m py_compile $(find "$ROOT/agents" -type f -name "*.py" -not -path "*/backups/*")
+
+# ==== CRIAR ARQUIVOS-BASE, SE PRECISO ====
+[ -s "$HIST/BEST_ETΩ.txt" ] || echo "x^2 + y^2" > "$HIST/BEST_ETΩ.txt"
+[ -f "$WORK/LIGA_MUTACOES.jsonl" ] || : > "$WORK/LIGA_MUTACOES.jsonl"
+
+# ==== LIMPA SESSÕES ANTIGAS DO TMUX (opcional) ====
+if tmux has-session -t et_brain 2>/dev/null; then
+  tmux kill-session -t et_brain
+fi
+
+# ==== ABRIR TMUX COM TUDO RODANDO ====
+tmux new-session -d -s et_brain -n main
+
+# Pane 1: cérebro operacional (loop principal)
+tmux send-keys -t et_brain:main "cd $ROOT && source $VENV/bin/activate && python3 -m agents.brain.et_brain_operacional 2>&1 | tee -a $LOGDIR/brain.log" C-m
+
+# Pane 2: watchdog (reinício/telemetria)
+tmux split-window -h -t et_brain:main
+tmux send-keys -t et_brain:main.2 "cd $ROOT && source $VENV/bin/activate && python3 -m agents.brain.et_watchdog 2>&1 | tee -a $LOGDIR/watchdog.log" C-m
+
+# Pane 3: scheduler (mutação contínua)
+tmux split-window -v -t et_brain:main.1
+tmux send-keys -t et_brain:main.3 "cd $ROOT && source $VENV/bin/activate && python3 -m agents.brain.et_scheduler loop 2>&1 | tee -a $LOGDIR/scheduler.log" C-m
+
+# Pane 4: benchmark global (observa evolução)
+tmux split-window -v -t et_brain:main.2
+tmux send-keys -t et_brain:main.4 "cd $ROOT && source $VENV/bin/activate && python3 -m agents.brain.et_global_benchmark watch 2>&1 | tee -a $LOGDIR/benchmark.log" C-m
+
+echo "✅ et-all-in-one iniciado em tmux (sessão: et_brain)"
+echo "   Abra com: tmux attach -t et_brain"
+echo "   Logs: tail -f $LOGDIR/*.log"

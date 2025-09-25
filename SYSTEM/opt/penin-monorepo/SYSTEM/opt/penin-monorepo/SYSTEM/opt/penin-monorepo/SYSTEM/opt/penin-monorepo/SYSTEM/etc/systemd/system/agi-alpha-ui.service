@@ -1,0 +1,15 @@
+[Unit]
+Description=AGI‑Alpha Chat UI (via PENIN)
+After=network.target penin-agent.service
+
+[Service]
+User=root
+WorkingDirectory=/root/penin-construtor
+Environment=PYTHONUNBUFFERED=1
+Environment=AGI_ALPHA_UI_PORT=7861
+ExecStart=/usr/bin/python3 /root/penin-construtor/ui/agi_alpha_chat.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

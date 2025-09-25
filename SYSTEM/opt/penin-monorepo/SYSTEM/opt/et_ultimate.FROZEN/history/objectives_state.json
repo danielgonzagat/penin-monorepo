@@ -1,0 +1,4514 @@
+{
+  "round": 635,
+  "history": [
+    {
+      "ts": 1755105801.4055898,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 1
+    },
+    {
+      "ts": 1755106166.3429985,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 2
+    },
+    {
+      "ts": 1755106457.1079617,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 3
+    },
+    {
+      "ts": 1755106755.1079245,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 4
+    },
+    {
+      "ts": 1755107108.2109203,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 5
+    },
+    {
+      "ts": 1755107453.5098839,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 6
+    },
+    {
+      "ts": 1755107763.4316242,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 7
+    },
+    {
+      "ts": 1755108076.214883,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 8
+    },
+    {
+      "ts": 1755108354.111231,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 9
+    },
+    {
+      "ts": 1755108624.8738368,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 10
+    },
+    {
+      "ts": 1755108921.4043574,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 11
+    },
+    {
+      "ts": 1755109207.1630125,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 12
+    },
+    {
+      "ts": 1755109490.6252081,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 13
+    },
+    {
+      "ts": 1755109782.596883,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 14
+    },
+    {
+      "ts": 1755110083.0563293,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 15
+    },
+    {
+      "ts": 1755110386.0310426,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 16
+    },
+    {
+      "ts": 1755110700.4239945,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 17
+    },
+    {
+      "ts": 1755111025.0732877,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 18
+    },
+    {
+      "ts": 1755111315.7339082,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 19
+    },
+    {
+      "ts": 1755111546.1907978,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 20
+    },
+    {
+      "ts": 1755111833.7415721,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 21
+    },
+    {
+      "ts": 1755112033.6784644,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 22
+    },
+    {
+      "ts": 1755112336.0540774,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 23
+    },
+    {
+      "ts": 1755112704.546188,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 24
+    },
+    {
+      "ts": 1755112999.3634455,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 25
+    },
+    {
+      "ts": 1755113285.6971052,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 26
+    },
+    {
+      "ts": 1755113582.5259213,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 27
+    },
+    {
+      "ts": 1755113889.002298,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 28
+    },
+    {
+      "ts": 1755114262.281174,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 29
+    },
+    {
+      "ts": 1755114579.6368625,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 30
+    },
+    {
+      "ts": 1755114810.5985482,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 31
+    },
+    {
+      "ts": 1755115116.9641182,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 32
+    },
+    {
+      "ts": 1755115423.886924,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 33
+    },
+    {
+      "ts": 1755115711.01522,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 34
+    },
+    {
+      "ts": 1755115860.233952,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 35
+    },
+    {
+      "ts": 1755116145.6981673,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 36
+    },
+    {
+      "ts": 1755116431.3357584,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 37
+    },
+    {
+      "ts": 1755116615.9269938,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 38
+    },
+    {
+      "ts": 1755116909.3608737,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 39
+    },
+    {
+      "ts": 1755117202.8466225,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 40
+    },
+    {
+      "ts": 1755117463.3355339,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 41
+    },
+    {
+      "ts": 1755117777.6289058,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 42
+    },
+    {
+      "ts": 1755118059.6954522,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 43
+    },
+    {
+      "ts": 1755118338.2811656,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 44
+    },
+    {
+      "ts": 1755118639.161798,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 45
+    },
+    {
+      "ts": 1755118962.3540578,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 46
+    },
+    {
+      "ts": 1755119257.7967312,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 47
+    },
+    {
+      "ts": 1755119534.5459337,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 48
+    },
+    {
+      "ts": 1755119823.9462855,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 49
+    },
+    {
+      "ts": 1755120124.4176643,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 50
+    },
+    {
+      "ts": 1755120440.2519507,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 51
+    },
+    {
+      "ts": 1755120738.5385075,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 52
+    },
+    {
+      "ts": 1755121029.6157105,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 53
+    },
+    {
+      "ts": 1755121399.0808606,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 54
+    },
+    {
+      "ts": 1755121695.4971557,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 55
+    },
+    {
+      "ts": 1755121855.5913153,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 56
+    },
+    {
+      "ts": 1755122134.4941545,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 57
+    },
+    {
+      "ts": 1755122460.9870317,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 58
+    },
+    {
+      "ts": 1755122724.6985717,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 59
+    },
+    {
+      "ts": 1755123093.7040176,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 60
+    },
+    {
+      "ts": 1755123432.4042659,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 61
+    },
+    {
+      "ts": 1755123647.196339,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 62
+    },
+    {
+      "ts": 1755123983.1251175,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 63
+    },
+    {
+      "ts": 1755124324.4117491,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 64
+    },
+    {
+      "ts": 1755124649.4118395,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 65
+    },
+    {
+      "ts": 1755124983.0982623,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 66
+    },
+    {
+      "ts": 1755125323.2847593,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 67
+    },
+    {
+      "ts": 1755125540.3011553,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 68
+    },
+    {
+      "ts": 1755125755.2017126,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 69
+    },
+    {
+      "ts": 1755126085.8030465,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 70
+    },
+    {
+      "ts": 1755126412.3022847,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 71
+    },
+    {
+      "ts": 1755126729.6957128,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 72
+    },
+    {
+      "ts": 1755127072.1952891,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 73
+    },
+    {
+      "ts": 1755127462.890966,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 74
+    },
+    {
+      "ts": 1755127805.5090706,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 75
+    },
+    {
+      "ts": 1755128161.103608,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 76
+    },
+    {
+      "ts": 1755128556.9977787,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 77
+    },
+    {
+      "ts": 1755128919.999948,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 78
+    },
+    {
+      "ts": 1755129138.2034945,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 79
+    },
+    {
+      "ts": 1755129363.1063578,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 80
+    },
+    {
+      "ts": 1755129652.8943813,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 81
+    },
+    {
+      "ts": 1755130019.4037666,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 82
+    },
+    {
+      "ts": 1755130250.408978,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 83
+    },
+    {
+      "ts": 1755130592.8957438,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 84
+    },
+    {
+      "ts": 1755130930.3984094,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 85
+    },
+    {
+      "ts": 1755131284.3018706,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 86
+    },
+    {
+      "ts": 1755131626.701425,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 87
+    },
+    {
+      "ts": 1755131977.4007902,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 88
+    },
+    {
+      "ts": 1755132298.702457,
+      "text": "expandir a ETPM com termo de acoplamento topológico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 89
+    },
+    {
+      "ts": 1755132638.1855948,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 90
+    },
+    {
+      "ts": 1755132860.916748,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 91
+    },
+    {
+      "ts": 1755133208.111174,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 92
+    },
+    {
+      "ts": 1755133549.194704,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 93
+    },
+    {
+      "ts": 1755133876.905574,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 94
+    },
+    {
+      "ts": 1755134219.0922265,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 95
+    },
+    {
+      "ts": 1755134584.9002702,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 96
+    },
+    {
+      "ts": 1755134914.312402,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 97
+    },
+    {
+      "ts": 1755135263.6021802,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 98
+    },
+    {
+      "ts": 1755135491.8032904,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 99
+    },
+    {
+      "ts": 1755135709.2008903,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 100
+    },
+    {
+      "ts": 1755136040.604592,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 101
+    },
+    {
+      "ts": 1755136384.904289,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 102
+    },
+    {
+      "ts": 1755136741.8049042,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 103
+    },
+    {
+      "ts": 1755137092.2177815,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 104
+    },
+    {
+      "ts": 1755137495.5045884,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 105
+    },
+    {
+      "ts": 1755137807.3035429,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 106
+    },
+    {
+      "ts": 1755138280.5138528,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 107
+    },
+    {
+      "ts": 1755138691.5971313,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 108
+    },
+    {
+      "ts": 1755139056.4055395,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 109
+    },
+    {
+      "ts": 1755139469.7057076,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 110
+    },
+    {
+      "ts": 1755139755.1341298,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 111
+    },
+    {
+      "ts": 1755140096.8171933,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 112
+    },
+    {
+      "ts": 1755140469.2194972,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 113
+    },
+    {
+      "ts": 1755140854.9081948,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 114
+    },
+    {
+      "ts": 1755141197.1070437,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 115
+    },
+    {
+      "ts": 1755141539.9072375,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 116
+    },
+    {
+      "ts": 1755141871.9180155,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 117
+    },
+    {
+      "ts": 1755142209.507909,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 118
+    },
+    {
+      "ts": 1755142564.9986699,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 119
+    },
+    {
+      "ts": 1755142909.1901007,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 120
+    },
+    {
+      "ts": 1755143241.5912669,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 121
+    },
+    {
+      "ts": 1755143589.9010074,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 122
+    },
+    {
+      "ts": 1755143930.8030875,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 123
+    },
+    {
+      "ts": 1755144261.7133374,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 124
+    },
+    {
+      "ts": 1755144590.8041763,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 125
+    },
+    {
+      "ts": 1755144870.1060123,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 126
+    },
+    {
+      "ts": 1755145195.9937284,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 127
+    },
+    {
+      "ts": 1755145504.1057758,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 128
+    },
+    {
+      "ts": 1755145834.724518,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 129
+    },
+    {
+      "ts": 1755146170.1018903,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 130
+    },
+    {
+      "ts": 1755146398.0030572,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 131
+    },
+    {
+      "ts": 1755146749.8084552,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 132
+    },
+    {
+      "ts": 1755147101.4927523,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 133
+    },
+    {
+      "ts": 1755147307.9972086,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 134
+    },
+    {
+      "ts": 1755147552.6037679,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 135
+    },
+    {
+      "ts": 1755147916.70054,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 136
+    },
+    {
+      "ts": 1755148306.1118135,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 137
+    },
+    {
+      "ts": 1755148665.1192684,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 138
+    },
+    {
+      "ts": 1755149057.6026459,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 139
+    },
+    {
+      "ts": 1755149406.8013175,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 140
+    },
+    {
+      "ts": 1755149634.7198293,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 141
+    },
+    {
+      "ts": 1755149997.716995,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 142
+    },
+    {
+      "ts": 1755150298.296384,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 143
+    },
+    {
+      "ts": 1755150663.4055686,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 144
+    },
+    {
+      "ts": 1755151019.5891712,
+      "text": "expandir a ETPM com termo de acoplamento topológico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 145
+    },
+    {
+      "ts": 1755151353.0940988,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 146
+    },
+    {
+      "ts": 1755151715.5981038,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 147
+    },
+    {
+      "ts": 1755152049.1057308,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 148
+    },
+    {
+      "ts": 1755152368.0009327,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 149
+    },
+    {
+      "ts": 1755152621.6186543,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 150
+    },
+    {
+      "ts": 1755153032.298803,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 151
+    },
+    {
+      "ts": 1755153340.0030608,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 152
+    },
+    {
+      "ts": 1755153700.103973,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 153
+    },
+    {
+      "ts": 1755153903.6076162,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 154
+    },
+    {
+      "ts": 1755154263.002243,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 155
+    },
+    {
+      "ts": 1755154626.0044367,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 156
+    },
+    {
+      "ts": 1755154971.9085517,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 157
+    },
+    {
+      "ts": 1755155457.841541,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 158
+    },
+    {
+      "ts": 1755155832.0063264,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 159
+    },
+    {
+      "ts": 1755156267.5175593,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 160
+    },
+    {
+      "ts": 1755156608.1953983,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 161
+    },
+    {
+      "ts": 1755156899.5111656,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 162
+    },
+    {
+      "ts": 1755157264.5059526,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 163
+    },
+    {
+      "ts": 1755157666.2976372,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 164
+    },
+    {
+      "ts": 1755157972.9652426,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 165
+    },
+    {
+      "ts": 1755158323.496029,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 166
+    },
+    {
+      "ts": 1755158684.3104832,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 167
+    },
+    {
+      "ts": 1755159045.828232,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 168
+    },
+    {
+      "ts": 1755159383.603456,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 169
+    },
+    {
+      "ts": 1755159719.193637,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 170
+    },
+    {
+      "ts": 1755159955.4116304,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 171
+    },
+    {
+      "ts": 1755160316.9042997,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 172
+    },
+    {
+      "ts": 1755160675.504219,
+      "text": "expandir a ETPM com termo de acoplamento topológico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 173
+    },
+    {
+      "ts": 1755161035.5005136,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 174
+    },
+    {
+      "ts": 1755161394.0145645,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 175
+    },
+    {
+      "ts": 1755161831.3106532,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 176
+    },
+    {
+      "ts": 1755162176.206395,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 177
+    },
+    {
+      "ts": 1755162542.7967439,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 178
+    },
+    {
+      "ts": 1755162901.4874234,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 179
+    },
+    {
+      "ts": 1755163179.6944585,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 180
+    },
+    {
+      "ts": 1755163525.3038921,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 181
+    },
+    {
+      "ts": 1755163891.1040993,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 182
+    },
+    {
+      "ts": 1755164219.806944,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 183
+    },
+    {
+      "ts": 1755164590.6051505,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 184
+    },
+    {
+      "ts": 1755164937.4040852,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 185
+    },
+    {
+      "ts": 1755165296.7022755,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 186
+    },
+    {
+      "ts": 1755165663.3120606,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 187
+    },
+    {
+      "ts": 1755165990.2038465,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 188
+    },
+    {
+      "ts": 1755166332.1300733,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 189
+    },
+    {
+      "ts": 1755166700.9084551,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 190
+    },
+    {
+      "ts": 1755167072.3948421,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 191
+    },
+    {
+      "ts": 1755167428.8114254,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 192
+    },
+    {
+      "ts": 1755167769.7130053,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 193
+    },
+    {
+      "ts": 1755168000.4212568,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 194
+    },
+    {
+      "ts": 1755168288.3071752,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 195
+    },
+    {
+      "ts": 1755168634.115157,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 196
+    },
+    {
+      "ts": 1755168968.300705,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 197
+    },
+    {
+      "ts": 1755169317.3072686,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 198
+    },
+    {
+      "ts": 1755169693.517175,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 199
+    },
+    {
+      "ts": 1755170042.107297,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 200
+    },
+    {
+      "ts": 1755170266.1046166,
+      "text": "expandir a ETPM com termo de acoplamento topológico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 201
+    },
+    {
+      "ts": 1755170610.3858306,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 202
+    },
+    {
+      "ts": 1755170948.9063447,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 203
+    },
+    {
+      "ts": 1755171299.8011773,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 204
+    },
+    {
+      "ts": 1755171718.1059546,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 205
+    },
+    {
+      "ts": 1755172052.010014,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 206
+    },
+    {
+      "ts": 1755172418.5106978,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 207
+    },
+    {
+      "ts": 1755172740.9091372,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 208
+    },
+    {
+      "ts": 1755173081.9008842,
+      "text": "expandir a ETPM com termo de acoplamento topológico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 209
+    },
+    {
+      "ts": 1755173370.4230723,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 210
+    },
+    {
+      "ts": 1755173598.3378742,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 211
+    },
+    {
+      "ts": 1755173897.611997,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 212
+    },
+    {
+      "ts": 1755174243.2093182,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 213
+    },
+    {
+      "ts": 1755174680.019544,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 214
+    },
+    {
+      "ts": 1755174997.9084964,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 215
+    },
+    {
+      "ts": 1755175351.5043652,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 216
+    },
+    {
+      "ts": 1755175692.2100077,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 217
+    },
+    {
+      "ts": 1755176042.810188,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 218
+    },
+    {
+      "ts": 1755176388.70367,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 219
+    },
+    {
+      "ts": 1755176672.201988,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 220
+    },
+    {
+      "ts": 1755177028.8012466,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 221
+    },
+    {
+      "ts": 1755177466.0180893,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 222
+    },
+    {
+      "ts": 1755177745.704271,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 223
+    },
+    {
+      "ts": 1755178115.4087126,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 224
+    },
+    {
+      "ts": 1755178464.20327,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 225
+    },
+    {
+      "ts": 1755178832.9139528,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 226
+    },
+    {
+      "ts": 1755179179.9960816,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 227
+    },
+    {
+      "ts": 1755179527.5147922,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 228
+    },
+    {
+      "ts": 1755179882.5033982,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 229
+    },
+    {
+      "ts": 1755180265.6073375,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 230
+    },
+    {
+      "ts": 1755180643.9132211,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 231
+    },
+    {
+      "ts": 1755181047.6859918,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 232
+    },
+    {
+      "ts": 1755181414.0090373,
+      "text": "expandir a ETPM com termo de acoplamento topológico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 233
+    },
+    {
+      "ts": 1755181750.0054111,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 234
+    },
+    {
+      "ts": 1755182120.9151964,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 235
+    },
+    {
+      "ts": 1755182521.1262426,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 236
+    },
+    {
+      "ts": 1755182852.709757,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 237
+    },
+    {
+      "ts": 1755183061.8224628,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 238
+    },
+    {
+      "ts": 1755183396.8047495,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 239
+    },
+    {
+      "ts": 1755183696.0067205,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 240
+    },
+    {
+      "ts": 1755184044.7046094,
+      "text": "expandir a ETPM com termo de acoplamento topológico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 241
+    },
+    {
+      "ts": 1755184458.4113925,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 242
+    },
+    {
+      "ts": 1755184889.9075878,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 243
+    },
+    {
+      "ts": 1755185182.5188406,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 244
+    },
+    {
+      "ts": 1755185524.501986,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 245
+    },
+    {
+      "ts": 1755185914.5144494,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 246
+    },
+    {
+      "ts": 1755186268.4024098,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 247
+    },
+    {
+      "ts": 1755186602.1081457,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 248
+    },
+    {
+      "ts": 1755186966.5068166,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 249
+    },
+    {
+      "ts": 1755187253.927333,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 250
+    },
+    {
+      "ts": 1755187659.4058383,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 251
+    },
+    {
+      "ts": 1755188026.7139232,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 252
+    },
+    {
+      "ts": 1755188357.4247518,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 253
+    },
+    {
+      "ts": 1755188715.1045468,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 254
+    },
+    {
+      "ts": 1755189151.3940017,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 255
+    },
+    {
+      "ts": 1755189650.285679,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 256
+    },
+    {
+      "ts": 1755189988.2073824,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 257
+    },
+    {
+      "ts": 1755190346.1930377,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 258
+    },
+    {
+      "ts": 1755190602.6083982,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 259
+    },
+    {
+      "ts": 1755190904.005336,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 260
+    },
+    {
+      "ts": 1755191258.6176963,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 261
+    },
+    {
+      "ts": 1755191588.9153032,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 262
+    },
+    {
+      "ts": 1755191836.2332041,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 263
+    },
+    {
+      "ts": 1755192198.8100545,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 264
+    },
+    {
+      "ts": 1755192549.7095697,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 265
+    },
+    {
+      "ts": 1755192923.2230816,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 266
+    },
+    {
+      "ts": 1755193289.4214072,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 267
+    },
+    {
+      "ts": 1755193647.8279233,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 268
+    },
+    {
+      "ts": 1755193875.5930936,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 269
+    },
+    {
+      "ts": 1755194228.8147686,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 270
+    },
+    {
+      "ts": 1755194673.4107707,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 271
+    },
+    {
+      "ts": 1755195028.7129705,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 272
+    },
+    {
+      "ts": 1755195376.9865572,
+      "text": "expandir a ETPM com termo de acoplamento topológico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 273
+    },
+    {
+      "ts": 1755195790.7076564,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 274
+    },
+    {
+      "ts": 1755196142.222736,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 275
+    },
+    {
+      "ts": 1755196525.8310654,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 276
+    },
+    {
+      "ts": 1755196875.198719,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 277
+    },
+    {
+      "ts": 1755197254.7882743,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 278
+    },
+    {
+      "ts": 1755197627.9982026,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 279
+    },
+    {
+      "ts": 1755197981.7169995,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 280
+    },
+    {
+      "ts": 1755198325.4111648,
+      "text": "expandir a ETPM com termo de acoplamento topológico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 281
+    },
+    {
+      "ts": 1755198556.501641,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 282
+    },
+    {
+      "ts": 1755198861.116247,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 283
+    },
+    {
+      "ts": 1755199100.3108916,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 284
+    },
+    {
+      "ts": 1755199451.8106625,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 285
+    },
+    {
+      "ts": 1755199758.394955,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 286
+    },
+    {
+      "ts": 1755199983.1069973,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 287
+    },
+    {
+      "ts": 1755200209.8464234,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 288
+    },
+    {
+      "ts": 1755200549.830639,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 289
+    },
+    {
+      "ts": 1755200881.4230342,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 290
+    },
+    {
+      "ts": 1755201260.710087,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 291
+    },
+    {
+      "ts": 1755201488.6989627,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 292
+    },
+    {
+      "ts": 1755201723.5020697,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 293
+    },
+    {
+      "ts": 1755202091.8835335,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 294
+    },
+    {
+      "ts": 1755202448.8165967,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 295
+    },
+    {
+      "ts": 1755202652.5071216,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 296
+    },
+    {
+      "ts": 1755203012.6167278,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 297
+    },
+    {
+      "ts": 1755203336.2879322,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 298
+    },
+    {
+      "ts": 1755203533.2956417,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 299
+    },
+    {
+      "ts": 1755203864.904711,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 300
+    },
+    {
+      "ts": 1755204203.4126627,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 301
+    },
+    {
+      "ts": 1755204561.9042563,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 302
+    },
+    {
+      "ts": 1755204871.7950232,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 303
+    },
+    {
+      "ts": 1755205275.5127637,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 304
+    },
+    {
+      "ts": 1755205543.5117712,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 305
+    },
+    {
+      "ts": 1755205877.0213413,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 306
+    },
+    {
+      "ts": 1755206141.3115387,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 307
+    },
+    {
+      "ts": 1755206362.2339258,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 308
+    },
+    {
+      "ts": 1755206712.1055312,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 309
+    },
+    {
+      "ts": 1755207010.8010118,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 310
+    },
+    {
+      "ts": 1755207354.696178,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 311
+    },
+    {
+      "ts": 1755207573.32136,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 312
+    },
+    {
+      "ts": 1755207908.710765,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 313
+    },
+    {
+      "ts": 1755208202.6844919,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 314
+    },
+    {
+      "ts": 1755208419.9258826,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 315
+    },
+    {
+      "ts": 1755208749.802891,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 316
+    },
+    {
+      "ts": 1755209101.5096133,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 317
+    },
+    {
+      "ts": 1755209434.2010095,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 318
+    },
+    {
+      "ts": 1755209659.3112843,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 319
+    },
+    {
+      "ts": 1755209892.609368,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 320
+    },
+    {
+      "ts": 1755210175.006689,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 321
+    },
+    {
+      "ts": 1755210388.7045894,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 322
+    },
+    {
+      "ts": 1755210606.6053288,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 323
+    },
+    {
+      "ts": 1755210847.9997306,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 324
+    },
+    {
+      "ts": 1755211066.8341987,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 325
+    },
+    {
+      "ts": 1755211415.616405,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 326
+    },
+    {
+      "ts": 1755211638.1077614,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 327
+    },
+    {
+      "ts": 1755211845.3310065,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 328
+    },
+    {
+      "ts": 1755212179.7190213,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 329
+    },
+    {
+      "ts": 1755212408.6438897,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 330
+    },
+    {
+      "ts": 1755212718.1094017,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 331
+    },
+    {
+      "ts": 1755212897.6113448,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 332
+    },
+    {
+      "ts": 1755213109.9293103,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 333
+    },
+    {
+      "ts": 1755213332.4856858,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 334
+    },
+    {
+      "ts": 1755213550.6083643,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 335
+    },
+    {
+      "ts": 1755213771.7908943,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 336
+    },
+    {
+      "ts": 1755214084.714464,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 337
+    },
+    {
+      "ts": 1755214274.7113528,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 338
+    },
+    {
+      "ts": 1755214535.724276,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 339
+    },
+    {
+      "ts": 1755214809.3261266,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 340
+    },
+    {
+      "ts": 1755215027.911767,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 341
+    },
+    {
+      "ts": 1755215315.6098533,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 342
+    },
+    {
+      "ts": 1755215547.7070627,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 343
+    },
+    {
+      "ts": 1755215745.8089805,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 344
+    },
+    {
+      "ts": 1755215950.914364,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 345
+    },
+    {
+      "ts": 1755216297.3960705,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 346
+    },
+    {
+      "ts": 1755216618.613407,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 347
+    },
+    {
+      "ts": 1755216841.6880379,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 348
+    },
+    {
+      "ts": 1755217182.51675,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 349
+    },
+    {
+      "ts": 1755217429.1088104,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 350
+    },
+    {
+      "ts": 1755217759.203982,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 351
+    },
+    {
+      "ts": 1755217979.911695,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 352
+    },
+    {
+      "ts": 1755218195.3113089,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 353
+    },
+    {
+      "ts": 1755218533.8129606,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 354
+    },
+    {
+      "ts": 1755218816.796627,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 355
+    },
+    {
+      "ts": 1755219020.2148416,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 356
+    },
+    {
+      "ts": 1755219370.7973344,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 357
+    },
+    {
+      "ts": 1755219579.9125965,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 358
+    },
+    {
+      "ts": 1755219822.4077194,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 359
+    },
+    {
+      "ts": 1755220044.506302,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 360
+    },
+    {
+      "ts": 1755220465.7157214,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 361
+    },
+    {
+      "ts": 1755220937.4096897,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 362
+    },
+    {
+      "ts": 1755221163.5150516,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 363
+    },
+    {
+      "ts": 1755221514.8079193,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 364
+    },
+    {
+      "ts": 1755221831.4972987,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 365
+    },
+    {
+      "ts": 1755222189.3128958,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 366
+    },
+    {
+      "ts": 1755222549.2086737,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 367
+    },
+    {
+      "ts": 1755222889.4961815,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 368
+    },
+    {
+      "ts": 1755223234.100913,
+      "text": "expandir a ETPM com termo de acoplamento topológico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 369
+    },
+    {
+      "ts": 1755223588.8108811,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 370
+    },
+    {
+      "ts": 1755223813.4128697,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 371
+    },
+    {
+      "ts": 1755224161.5874534,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 372
+    },
+    {
+      "ts": 1755224503.207536,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 373
+    },
+    {
+      "ts": 1755224865.1169848,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 374
+    },
+    {
+      "ts": 1755225247.6062703,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 375
+    },
+    {
+      "ts": 1755225614.0067825,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 376
+    },
+    {
+      "ts": 1755225975.503864,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 377
+    },
+    {
+      "ts": 1755226332.2181027,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 378
+    },
+    {
+      "ts": 1755226678.812064,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 379
+    },
+    {
+      "ts": 1755227021.8100724,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 380
+    },
+    {
+      "ts": 1755227353.8086565,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 381
+    },
+    {
+      "ts": 1755227722.1166248,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 382
+    },
+    {
+      "ts": 1755228060.205168,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 383
+    },
+    {
+      "ts": 1755228392.505745,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 384
+    },
+    {
+      "ts": 1755228728.3167052,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 385
+    },
+    {
+      "ts": 1755229067.1098762,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 386
+    },
+    {
+      "ts": 1755229420.7873933,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 387
+    },
+    {
+      "ts": 1755229789.9285238,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 388
+    },
+    {
+      "ts": 1755230152.7117312,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 389
+    },
+    {
+      "ts": 1755230484.6137812,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 390
+    },
+    {
+      "ts": 1755230722.707109,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 391
+    },
+    {
+      "ts": 1755230958.9168475,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 392
+    },
+    {
+      "ts": 1755231365.6201968,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 393
+    },
+    {
+      "ts": 1755231721.41833,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 394
+    },
+    {
+      "ts": 1755231999.4830468,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 395
+    },
+    {
+      "ts": 1755232344.028171,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 396
+    },
+    {
+      "ts": 1755232543.008499,
+      "text": "expandir a ETPM com termo de acoplamento topológico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 397
+    },
+    {
+      "ts": 1755232877.5104918,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 398
+    },
+    {
+      "ts": 1755233074.811914,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 399
+    },
+    {
+      "ts": 1755233360.016359,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 400
+    },
+    {
+      "ts": 1755233578.2296584,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 401
+    },
+    {
+      "ts": 1755233912.2060285,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 402
+    },
+    {
+      "ts": 1755234260.1231186,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 403
+    },
+    {
+      "ts": 1755234595.9208674,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 404
+    },
+    {
+      "ts": 1755234822.3103218,
+      "text": "expandir a ETPM com termo de acoplamento topológico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 405
+    },
+    {
+      "ts": 1755235031.7255106,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 406
+    },
+    {
+      "ts": 1755235355.6446187,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 407
+    },
+    {
+      "ts": 1755235713.4266343,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 408
+    },
+    {
+      "ts": 1755236065.1225777,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 409
+    },
+    {
+      "ts": 1755236411.717729,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 410
+    },
+    {
+      "ts": 1755236752.6021473,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 411
+    },
+    {
+      "ts": 1755237106.331869,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 412
+    },
+    {
+      "ts": 1755237462.9121826,
+      "text": "expandir a ETPM com termo de acoplamento topológico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 413
+    },
+    {
+      "ts": 1755237734.9005368,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 414
+    },
+    {
+      "ts": 1755237970.0021346,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 415
+    },
+    {
+      "ts": 1755238330.721089,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 416
+    },
+    {
+      "ts": 1755238692.112958,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 417
+    },
+    {
+      "ts": 1755239052.4245327,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 418
+    },
+    {
+      "ts": 1755239372.5504198,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 419
+    },
+    {
+      "ts": 1755239796.312376,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 420
+    },
+    {
+      "ts": 1755240137.408401,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 421
+    },
+    {
+      "ts": 1755240478.9091797,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 422
+    },
+    {
+      "ts": 1755240839.997026,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 423
+    },
+    {
+      "ts": 1755241219.6296167,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 424
+    },
+    {
+      "ts": 1755241599.8033316,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 425
+    },
+    {
+      "ts": 1755241952.510636,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 426
+    },
+    {
+      "ts": 1755242313.5267386,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 427
+    },
+    {
+      "ts": 1755242655.4120016,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 428
+    },
+    {
+      "ts": 1755242999.011064,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 429
+    },
+    {
+      "ts": 1755243343.822002,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 430
+    },
+    {
+      "ts": 1755243678.3123343,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 431
+    },
+    {
+      "ts": 1755244091.218891,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 432
+    },
+    {
+      "ts": 1755244460.0091124,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 433
+    },
+    {
+      "ts": 1755244753.7246134,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 434
+    },
+    {
+      "ts": 1755245110.5841565,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 435
+    },
+    {
+      "ts": 1755245490.437434,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 436
+    },
+    {
+      "ts": 1755245849.420249,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 437
+    },
+    {
+      "ts": 1755246197.907028,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 438
+    },
+    {
+      "ts": 1755246569.3189626,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 439
+    },
+    {
+      "ts": 1755246927.8203537,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 440
+    },
+    {
+      "ts": 1755247265.5244603,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 441
+    },
+    {
+      "ts": 1755247608.508022,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 442
+    },
+    {
+      "ts": 1755247953.2961805,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 443
+    },
+    {
+      "ts": 1755248292.9358587,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 444
+    },
+    {
+      "ts": 1755248620.3300748,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 445
+    },
+    {
+      "ts": 1755248996.3880062,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 446
+    },
+    {
+      "ts": 1755249372.713031,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 447
+    },
+    {
+      "ts": 1755249705.0113912,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 448
+    },
+    {
+      "ts": 1755250045.010809,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 449
+    },
+    {
+      "ts": 1755250363.5248919,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 450
+    },
+    {
+      "ts": 1755250716.2018461,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 451
+    },
+    {
+      "ts": 1755251091.9128232,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 452
+    },
+    {
+      "ts": 1755251454.73706,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 453
+    },
+    {
+      "ts": 1755251789.2934704,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 454
+    },
+    {
+      "ts": 1755252163.0310404,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 455
+    },
+    {
+      "ts": 1755252488.341783,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 456
+    },
+    {
+      "ts": 1755252896.9072425,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 457
+    },
+    {
+      "ts": 1755253263.0244155,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 458
+    },
+    {
+      "ts": 1755253503.2091599,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 459
+    },
+    {
+      "ts": 1755253845.5163689,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 460
+    },
+    {
+      "ts": 1755254210.797057,
+      "text": "expandir a ETPM com termo de acoplamento topológico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 461
+    },
+    {
+      "ts": 1755254552.4146345,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 462
+    },
+    {
+      "ts": 1755254890.8137262,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 463
+    },
+    {
+      "ts": 1755255124.5163407,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 464
+    },
+    {
+      "ts": 1755255412.8090565,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 465
+    },
+    {
+      "ts": 1755255759.1475966,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 466
+    },
+    {
+      "ts": 1755256113.626577,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 467
+    },
+    {
+      "ts": 1755256476.5372233,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 468
+    },
+    {
+      "ts": 1755256887.4113173,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 469
+    },
+    {
+      "ts": 1755257254.6093671,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 470
+    },
+    {
+      "ts": 1755257586.8952463,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 471
+    },
+    {
+      "ts": 1755257908.3164337,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 472
+    },
+    {
+      "ts": 1755258255.9173682,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 473
+    },
+    {
+      "ts": 1755258475.8134358,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 474
+    },
+    {
+      "ts": 1755258707.2161634,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 475
+    },
+    {
+      "ts": 1755259092.0293968,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 476
+    },
+    {
+      "ts": 1755259446.7247193,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 477
+    },
+    {
+      "ts": 1755259792.2915485,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 478
+    },
+    {
+      "ts": 1755260125.814119,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 479
+    },
+    {
+      "ts": 1755260485.6294034,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 480
+    },
+    {
+      "ts": 1755260860.6121476,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 481
+    },
+    {
+      "ts": 1755261223.4183707,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 482
+    },
+    {
+      "ts": 1755261599.423749,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 483
+    },
+    {
+      "ts": 1755261939.4317312,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 484
+    },
+    {
+      "ts": 1755262275.1098394,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 485
+    },
+    {
+      "ts": 1755262611.127976,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 486
+    },
+    {
+      "ts": 1755262973.9062214,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 487
+    },
+    {
+      "ts": 1755263327.818103,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 488
+    },
+    {
+      "ts": 1755263679.4188514,
+      "text": "expandir a ETPM com termo de acoplamento topológico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 489
+    },
+    {
+      "ts": 1755264045.9098291,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 490
+    },
+    {
+      "ts": 1755264394.2131019,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 491
+    },
+    {
+      "ts": 1755264757.9108915,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 492
+    },
+    {
+      "ts": 1755265097.0039196,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 493
+    },
+    {
+      "ts": 1755265453.415068,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 494
+    },
+    {
+      "ts": 1755265821.996112,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 495
+    },
+    {
+      "ts": 1755266198.0861793,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 496
+    },
+    {
+      "ts": 1755266543.0960932,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 497
+    },
+    {
+      "ts": 1755266876.4108744,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 498
+    },
+    {
+      "ts": 1755267258.2869577,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 499
+    },
+    {
+      "ts": 1755267620.4169242,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 500
+    },
+    {
+      "ts": 1755267974.232606,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 501
+    },
+    {
+      "ts": 1755268317.913262,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 502
+    },
+    {
+      "ts": 1755268665.2216065,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 503
+    },
+    {
+      "ts": 1755269011.1063173,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 504
+    },
+    {
+      "ts": 1755269362.008352,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 505
+    },
+    {
+      "ts": 1755269684.699144,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 506
+    },
+    {
+      "ts": 1755270034.2200737,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 507
+    },
+    {
+      "ts": 1755270410.4051936,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 508
+    },
+    {
+      "ts": 1755270765.7338302,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 509
+    },
+    {
+      "ts": 1755271141.301646,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 510
+    },
+    {
+      "ts": 1755271512.2200863,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 511
+    },
+    {
+      "ts": 1755271876.3017142,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 512
+    },
+    {
+      "ts": 1755272234.5917943,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 513
+    },
+    {
+      "ts": 1755272555.5311651,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 514
+    },
+    {
+      "ts": 1755272873.784732,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 515
+    },
+    {
+      "ts": 1755273226.3132675,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 516
+    },
+    {
+      "ts": 1755273581.2238216,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 517
+    },
+    {
+      "ts": 1755273932.2206798,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 518
+    },
+    {
+      "ts": 1755274293.9226613,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 519
+    },
+    {
+      "ts": 1755274617.642807,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 520
+    },
+    {
+      "ts": 1755274977.3100848,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 521
+    },
+    {
+      "ts": 1755275352.319674,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 522
+    },
+    {
+      "ts": 1755275692.1079965,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 523
+    },
+    {
+      "ts": 1755276033.427347,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 524
+    },
+    {
+      "ts": 1755276362.7108839,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 525
+    },
+    {
+      "ts": 1755276711.625959,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 526
+    },
+    {
+      "ts": 1755276942.6267114,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 527
+    },
+    {
+      "ts": 1755277289.903393,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 528
+    },
+    {
+      "ts": 1755277638.30161,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 529
+    },
+    {
+      "ts": 1755277883.906628,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 530
+    },
+    {
+      "ts": 1755278238.097585,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 531
+    },
+    {
+      "ts": 1755278590.8000407,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 532
+    },
+    {
+      "ts": 1755278960.0228257,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 533
+    },
+    {
+      "ts": 1755279326.603026,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 534
+    },
+    {
+      "ts": 1755279675.9168878,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 535
+    },
+    {
+      "ts": 1755280014.719439,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 536
+    },
+    {
+      "ts": 1755280284.5364544,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 537
+    },
+    {
+      "ts": 1755280672.1180584,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 538
+    },
+    {
+      "ts": 1755280973.2049358,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 539
+    },
+    {
+      "ts": 1755281337.6188374,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 540
+    },
+    {
+      "ts": 1755281694.2264888,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 541
+    },
+    {
+      "ts": 1755281940.028888,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 542
+    },
+    {
+      "ts": 1755282279.8098195,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 543
+    },
+    {
+      "ts": 1755282544.508388,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 544
+    },
+    {
+      "ts": 1755282774.8079078,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 545
+    },
+    {
+      "ts": 1755283106.5327182,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 546
+    },
+    {
+      "ts": 1755283378.8090231,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 547
+    },
+    {
+      "ts": 1755283792.7175188,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 548
+    },
+    {
+      "ts": 1755284135.6133358,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 549
+    },
+    {
+      "ts": 1755284502.0116832,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 550
+    },
+    {
+      "ts": 1755284848.6165693,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 551
+    },
+    {
+      "ts": 1755285220.1161177,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 552
+    },
+    {
+      "ts": 1755285551.911759,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 553
+    },
+    {
+      "ts": 1755285917.7108178,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 554
+    },
+    {
+      "ts": 1755286272.5200486,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 555
+    },
+    {
+      "ts": 1755286631.6147125,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 556
+    },
+    {
+      "ts": 1755286972.8106775,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 557
+    },
+    {
+      "ts": 1755287338.821618,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 558
+    },
+    {
+      "ts": 1755287685.008496,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 559
+    },
+    {
+      "ts": 1755287967.5135112,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 560
+    },
+    {
+      "ts": 1755288323.8287585,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 561
+    },
+    {
+      "ts": 1755288615.3118794,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 562
+    },
+    {
+      "ts": 1755288967.0235283,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 563
+    },
+    {
+      "ts": 1755289344.1127083,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 564
+    },
+    {
+      "ts": 1755289673.795508,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→neuronal preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 565
+    },
+    {
+      "ts": 1755290029.812135,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 566
+    },
+    {
+      "ts": 1755290358.1255178,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 567
+    },
+    {
+      "ts": 1755290691.740084,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 568
+    },
+    {
+      "ts": 1755291035.5217607,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 569
+    },
+    {
+      "ts": 1755291394.4019043,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 570
+    },
+    {
+      "ts": 1755291760.6197488,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 571
+    },
+    {
+      "ts": 1755292055.5227485,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 572
+    },
+    {
+      "ts": 1755292460.502288,
+      "text": "expandir a ETPM com termo de acoplamento geométrico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 573
+    },
+    {
+      "ts": 1755292791.9176233,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 574
+    },
+    {
+      "ts": 1755293088.0349805,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 575
+    },
+    {
+      "ts": 1755293314.3928034,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 576
+    },
+    {
+      "ts": 1755293534.8166828,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 577
+    },
+    {
+      "ts": 1755293898.5187604,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 578
+    },
+    {
+      "ts": 1755294240.1262972,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 579
+    },
+    {
+      "ts": 1755294586.109271,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 580
+    },
+    {
+      "ts": 1755294916.3111148,
+      "text": "expandir a ETPM com termo de acoplamento simbólico→estocástico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 581
+    },
+    {
+      "ts": 1755295265.3169765,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 582
+    },
+    {
+      "ts": 1755295595.8131354,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 583
+    },
+    {
+      "ts": 1755295805.0103772,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 584
+    },
+    {
+      "ts": 1755296124.1160648,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 585
+    },
+    {
+      "ts": 1755296345.005737,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 586
+    },
+    {
+      "ts": 1755296633.4185908,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 587
+    },
+    {
+      "ts": 1755296916.413927,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 588
+    },
+    {
+      "ts": 1755297259.7087767,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 589
+    },
+    {
+      "ts": 1755297618.3165064,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 590
+    },
+    {
+      "ts": 1755297856.8132317,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 591
+    },
+    {
+      "ts": 1755298193.514706,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 592
+    },
+    {
+      "ts": 1755298463.7101488,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 593
+    },
+    {
+      "ts": 1755298808.4300723,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 594
+    },
+    {
+      "ts": 1755299021.318063,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 595
+    },
+    {
+      "ts": 1755299223.1234152,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 596
+    },
+    {
+      "ts": 1755299464.0002875,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 597
+    },
+    {
+      "ts": 1755299803.929217,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 598
+    },
+    {
+      "ts": 1755300077.4279318,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 599
+    },
+    {
+      "ts": 1755300411.3127692,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 600
+    },
+    {
+      "ts": 1755300627.2132416,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 601
+    },
+    {
+      "ts": 1755300837.3956168,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 602
+    },
+    {
+      "ts": 1755301052.6187272,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 603
+    },
+    {
+      "ts": 1755301331.3064034,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 604
+    },
+    {
+      "ts": 1755301640.2175243,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→metacognitivo preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 605
+    },
+    {
+      "ts": 1755302022.6198053,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 606
+    },
+    {
+      "ts": 1755302283.8175814,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 607
+    },
+    {
+      "ts": 1755302624.815599,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 608
+    },
+    {
+      "ts": 1755302832.2176213,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 609
+    },
+    {
+      "ts": 1755303182.2291822,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 610
+    },
+    {
+      "ts": 1755303407.0304315,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 611
+    },
+    {
+      "ts": 1755303745.7075994,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 612
+    },
+    {
+      "ts": 1755304093.0957212,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 613
+    },
+    {
+      "ts": 1755304446.324545,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 614
+    },
+    {
+      "ts": 1755304717.5224576,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 615
+    },
+    {
+      "ts": 1755305059.7437527,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 616
+    },
+    {
+      "ts": 1755305377.0320568,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 617
+    },
+    {
+      "ts": 1755305726.6028252,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 618
+    },
+    {
+      "ts": 1755305933.8034654,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 619
+    },
+    {
+      "ts": 1755306178.22905,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 620
+    },
+    {
+      "ts": 1755306425.519095,
+      "text": "expandir a ETPM com termo de acoplamento probabilístico→semântico preservando estabilidade e aumentando expressividade",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 621
+    },
+    {
+      "ts": 1755306755.5151057,
+      "text": "projetar pipeline de fusão com provas unitárias para equivalência semântica",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 622
+    },
+    {
+      "ts": 1755307033.9390972,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 623
+    },
+    {
+      "ts": 1755307356.3688605,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 624
+    },
+    {
+      "ts": 1755307669.5145218,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 625
+    },
+    {
+      "ts": 1755307863.8918023,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 626
+    },
+    {
+      "ts": 1755308188.318521,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 627
+    },
+    {
+      "ts": 1755308510.8989947,
+      "text": "mapear a ETPM como funtor entre categorias Diff e Mind com limites/pullbacks explícitos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 628
+    },
+    {
+      "ts": 1755308840.3227453,
+      "text": "provar limite de generalização da ETPM sob ruído adversarial e ajustar hiperparâmetros α,β,γ",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 629
+    },
+    {
+      "ts": 1755309182.4137516,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 630
+    },
+    {
+      "ts": 1755309406.7148454,
+      "text": "evoluir otimizadores aninhados com meta-grad e critérios de pareto eficiência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 631
+    },
+    {
+      "ts": 1755309722.1291008,
+      "text": "introduzir leis naturais para transformações entre espaços semânticos",
+      "topic": "category_theory",
+      "score": 0.0,
+      "round": 632
+    },
+    {
+      "ts": 1755310050.6340144,
+      "text": "derivar variantes da ETPM com controle de rigidez semântica via λ-regularização",
+      "topic": "turing_equation/etpm",
+      "score": 0.0,
+      "round": 633
+    },
+    {
+      "ts": 1755310192.605803,
+      "text": "fusar representações simbólicas e neurais com operadores monoidais e checagem de consistência",
+      "topic": "symbolic_fusion",
+      "score": 0.0,
+      "round": 634
+    },
+    {
+      "ts": 1755310530.3007593,
+      "text": "criar meta-aprendizado de ordem-2 com adaptação rápida e prova de convergência",
+      "topic": "meta_learning",
+      "score": 0.0,
+      "round": 635
+    }
+  ],
+  "topic_stats": {
+    "turing_equation/etpm": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": 633
+    },
+    "symbolic_fusion": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": 634
+    },
+    "meta_learning": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": 635
+    },
+    "category_theory": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": 632
+    },
+    "non_classical_logic": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": -10
+    },
+    "rag_pipeline": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": -10
+    },
+    "evaluation": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": -10
+    },
+    "alignment": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": -10
+    },
+    "memory": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": -10
+    },
+    "agents": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": -10
+    },
+    "tool_use": {
+      "n": 0,
+      "avg": 0.0,
+      "last_round": -10
+    }
+  },
+  "cooldowns": {
+    "1278fe8601cd2abfe54cd2e14a7c17241d320607": 640,
+    "d944d207762e876cfbed57072d6f6fecc97a50ba": 637,
+    "38275e2780f2d3494e4fa86f83166678b74bcab0": 638,
+    "6d0405ce31e23b54ca902f4c3dfabb3c611fea0d": 639,
+    "964fba10d2241a05856584d144448ef42d1fa4fb": 641
+  }
+}

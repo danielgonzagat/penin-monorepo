@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /opt/lemniscata
+LAST="$(ls -1dt _artifacts/dgm/* 2>/dev/null | head -n1 || true)"
+[ -n "$LAST" ] || { echo "[promote-ifok] sem artifacts"; exit 0; }
+EVAL="$LAST/eval.json"; test -s "$EVAL" || { echo "[promote-ifok] sem eval.json"; exit 1; }
+ok="$(jq -r '.gates_ok' "$EVAL" || echo false)"
+if [ "$ok" != "true" ]; then
+  echo "$(date -Is) PROMOTE SKIP art=$(basename "$LAST") reason=gates_not_ok" >> .ledger
+  echo "[promote-ifok] pulado: gates_ok=false"
+  exit 0
+fi
+/usr/local/bin/lemni-promote

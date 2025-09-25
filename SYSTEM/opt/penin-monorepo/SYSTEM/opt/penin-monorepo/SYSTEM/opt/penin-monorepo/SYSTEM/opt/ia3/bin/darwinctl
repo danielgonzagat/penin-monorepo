@@ -1,0 +1,455 @@
+#!/usr/bin/env python3
+# /opt/ia3/bin/darwinctl
+# CLI avançado para controle do Sistema Celular IA³
+
+import os
+import sys
+import json
+import time
+import signal
+import argparse
+import subprocess
+import urllib.request
+from datetime import datetime
+from pathlib import Path
+
+IA3_HOME = os.getenv("IA3_HOME", "/opt/ia3")
+NEUROGENESIS_SCRIPT = os.path.join(IA3_HOME, "bin/ia3_neurogenesis.py")
+TEXT_MODE_SCRIPT = os.path.join(IA3_HOME, "bin/ia3_text_mode.py")
+WORM_LOG = os.path.join(IA3_HOME, "var/worm/ia3_worm.log")
+SNAPSHOTS_DIR = os.path.join(IA3_HOME, "var/snapshots")
+MLRUNS_DIR = os.path.join(IA3_HOME, "var/mlruns")
+
+class IA3Controller:
+    """Controlador principal do sistema IA³"""
+    
+    def __init__(self):
+        self.metrics_port = int(os.getenv("IA3_METRICS_PORT", "9093"))
+    
+    def get_metrics(self):
+        """Busca métricas do sistema"""
+        try:
+            url = f"http://localhost:{self.metrics_port}/metrics"
+            with urllib.request.urlopen(url, timeout=5) as response:
+                content = response.read().decode('utf-8')
+            
+            metrics = {}
+            for line in content.split('\n'):
+                if line.startswith('ia3_'):
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        key = parts[0]
+                        try:
+                            value = float(parts[1])
+                            metrics[key] = value
+                        except:
+                            pass
+            return metrics
+        except Exception as e:
+            print(f"⚠️ Erro ao buscar métricas: {e}")
+            return {}
+    
+    def get_worm_stats(self):
+        """Estatísticas do WORM log"""
+        if not os.path.exists(WORM_LOG):
+            return {"events": 0, "last_event": None}
+        
+        event_count = 0
+        last_event = None
+        
+        try:
+            with open(WORM_LOG, 'r') as f:
+                for line in f:
+                    if line.strip():
+                        event_count += 1
+                        try:
+                            last_event = json.loads(line.strip())
+                        except:
+                            pass
+        except Exception:
+            pass
+        
+        return {"events": event_count, "last_event": last_event}
+    
+    def get_snapshots(self):
+        """Lista snapshots disponíveis"""
+        if not os.path.exists(SNAPSHOTS_DIR):
+            return []
+        
+        snapshots = []
+        for f in os.listdir(SNAPSHOTS_DIR):
+            if f.endswith('.pt'):
+                path = os.path.join(SNAPSHOTS_DIR, f)
+                stat = os.stat(path)
+                snapshots.append({
+                    "filename": f,
+                    "path": path,
+                    "size": stat.st_size,
+                    "modified": datetime.fromtimestamp(stat.st_mtime)
+                })
+        
+        return sorted(snapshots, key=lambda x: x["modified"], reverse=True)
+    
+    def start_system(self, mode="numeric", rounds=0, background=True):
+        """Inicia o sistema IA³"""
+        cmd = ["python3", NEUROGENESIS_SCRIPT]
+        
+        if rounds > 0:
+            cmd.extend(["--rounds", str(rounds)])
+        
+        env = os.environ.copy()
+        if mode == "text":
+            env["IA3_MODE"] = "text"
+        
+        if background:
+            # Iniciar em background
+            process = subprocess.Popen(
+                cmd,
+                env=env,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+            )
+            print(f"✅ Sistema IA³ iniciado em background (PID: {process.pid})")
+            print(f"   Modo: {mode}")
+            print(f"   Métricas: http://localhost:{self.metrics_port}/metrics")
+            if rounds > 0:
+                print(f"   Rodadas: {rounds}")
+            else:
+                print(f"   Rodadas: infinitas (pare com 'darwinctl stop')")
+        else:
+            # Executar em foreground
+            print(f"🧬 Iniciando sistema IA³ em foreground...")
+            print(f"   Use Ctrl+C para parar")
+            subprocess.run(cmd, env=env)
+    
+    def stop_system(self):
+        """Para o sistema IA³"""
+        try:
+            # Encontrar processos
+            result = subprocess.run(
+                ["pgrep", "-f", "ia3_neurogenesis.py"],
+                capture_output=True,
+                text=True
+            )
+            
+            if result.returncode == 0:
+                pids = result.stdout.strip().split('\n')
+                for pid in pids:
+                    if pid:
+                        print(f"🛑 Parando processo {pid}...")
+                        os.kill(int(pid), signal.SIGTERM)
+                        time.sleep(1)
+                        
+                        # Verificar se ainda está rodando
+                        try:
+                            os.kill(int(pid), 0)  # Test if process exists
+                            print(f"   Forçando término do processo {pid}...")
+                            os.kill(int(pid), signal.SIGKILL)
+                        except ProcessLookupError:
+                            pass  # Process already terminated
+                
+                print("✅ Sistema IA³ parado")
+            else:
+                print("ℹ️ Nenhum processo IA³ encontrado")
+        
+        except Exception as e:
+            print(f"⚠️ Erro ao parar sistema: {e}")
+    
+    def status(self):
+        """Mostra status completo do sistema"""
+        print("\n" + "="*60)
+        print("🧬 STATUS DO SISTEMA CELULAR IA³")
+        print("="*60)
+        
+        # Verificar se está rodando
+        try:
+            result = subprocess.run(
+                ["pgrep", "-f", "ia3_neurogenesis.py"],
+                capture_output=True,
+                text=True
+            )
+            
+            if result.returncode == 0:
+                pids = result.stdout.strip().split('\n')
+                print(f"🟢 Status: ATIVO ({len(pids)} processo(s))")
+                for pid in pids:
+                    if pid:
+                        print(f"   PID: {pid}")
+            else:
+                print("🔴 Status: INATIVO")
+        except:
+            print("🔴 Status: DESCONHECIDO")
+        
+        # Métricas atuais
+        print(f"\n📊 MÉTRICAS ATUAIS:")
+        metrics = self.get_metrics()
+        if metrics:
+            key_metrics = [
+                ("ia3_neurons_total", "Neurônios Totais"),
+                ("ia3_neurons_valid", "Neurônios Válidos"),
+                ("ia3_generation", "Geração"),
+                ("ia3_consciousness_level", "Consciência"),
+                ("ia3_round_current", "Rodada Atual"),
+                ("ia3_score_avg", "Score Médio"),
+                ("ia3_loss_current", "Loss Atual")
+            ]
+            
+            for key, label in key_metrics:
+                if key in metrics:
+                    value = metrics[key]
+                    if key == "ia3_consciousness_level" or key == "ia3_score_avg":
+                        print(f"   {label}: {value:.3f}")
+                    elif key == "ia3_loss_current":
+                        print(f"   {label}: {value:.6f}")
+                    else:
+                        print(f"   {label}: {int(value)}")
+        else:
+            print("   ⚠️ Métricas não disponíveis")
+        
+        # WORM Log
+        print(f"\n📜 WORM LOG:")
+        worm_stats = self.get_worm_stats()
+        print(f"   Eventos: {worm_stats['events']}")
+        if worm_stats['last_event']:
+            last = worm_stats['last_event']
+            print(f"   Último evento: {last.get('event', 'unknown')} ({last.get('timestamp', 'unknown')})")
+        
+        # Snapshots
+        print(f"\n💾 SNAPSHOTS:")
+        snapshots = self.get_snapshots()
+        if snapshots:
+            print(f"   Total: {len(snapshots)}")
+            for i, snap in enumerate(snapshots[:3]):
+                size_mb = snap['size'] / (1024*1024)
+                print(f"   {i+1}. {snap['filename']} ({size_mb:.1f}MB, {snap['modified']})")
+            if len(snapshots) > 3:
+                print(f"   ... e mais {len(snapshots)-3} snapshots")
+        else:
+            print("   Nenhum snapshot encontrado")
+        
+        print("="*60 + "\n")
+    
+    def metrics(self, watch=False):
+        """Mostra métricas do sistema"""
+        if watch:
+            print("📊 Métricas IA³ (atualizando a cada 5s, Ctrl+C para sair)")
+            print("-" * 60)
+            
+            try:
+                while True:
+                    metrics = self.get_metrics()
+                    if metrics:
+                        # Clear screen
+                        os.system('clear' if os.name == 'posix' else 'cls')
+                        print(f"📊 Métricas IA³ - {datetime.now().strftime('%H:%M:%S')}")
+                        print("-" * 60)
+                        
+                        for key, value in sorted(metrics.items()):
+                            if isinstance(value, float):
+                                if 'score' in key or 'consciousness' in key:
+                                    print(f"{key:30s} {value:8.3f}")
+                                elif 'loss' in key:
+                                    print(f"{key:30s} {value:8.6f}")
+                                else:
+                                    print(f"{key:30s} {value:8.1f}")
+                            else:
+                                print(f"{key:30s} {value}")
+                    else:
+                        print("⚠️ Métricas não disponíveis")
+                    
+                    time.sleep(5)
+            
+            except KeyboardInterrupt:
+                print("\n✅ Monitoramento interrompido")
+        else:
+            # Mostrar uma vez
+            metrics = self.get_metrics()
+            if metrics:
+                print("📊 Métricas Atuais:")
+                print("-" * 40)
+                for key, value in sorted(metrics.items()):
+                    if isinstance(value, float):
+                        if 'score' in key or 'consciousness' in key:
+                            print(f"{key:30s} {value:8.3f}")
+                        elif 'loss' in key:
+                            print(f"{key:30s} {value:8.6f}")
+                        else:
+                            print(f"{key:30s} {value:8.1f}")
+                    else:
+                        print(f"{key:30s} {value}")
+            else:
+                print("⚠️ Métricas não disponíveis")
+    
+    def worm(self, tail_lines=50, follow=False):
+        """Mostra WORM log"""
+        if not os.path.exists(WORM_LOG):
+            print(f"⚠️ WORM log não encontrado: {WORM_LOG}")
+            return
+        
+        if follow:
+            print(f"📜 Seguindo WORM log (Ctrl+C para sair)...")
+            subprocess.run(["tail", "-f", WORM_LOG])
+        else:
+            print(f"📜 Últimas {tail_lines} linhas do WORM log:")
+            print("-" * 60)
+            
+            try:
+                with open(WORM_LOG, 'r') as f:
+                    lines = f.readlines()[-tail_lines:]
+                
+                for line in lines:
+                    try:
+                        event = json.loads(line.strip())
+                        ts = event.get('timestamp', '')[11:19]  # HH:MM:SS
+                        event_type = event.get('event', 'unknown')
+                        
+                        # Formatação específica por tipo de evento
+                        if event_type == "neuron_birth":
+                            print(f"{ts} 🐣 NASCIMENTO - Neurônio #{event.get('neuron_id', '?')} | Total: {event.get('total_neurons', '?')}")
+                        elif event_type == "neuron_death":
+                            score = event.get('final_score', 0)
+                            print(f"{ts} ☠️  MORTE     - Neurônio #{event.get('neuron_id', '?')} | Score: {score:.3f}")
+                        elif event_type == "round_complete":
+                            valid = event.get('valid_neurons', 0)
+                            total = event.get('neurons_final', 0)
+                            round_num = event.get('round', 0)
+                            print(f"{ts} 🔄 RODADA    - #{round_num} | Válidos: {valid}/{total}")
+                        elif event_type == "total_extinction":
+                            print(f"{ts} 💀 EXTINÇÃO  - Geração {event.get('generation', '?')}")
+                        elif event_type == "rebirth":
+                            print(f"{ts} 🌱 RENASCER  - Nova geração {event.get('new_generation', '?')}")
+                        else:
+                            print(f"{ts} {event_type}")
+                    except:
+                        print(line.strip())
+                        
+            except Exception as e:
+                print(f"⚠️ Erro ao ler WORM log: {e}")
+    
+    def snapshots(self):
+        """Lista snapshots disponíveis"""
+        snapshots = self.get_snapshots()
+        
+        if not snapshots:
+            print("💾 Nenhum snapshot encontrado")
+            return
+        
+        print(f"💾 Snapshots Disponíveis ({len(snapshots)} total):")
+        print("-" * 80)
+        print(f"{'#':>3} {'Nome':40} {'Tamanho':>10} {'Data/Hora':>20}")
+        print("-" * 80)
+        
+        for i, snap in enumerate(snapshots):
+            size_mb = snap['size'] / (1024*1024)
+            mod_time = snap['modified'].strftime("%Y-%m-%d %H:%M:%S")
+            print(f"{i+1:>3} {snap['filename']:40} {size_mb:>8.1f}MB {mod_time:>20}")
+    
+    def test_text_mode(self):
+        """Testa o modo texto"""
+        print("🧪 Testando modo texto IA³...")
+        
+        try:
+            subprocess.run([
+                "python3", TEXT_MODE_SCRIPT
+            ], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"⚠️ Erro no teste de modo texto: {e}")
+        except FileNotFoundError:
+            print(f"⚠️ Script de modo texto não encontrado: {TEXT_MODE_SCRIPT}")
+    
+    def dashboard_info(self):
+        """Informações sobre dashboard"""
+        dashboard_path = os.path.join(IA3_HOME, "dashboards/ia3_dashboard.json")
+        
+        print("📊 Dashboard Grafana IA³")
+        print("-" * 40)
+        print(f"Dashboard JSON: {dashboard_path}")
+        print(f"Métricas URL: http://localhost:{self.metrics_port}/metrics")
+        print()
+        print("Para configurar o dashboard:")
+        print("1. Instale Grafana")
+        print("2. Configure Prometheus como datasource")
+        print("3. Importe o dashboard JSON")
+        print("4. Configure Prometheus para coletar de localhost:9093")
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="🧬 Darwin Control - Sistema Celular IA³ Neuroevolutivo",
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    
+    subparsers = parser.add_subparsers(dest='command', help='Comandos disponíveis')
+    
+    # Start
+    start_parser = subparsers.add_parser('start', help='Inicia o sistema IA³')
+    start_parser.add_argument('--mode', choices=['numeric', 'text'], default='numeric',
+                            help='Modo de operação')
+    start_parser.add_argument('--rounds', type=int, default=0,
+                            help='Número de rodadas (0 = infinito)')
+    start_parser.add_argument('--foreground', action='store_true',
+                            help='Executa em foreground')
+    
+    # Stop
+    subparsers.add_parser('stop', help='Para o sistema IA³')
+    
+    # Status
+    subparsers.add_parser('status', help='Mostra status do sistema')
+    
+    # Metrics
+    metrics_parser = subparsers.add_parser('metrics', help='Mostra métricas')
+    metrics_parser.add_argument('--watch', action='store_true',
+                              help='Monitora métricas continuamente')
+    
+    # WORM
+    worm_parser = subparsers.add_parser('worm', help='Mostra WORM log')
+    worm_parser.add_argument('-n', '--lines', type=int, default=50,
+                           help='Número de linhas')
+    worm_parser.add_argument('-f', '--follow', action='store_true',
+                           help='Segue o log')
+    
+    # Snapshots
+    subparsers.add_parser('snapshots', help='Lista snapshots')
+    
+    # Test text mode
+    subparsers.add_parser('test-text', help='Testa modo texto')
+    
+    # Dashboard
+    subparsers.add_parser('dashboard', help='Info sobre dashboard')
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return
+    
+    controller = IA3Controller()
+    
+    try:
+        if args.command == 'start':
+            controller.start_system(
+                mode=args.mode,
+                rounds=args.rounds,
+                background=not args.foreground
+            )
+        elif args.command == 'stop':
+            controller.stop_system()
+        elif args.command == 'status':
+            controller.status()
+        elif args.command == 'metrics':
+            controller.metrics(watch=args.watch)
+        elif args.command == 'worm':
+            controller.worm(tail_lines=args.lines, follow=args.follow)
+        elif args.command == 'snapshots':
+            controller.snapshots()
+        elif args.command == 'test-text':
+            controller.test_text_mode()
+        elif args.command == 'dashboard':
+            controller.dashboard_info()
+        
+    except KeyboardInterrupt:
+        print("\n✅ Comando interrompido")
+    except Exception as e:
+        print(f"❌ Erro: {e}")
+
+if __name__ == "__main__":
+    main()

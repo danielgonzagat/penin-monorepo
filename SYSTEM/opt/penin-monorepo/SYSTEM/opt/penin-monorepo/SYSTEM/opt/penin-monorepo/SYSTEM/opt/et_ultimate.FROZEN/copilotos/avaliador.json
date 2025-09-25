@@ -1,0 +1,10 @@
+{
+  "nome": "avaliador",
+  "descricao": "Avalia mutações com base em impacto esperado e clareza formal",
+  "estrategia": "Pontuação simbólica e emparelhamento com objetivos",
+  "regras": [
+    "Comparar com histórico",
+    "Premiar expressividade mínima"
+  ],
+  "criado_em": "2025-08-16T02:15:30.299416"
+}

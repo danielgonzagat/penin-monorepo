@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+HIST="${LEMNI_HIST:-/opt/lemniscata/_chat/session.jsonl}"
+: > "$HIST"
+echo "[chat] nova sessão pronta."

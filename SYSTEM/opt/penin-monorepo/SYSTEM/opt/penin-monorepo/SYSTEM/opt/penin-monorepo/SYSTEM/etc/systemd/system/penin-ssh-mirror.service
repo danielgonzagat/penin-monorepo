@@ -1,0 +1,39 @@
+[Unit]
+Description=PENIN SSH Mirror - Espelhamento Total via SSH 24/7
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/penin-autosync
+
+# Configurações de performance
+Nice=-10
+IOSchedulingClass=realtime
+IOSchedulingPriority=0
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=99
+
+# Limites aumentados
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+LimitMEMLOCK=infinity
+
+# Variáveis de ambiente
+Environment="SSH_AUTH_SOCK=/tmp/ssh-agent.sock"
+Environment="GIT_SSH_COMMAND=ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+ExecStartPre=/bin/bash -c 'ssh-agent -a /tmp/ssh-agent.sock'
+ExecStart=/usr/bin/python3 /opt/penin-autosync/ssh_mirror_system.py
+Restart=always
+RestartSec=5
+
+# Logs
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

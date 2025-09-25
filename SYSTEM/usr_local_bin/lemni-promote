@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /opt/lemniscata
+
+last="$(ls -1dt _artifacts/dgm/* 2>/dev/null | head -n1 || true)"
+[ -n "${last}" ] || { echo "[promote] sem artifacts"; exit 0; }
+patch="${last}/patch.diff"
+
+git checkout -B shadow >/dev/null 2>&1 || true
+ok=0
+if [ -s "$patch" ]; then
+  git apply --3way "$patch" && ok=1 || true   # --3way implica --index e é incompatível com --reject. :contentReference[oaicite:2]{index=2}
+  [ $ok -eq 1 ] || git apply "$patch" && ok=1 || true
+fi
+# fallback: se patch vazio ou não aplicável, atualiza (idempotente) a stamp no alvo
+if [ $ok -eq 0 ]; then
+  tgt="services/api/app.py"; test -f "$tgt" || { echo "[promote] alvo ausente: $tgt"; exit 1; }
+  if grep -q '^# dgm-stamp:' "$tgt"; then
+    ts="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    sed -i "s/^# dgm-stamp:.*/# dgm-stamp: ${ts}/" "$tgt"
+  else
+    if grep -n '^\# dgm-mark$' "$tgt" >/dev/null 2>&1; then
+      lineno="$(grep -n '^\# dgm-mark$' "$tgt" | head -n1 | cut -d: -f1)"
+      awk -v ln="$lineno" -v TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)" 'NR==ln{print; print "# dgm-stamp: "TS; next}1' "$tgt" > "$tgt.tmp" && mv "$tgt.tmp" "$tgt"
+    else
+      printf '\n# dgm-mark\n# dgm-stamp: %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$tgt"
+    fi
+  fi
+fi
+
+git add -A || true
+git diff --cached --quiet || git commit -m "shadow apply $(date -Is) art=$(basename "$last")" || true
+
+docker compose up -d --build
+
+# aguarda API saudável (compose healthcheck + /health)
+for i in {1..60}; do
+  code="$(curl -s -o /dev/null -w "%{http_code}" http://localhost:18080/health || true)"
+  [ "$code" = "200" ] && break || sleep 1
+done
+[ "$code" = "200" ] || { echo "[promote] API não saudável"; exit 2; }
+
+git checkout -B main >/dev/null 2>&1 || true
+echo "$(date -Is) PROMOTE main" >> .ledger
+echo "[lemni-promote] OK"

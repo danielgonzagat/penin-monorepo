@@ -1,0 +1,12 @@
+Expected Improvement maximization initiated.Evolution started with Expected Improvement strategy.Evolução da ETΩ iniciada com objetivo de maximizar Expected Improvement.Evolução da Equação de Turing iniciada com Expected Improvement como métrica.Evolution attempt started at 2023-08-12 18:07:00Evolution attempt started at 2023-08-12 18:10:00Evolution started with maximize expected improvement strategy.
+[2023-08-12 18:21:00] Maximizing Expected Improvement started
+[2023-08-12 18:21:00] Performance evaluation for Expected Improvement completed
+[2023-08-12 18:21:00] Hyperparameters tuned for Expected Improvement
+Evolution attempt started at 18:20
+[18:23:04] Starting evolution to maximize expected improvement
+[18:23:45] Starting evolution to maximize expected improvement
+[18:20:00] Starting evolution to maximize expected improvement
+Evolution attempt with Expected Improvement maximization strategy.Evolution attempt at 17:59
+Evolution step with Expected Improvement maximization initiated.
+Running with expected improvement strategy.
+Optimization step: 1 - Expected Improvement maximization initiated.

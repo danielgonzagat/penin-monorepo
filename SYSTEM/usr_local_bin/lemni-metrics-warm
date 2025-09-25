@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+/usr/local/bin/lemni-ask "Diga apenas: OK" >/dev/null || true
+/usr/local/bin/lemni-ask "Explique em 1 linha o que é Lyapunov." >/dev/null || true
+sleep 2
+curl -s http://localhost:18080/metrics | grep -E 'lemni_(latency_ms_bucket|linf_value|delta_V|oci_value|cost_per_1k_usd)' | head -n 20 || true

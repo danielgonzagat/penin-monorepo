@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+ts=$(date -u +%Y%m%dT%H%M%SZ)
+out="/root/lemni_snapshot_${ts}.tgz"
+tar --exclude='*/__pycache__' -czf "$out" /opt/lemniscata
+echo "snapshot -> $out"

@@ -1,0 +1,11 @@
+[Unit]
+Description=llama.cpp s1 (NUMA1)
+After=network.target
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/llama-run-s1.sh
+Restart=always
+RestartSec=2
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target

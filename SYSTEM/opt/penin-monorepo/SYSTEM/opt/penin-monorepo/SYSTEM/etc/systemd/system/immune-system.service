@@ -1,0 +1,23 @@
+[Unit]
+Description=Immune System Core - Sistema Auto-Imune Completo
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/immune_system_core.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Configurações de segurança
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/root /tmp
+
+[Install]
+WantedBy=multi-user.target

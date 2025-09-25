@@ -1,0 +1,40 @@
+# Configuração de proteção geográfica incluída nos sites-enabled
+
+upstream llama_backends {
+    least_conn;
+    server 127.0.0.1:8090 max_fails=3 fail_timeout=15s;
+    server 127.0.0.1:8091 max_fails=3 fail_timeout=15s;
+    keepalive 64;
+}
+server {
+    listen 8080;
+    client_max_body_size 10m;
+    
+    # Logging personalizado para proteção geográfica
+    access_log /var/log/nginx/geo_protection.log geo_protection_log;
+    
+    # Bloquear acesso de países não autorizados
+    if ($block_access = "blocked") {
+        return 403;
+    }
+    
+    # Rate limiting removido para evitar conflitos
+
+    location /health {
+        access_log off;
+        add_header Content-Type text/plain;
+        return 200 "OK\n";
+    }
+
+    location / {
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Authorization $http_authorization;
+        proxy_read_timeout 300;
+        proxy_send_timeout 300;
+        proxy_next_upstream error timeout http_502 http_503 http_504;
+        proxy_pass http://llama_backends;
+    }
+}

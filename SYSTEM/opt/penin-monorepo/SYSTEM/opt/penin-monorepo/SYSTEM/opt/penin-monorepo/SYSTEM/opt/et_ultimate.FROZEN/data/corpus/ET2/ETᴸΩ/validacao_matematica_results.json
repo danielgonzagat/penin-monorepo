@@ -1,0 +1,45 @@
+{
+  "numerical_stability": 1.0,
+  "banach_contraction": {
+    "0.1": {
+      "final_variance": 0.005426854123691505,
+      "max_state": 0.1958416109691123,
+      "converged": "True"
+    },
+    "0.2": {
+      "final_variance": 0.0071894338297076735,
+      "max_state": 0.30067296480072075,
+      "converged": "True"
+    },
+    "0.3": {
+      "final_variance": 0.009408577362930125,
+      "max_state": 0.3591284809624047,
+      "converged": "True"
+    },
+    "0.4": {
+      "final_variance": 0.015590911177962997,
+      "max_state": 0.36733551716439644,
+      "converged": "False"
+    },
+    "0.5": {
+      "final_variance": 0.028917377388575506,
+      "max_state": 0.5527387762027482,
+      "converged": "False"
+    }
+  },
+  "term_behavior": {
+    "progress_test": false,
+    "cost_test": true,
+    "stability_test": true
+  },
+  "guardrails": {
+    "entropy_test": true,
+    "regret_test": true,
+    "nan_test": true
+  },
+  "zdp_mechanism": {
+    "progress_high_quantile": 0.9999999999994749,
+    "progress_low_quantile": 0.9999999999996116,
+    "test_passed": true
+  }
+}

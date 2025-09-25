@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+q="${*:-Confirme em 1 linha: sistema ativo.}"
+curl -s http://localhost:18080/ask -H 'Content-Type: application/json' \
+  -d "$(jq -n --arg q "$q" '{messages:[{role:"user",content:$q}],temperature:0.2,max_tokens:64}')" \
+  | jq -r .output

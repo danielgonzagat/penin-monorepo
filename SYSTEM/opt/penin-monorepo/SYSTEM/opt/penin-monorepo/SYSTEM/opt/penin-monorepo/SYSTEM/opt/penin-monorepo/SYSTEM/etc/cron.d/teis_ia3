@@ -1,0 +1,4 @@
+# TEIS/IA3 24x7 loops (spawn via nohup)
+# Use systemd or nohup to manage persistent processes. Cron @reboot entries below:
+@reboot root nohup /root/scripts/loop_te_is.sh > /root/teis_runs/loop.out 2>&1 &
+@reboot root nohup /root/scripts/loop_ia3.sh > /root/ia3_runs/loop.out 2>&1 &

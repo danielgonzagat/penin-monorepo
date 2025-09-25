@@ -1,0 +1,27 @@
+[Unit]
+Description=IA³ Supreme - Artificial Intelligence to the Power of Three
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/launch_ia3_supreme.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ia3
+
+# Recursos ilimitados para IA³
+LimitNOFILE=1048576
+LimitNPROC=1048576
+
+# Prioridade alta
+Nice=-10
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=50
+
+[Install]
+WantedBy=multi-user.target

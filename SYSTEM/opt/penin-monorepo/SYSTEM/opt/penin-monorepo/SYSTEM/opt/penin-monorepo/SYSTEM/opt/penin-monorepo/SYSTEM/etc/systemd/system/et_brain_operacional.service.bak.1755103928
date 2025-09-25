@@ -1,0 +1,17 @@
+# /etc/systemd/system/et_brain_operacional.service
+[Unit]
+Description=ETΩ Cérebro Operacional
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/et_ultimate/agents
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/opt/et_ultimate/agents
+ExecStart=/opt/et_ultimate/venv/bin/python3 -u -m agents.brain.et_brain_operacional
+Restart=on-failure
+RestartSec=5
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

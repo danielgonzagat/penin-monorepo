@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+import os, sys, re, glob, requests
+
+BASE = os.environ.get("ET_URL", "http://127.0.0.1:8080/v1")
+
+def get_model():
+    j = requests.get(f"{BASE}/models", timeout=10).json()
+    if isinstance(j, dict):
+        if j.get("data"):   return j["data"][0].get("id")
+        if j.get("models"): return j["models"][0].get("id") or j["models"][0].get("model")
+    raise RuntimeError("não achei modelo em /models")
+
+def find_key():
+    if os.environ.get("ET_API_KEY"): return os.environ["ET_API_KEY"]
+    for p in glob.glob("/etc/systemd/system/llama-s*.service")+glob.glob("/usr/local/bin/llama-run-s*.sh"):
+        try:
+            m = re.search(r"--api-key\s+(\S+)", open(p).read())
+            if m: return m.group(1)
+        except Exception: pass
+    return None
+
+MODEL = os.environ.get("ET_MODEL") or get_model()
+KEY   = find_key()
+headers = {"Content-Type":"application/json"}
+if KEY: headers["Authorization"] = f"Bearer {KEY}"
+
+msgs = [{"role":"system","content":"Você é a ET Ultimate do servidor do Daniel. Responda só com o texto."}]
+print("et-chat iniciado. digite /sair para encerrar. (/limpar zera o contexto)")
+while True:
+    try:
+        user = input("> ").strip()
+    except (EOFError, KeyboardInterrupt):
+        print(); break
+    if not user: continue
+    if user.lower() in ("/sair","/exit","/quit"): break
+    if user.lower() in ("/limpar","/clear"): msgs = msgs[:1]; print("contexto limpo."); continue
+    msgs.append({"role":"user","content":user})
+    r = requests.post(f"{BASE}/chat/completions", headers=headers,
+                      json={"model": MODEL, "messages": msgs, "max_tokens": 512}, timeout=600)
+    j = r.json()
+    if "choices" in j and j["choices"]:
+        content = j["choices"][0]["message"]["content"].strip()
+        print(content)
+        msgs.append({"role":"assistant","content":content})
+    else:
+        print(j.get("error",{}).get("message","[erro] resposta inesperada"))

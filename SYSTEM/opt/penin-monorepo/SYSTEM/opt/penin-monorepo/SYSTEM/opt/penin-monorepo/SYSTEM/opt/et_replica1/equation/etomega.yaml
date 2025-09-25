@@ -1,0 +1,15 @@
+use_omega: true
+gamma: 0.4
+tau_ei: 0.7
+entropy_min: 0.5
+kl_max: 0.075
+drift_max: 0.02
+cost_max: 1.0
+var_min: 0.15
+rho_cost: 1.0
+sigma_stab: 1.0
+iota_emb: 1.0
+zdp_quantile: 0.7
+divergence_threshold: 0.1
+drift_threshold: 0.05
+cost_threshold: 1.0

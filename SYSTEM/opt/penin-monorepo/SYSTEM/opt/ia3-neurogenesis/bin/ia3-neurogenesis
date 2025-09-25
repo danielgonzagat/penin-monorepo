@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export PYTHONPATH="$ROOT:$PYTHONPATH"
+
+python3 -c "
+import sys, os, json, time
+sys.path.insert(0, '/opt/ia3-neurogenesis')
+
+def main():
+    # Parse arguments manually
+    event = 'status'
+    config = '/opt/ia3-neurogenesis/neurogenesis/config.yaml'
+    worm_line = ''
+    
+    args = sys.argv[1:]
+    i = 0
+    while i < len(args):
+        if args[i] == '--event' and i+1 < len(args):
+            event = args[i+1]
+            i += 2
+        elif args[i] == '--config' and i+1 < len(args):
+            config = args[i+1]
+            i += 2
+        elif args[i] == '--worm-line' and i+1 < len(args):
+            worm_line = args[i+1]
+            i += 2
+        else:
+            i += 1
+    
+    try:
+        from neurogenesis.ia3_neurogenesis import IA3NeuronAgent
+        from neurogenesis.storage import ensure_dirs
+        
+        print(f'🧬 IA³ Neurogenesis Engine - Evento: {event}')
+        
+        if event == 'cycle':
+            print(f'📊 WORM upstream: {worm_line[:100]}...' if len(worm_line) > 100 else f'📊 WORM upstream: {worm_line}')
+            
+            # Criar agente IA³
+            agent = IA3NeuronAgent(
+                in_dim=16, 
+                hidden_dim=8, 
+                out_dim=16,
+                metrics_port=int(os.getenv('IA3_METRICS_PORT', '9091'))
+            )
+            
+            # Executar rodada completa
+            seed = int(time.time()) % 10000
+            report = agent.round(seed=seed, grow_policy='wider_then_deeper')
+            
+            print(f'📋 RELATÓRIO IA³:')
+            print(f'   Adaptação: {report.adaptive_gain:.6f}')
+            print(f'   Evolução α: {report.alpha_shift:.6f}')
+            print(f'   Melhorou: {report.improved}')
+            print(f'   Cresceu: {report.structure_grew}')
+            print(f'   APROVADO: {\"✅\" if report.passes else \"❌\"}')
+            print(f'   Consciência: {report.consciousness_score:.3f}')
+            
+            # Retornar código baseado em aprovação
+            if not report.passes:
+                print(f'☠️ EQUAÇÃO DA MORTE ATIVADA - Neurônio reprovado')
+                sys.exit(3)  # Código especial para Darwin
+            else:
+                print(f'✅ Neurônio aprovado, sistema evoluiu')
+                sys.exit(0)
+        
+        elif event == 'spawn':
+            print(f'🐣 Forçando nascimento de neurônio...')
+            agent = IA3NeuronAgent(metrics_port=9091)
+            agent.model.add_neuron_net2wider()
+            print(f'✅ Neurônio adicionado via Net2Wider')
+        
+        elif event == 'rollback':
+            print(f'🔄 Executando rollback neuronal...')
+            agent = IA3NeuronAgent(metrics_port=9091)
+            removed, idx = agent.model.remove_worst_neuron()
+            if removed:
+                print(f'💀 Neurônio #{idx} removido (pior performance)')
+            else:
+                print(f'⚠️ Não foi possível remover neurônio')
+        
+        elif event == 'status':
+            agent = IA3NeuronAgent(metrics_port=9091)
+            summary = agent.get_model_summary()
+            print(json.dumps(summary, indent=2))
+        
+        else:
+            print(f'❌ Evento desconhecido: {event}')
+            sys.exit(1)
+    
+    except Exception as e:
+        print(f'💥 Erro: {e}')
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
+
+if __name__ == '__main__':
+    main()
+" "$@"

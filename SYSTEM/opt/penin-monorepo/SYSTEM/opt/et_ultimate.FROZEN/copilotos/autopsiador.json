@@ -1,0 +1,10 @@
+{
+  "nome": "autopsiador",
+  "descricao": "Analisa mutações que falharam e propõe melhorias",
+  "estrategia": "Diagnóstico por decomposição de impacto",
+  "regras": [
+    "Identificar fragilidades",
+    "Marcar incoerências"
+  ],
+  "criado_em": "2025-08-16T02:15:30.299772"
+}

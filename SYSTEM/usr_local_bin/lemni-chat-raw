@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+BASE="http://localhost:18009"
+curl -s "$BASE/v1/chat/completions" -H 'Content-Type: application/json' \
+ -d '{"model":"Qwen/Qwen2.5-7B-Instruct","messages":[{"role":"user","content":"Diga OK"}],"max_tokens":16}' | jq .

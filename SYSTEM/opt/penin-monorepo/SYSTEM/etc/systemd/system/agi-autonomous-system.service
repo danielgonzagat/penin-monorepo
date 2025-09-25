@@ -1,0 +1,34 @@
+[Unit]
+Description=AGI Autonomous Agent System - Self-Replicating Agents
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/agi_autonomous_system_launcher.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Configurações de recursos
+LimitNOFILE=65536
+LimitNPROC=32768
+LimitAS=infinity
+LimitFSIZE=infinity
+
+# Configurações de segurança
+NoNewPrivileges=false
+PrivateTmp=false
+ProtectSystem=false
+ProtectHome=false
+
+# Configurações de ambiente
+Environment=PYTHONPATH=/root
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

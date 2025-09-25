@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+systemctl list-timers --all | grep lemni-auto || true
+systemctl start lemni-auto.service || true
+echo "[timer] disparo manual executado."

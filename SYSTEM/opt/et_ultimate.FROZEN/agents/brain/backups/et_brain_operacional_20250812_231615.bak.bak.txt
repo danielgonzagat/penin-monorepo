@@ -1,0 +1,90 @@
+# et_brain_operacional.py
+# 🧠 Cérebro Operacional da ETΩ (Versão Hiperinteligente + Evolução do Próprio Cérebro)
+
+import time, json, random, subprocess
+from pathlib import Path
+
+# Módulos principais
+from et_goal_planner import definir_objetivo
+from et_llm_bridge import requisitar_mutacoes
+from et_fusionator import fundir_mutacoes
+from et_evaluator import avaliar_mutacoes, selecionar_dominante
+from et_autocritico import gerar_autocritica
+from et_estrategico import avaliar_estrategia
+
+# Módulos avançados
+from et_paper_ingestor import ler_papers_atuais
+from et_natural2code import natural2code
+from et_task_orchestrator import orquestrar_tarefas
+from et_copilot_creator import gerar_copilotos_especializados
+from et_online_mutador import mutar_com_dados_online
+from et_memory_sync import atualizar_memoria_global, sincronizar_com_outras_ia, clonar_mutacoes_remotas
+from et_global_benchmark import executar_benchmark_global
+from et_ensemble_fusion import fundir_respostas_multia
+from et_snapshot_manager import salvar_snapshot_temporario
+from et_self_rewriter import reescrever_cerebro
+from et_cerebro_mutador import mutar_cerebro_local  # Novo módulo: evolução do próprio cérebro
+
+HIST = Path("/opt/et_ultimate/history/etomega_scores.jsonl")
+SNAPSHOT = Path("/opt/et_ultimate/history/snapshot_ETΩ.json")
+
+print("🧠 Iniciando Cérebro Operacional da ETΩ - Versão Auto-Evolutiva")
+
+while True:
+    try:
+        print("\n⏳ Nova rodada de evolução iniciada")
+
+        # Nível 0: Pré-processamento e dados externos
+        conceitos = ler_papers_atuais(["evolutionary ai", "symbolic intelligence"])
+        print(f"📚 Papers assimilados: {len(conceitos)} conceitos")
+        gerar_copilotos_especializados()
+        orquestrar_tarefas()
+
+        subprocess.Popen(["systemctl", "start", "et_liga_copilotos"])
+        subprocess.Popen(["systemctl", "start", "et_chat"])
+        subprocess.Popen(["systemctl", "start", "et_goal_planner"])
+
+        # Nível 1: Planejamento e Geração
+        objetivo = definir_objetivo()
+        print(f"🎯 Objetivo: {objetivo}")
+
+        mutacoes = requisitar_mutacoes(objetivo)
+        mutacoes.append(natural2code(objetivo))
+        mutacoes.append(mutar_com_dados_online())
+
+        mutacao_hibrida = fundir_respostas_multia(mutacoes)
+        if mutacao_hibrida:
+            mutacoes.append(mutacao_hibrida)
+
+        for mut in mutacoes:
+            mut["autocritica"] = gerar_autocritica(mut["eq"])
+            mut["estrategia"] = avaliar_estrategia(mut["eq"], mut["autocritica"])
+
+        avaliacoes = avaliar_mutacoes(mutacoes)
+        dominante = selecionar_dominante(avaliacoes)
+
+        if dominante:
+            print(f"🏆 Mutação dominante: {dominante['ia']} → Score {dominante['score']:.2f}")
+            SNAPSHOT.write_text(json.dumps({
+                "equation": dominante["eq"],
+                "autor": dominante["ia"],
+                "score": dominante["score"],
+                "autocritica": dominante.get("autocritica", ""),
+                "estrategia": dominante.get("estrategia", "")
+            }, indent=2), encoding="utf-8")
+            with open(HIST, "a", encoding="utf-8") as f:
+                f.write(json.dumps(dominante) + "\n")
+
+            salvar_snapshot_temporario(dominante)
+            atualizar_memoria_global(dominante)
+            sincronizar_com_outras_ia(dominante)
+
+        # Nível 6: Evolução do próprio cérebro
+        mutar_cerebro_local(mutacoes)
+
+        executar_benchmark_global()
+        time.sleep(15)
+
+    except Exception as e:
+        print(f"⚠️ Erro inesperado: {e}")
+        time.sleep(10)

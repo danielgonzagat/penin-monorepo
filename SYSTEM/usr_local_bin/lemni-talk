@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+command -v jq >/dev/null || { echo "precisa do jq"; exit 1; }
+Q="${*:-}"; [ -n "$Q" ] || { echo "uso: lemni-talk <mensagem>"; exit 2; }
+ROUTER="${LEMNI_ROUTER:-http://localhost:18009}"
+
+HC=$(curl -s -o /dev/null -w "%{http_code}" "$ROUTER/health" || true)
+[ "$HC" = "200" ] || { echo "(router off)"; exit 1; }
+
+DATA=$(jq -n --arg m "$Q" '{model:"Qwen/Qwen2.5-7B-Instruct",messages:[{role:"user",content:$m}],stream:false}')
+curl -s "$ROUTER/v1/chat/completions" -H 'Content-Type: application/json' -d "$DATA" \
+| jq -r '.choices[0].message.content // "(sem resposta)"'

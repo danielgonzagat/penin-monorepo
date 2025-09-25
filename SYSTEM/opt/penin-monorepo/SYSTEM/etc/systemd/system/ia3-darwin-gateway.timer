@@ -1,0 +1,11 @@
+[Unit]
+Description=Run IA3 Darwin Gateway every 2 minutes
+Requires=ia3-darwin-gateway.service
+
+[Timer]
+OnCalendar=*:0/2
+AccuracySec=10s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

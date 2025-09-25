@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+msg="${*:-}"; [ -n "$msg" ] || { echo "uso: lemni-dgm-say <instrucao>"; exit 2; }
+cd /opt/lemniscata
+# sobe serviços essenciais silenciosamente
+docker compose -f docker-compose.yaml -f docker-compose.router.yaml up -d router api mock-llm >/dev/null 2>&1 || true
+# espera Router (até ~20s)
+for i in {1..40}; do
+  code="$(curl -s -o /dev/null -w "%{http_code}" http://localhost:18009/health || true)"
+  [ "$code" = "200" ] && break || sleep 0.5
+done
+b64="$(printf "%s" "$msg" | base64 -w0)"
+ts="$(date -u +%Y%m%dT%H%M%SZ)"; art="_artifacts/dgm/$ts"; mkdir -p "$art"
+# executa runner dentro do container API, apontando para o Router
+docker compose exec -T -e DGM_INSTRUCTION_TEXT_B64="$b64" -e DGM_LLM_URL="http://router:18009" api python - <<'PY' >/dev/null 2>&1 || true
+from plugins.DGMPlugin.runner import main; main()
+PY
+# copia artefatos
+docker compose exec -T api bash -lc 'cd plugins/DGMPlugin/out && tar -cf - report.json patch.diff' | tar -xf - -C "$art" 2>/dev/null || true
+# eval + promote condicional (se existirem utilitários)
+[ -s "$art/report.json" ] && command -v /usr/local/bin/lemni-eval-batch >/dev/null && /usr/local/bin/lemni-eval-batch "$art" >/dev/null 2>&1 || true
+command -v /usr/local/bin/lemni-promote-ifok >/dev/null && /usr/local/bin/lemni-promote-ifok >/dev/null 2>&1 || true
+echo "$art"

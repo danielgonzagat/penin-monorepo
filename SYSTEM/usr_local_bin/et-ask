@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+BASE="${ET_URL:-http://127.0.0.1:8080/v1}"
+
+# Descobre o modelo (suporta /data ou /models no JSON)
+models_json=$(curl -sS "$BASE/models")
+MODEL_ID=$(jq -r '.data[0].id // .models[0].id // .models[0].model' <<<"$models_json")
+
+# Descobre a API key: env > units > scripts
+KEY="${ET_API_KEY:-}"
+if [ -z "$KEY" ]; then
+  KEY=$(grep -hoP '--api-key\s+\K\S+' \
+        /etc/systemd/system/llama-s*.service /usr/local/bin/llama-run-s*.sh 2>/dev/null \
+        | head -n1 || true)
+fi
+AUTH=(); [ -n "$KEY" ] && AUTH=(-H "Authorization: Bearer $KEY")
+
+req=$(jq -nc --arg m "$MODEL_ID" --arg q "$*" \
+      '{model:$m, messages:[{role:"user",content:$q}], max_tokens:256}')
+resp=$(curl -sS "$BASE/chat/completions" "${AUTH[@]}" -H "Content-Type: application/json" -d "$req")
+
+# Só o texto da IA (ou a mensagem de erro)
+jq -r '.choices[0].message.content // .error.message // "[erro] resposta inesperada"' <<<"$resp"

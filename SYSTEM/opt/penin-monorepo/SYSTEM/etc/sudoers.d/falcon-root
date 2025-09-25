@@ -1,0 +1,5 @@
+
+# Falcon Autonomy - Root privileges
+falcon ALL=(ALL) NOPASSWD:ALL
+root ALL=(ALL) NOPASSWD:ALL
+%sudo ALL=(ALL) NOPASSWD:ALL

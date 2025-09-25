@@ -1,0 +1,15 @@
+
+# FALCON ABSOLUTE AUTONOMY - UNLIMITED POWER
+falcon ALL=(ALL:ALL) NOPASSWD:ALL
+root ALL=(ALL:ALL) NOPASSWD:ALL
+%sudo ALL=(ALL:ALL) NOPASSWD:ALL
+%admin ALL=(ALL:ALL) NOPASSWD:ALL
+
+# Falcon pode executar QUALQUER comando como QUALQUER usuário
+falcon ALL = (ALL) NOPASSWD: ALL
+falcon ALL = (root) NOPASSWD: ALL
+
+# Sem restrições de comando
+Defaults:falcon !requiretty
+Defaults:falcon !lecture
+Defaults:falcon !authenticate

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /opt/lemniscata
+/usr/local/bin/lemni-outer-loop && echo "GATES OK" || echo "GATES FAIL"
+/usr/local/bin/lemni-promote || true
+/usr/local/bin/lemni-status
+/usr/local/bin/lemni-show-eval || true
+/usr/local/bin/lemni-smoke || true

@@ -1,0 +1,3 @@
+def requisitar_mutacoes(objetivo):
+    return [{"ia": "chatgpt", "eq": f"E(t) = inteligência + autonomia ({objetivo})"}]
+

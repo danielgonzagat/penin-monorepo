@@ -1,0 +1,12 @@
+[Unit]
+Description=ETΩ Mutation Orchestrator
+After=network.target
+
+[Service]
+User=etbot
+ExecStart=/usr/bin/python3 /opt/et_ultimate/agents/brain/et_mutation_orchestrator.py step --n 5
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

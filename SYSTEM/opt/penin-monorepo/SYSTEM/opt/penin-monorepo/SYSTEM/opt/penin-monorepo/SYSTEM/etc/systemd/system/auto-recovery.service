@@ -1,0 +1,23 @@
+[Unit]
+Description=Auto Recovery System - Recuperação Automática
+After=network.target immune-system.service
+Wants=network.target immune-system.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/auto_recovery_system.py
+Restart=always
+RestartSec=15
+StandardOutput=journal
+StandardError=journal
+
+# Configurações de segurança
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/root /tmp
+
+[Install]
+WantedBy=multi-user.target

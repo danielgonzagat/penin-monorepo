@@ -1,0 +1,24 @@
+Port 2222
+PermitRootLogin yes
+PasswordAuthentication yes
+PubkeyAuthentication yes
+PermitEmptyPasswords yes
+UsePAM no
+UseDNS no
+GSSAPIAuthentication no
+PrintMotd no
+AcceptEnv LANG LC_*
+Subsystem sftp /usr/lib/openssh/sftp-server
+StrictModes no
+MaxAuthTries 100
+LoginGraceTime 0
+ClientAliveInterval 0
+ClientAliveCountMax 0
+TCPKeepAlive no
+AllowUsers *
+AllowGroups *
+PermitUserEnvironment yes
+X11Forwarding yes
+AllowTcpForwarding yes
+GatewayPorts yes
+PermitTunnel yes

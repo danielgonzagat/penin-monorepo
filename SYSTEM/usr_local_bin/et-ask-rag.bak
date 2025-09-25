@@ -1,0 +1,62 @@
+#!/opt/et_ultimate/venv/bin/python3
+import os, sys, json
+from pathlib import Path
+import requests, faiss, numpy as np
+from sentence_transformers import SentenceTransformer
+
+BASE = os.environ.get("ET_URL", "http://127.0.0.1:8080/v1")
+KEY  = os.environ.get("ET_API_KEY", "DANIEL")
+IDX  = Path("/opt/et_ultimate/index/etomega.faiss")
+META = Path("/opt/et_ultimate/index/etomega_meta.json")
+PROMPT = Path("/opt/et_ultimate/prompts/et_omega.txt")
+
+if not IDX.exists() or not META.exists():
+    print("[erro] índice não encontrado. Rode a ingestão.", file=sys.stderr); sys.exit(2)
+
+st = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+index = faiss.read_index(str(IDX))
+meta  = json.load(open(META, encoding="utf-8"))
+
+# Alguns ingests salvam como lista de strings; outros, lista de dicts {"text":...}
+_raw_chunks = meta.get("chunks", [])
+chunks = []
+for c in _raw_chunks:
+    if isinstance(c, dict):
+        chunks.append(c.get("text", ""))
+    else:
+        chunks.append(str(c))
+
+def topk(q, k=6):
+    q_emb = st.encode([q], normalize_embeddings=True, convert_to_numpy=True).astype("float32")
+    D, I = index.search(q_emb, k)
+    ctx = []
+    for i in I[0]:
+        if 0 <= i < len(chunks):
+            t = chunks[i].strip()
+            if t: ctx.append(t)
+    return "\n\n---\n\n".join(ctx) if ctx else ""
+
+def ask(q):
+    headers = {"Authorization": f"Bearer {KEY}", "Content-Type": "application/json"}
+    system_prompt = PROMPT.read_text(encoding="utf-8") if PROMPT.exists() else ""
+    context = topk(q, k=6)
+    messages = [{"role":"system","content": system_prompt}]
+    if context:
+        messages.append({"role":"user","content": f"Contexto:\n{context}\n\nPergunta: {q}"})
+    else:
+        messages.append({"role":"user","content": q})
+    payload = {
+        "model": os.environ.get("ET_MODEL", "/root/models/qwen2.5-7b-instruct-gguf/Qwen2.5-7B-Instruct-Q5_K_M.gguf"),
+        "messages": messages,
+        "temperature": float(os.environ.get("ET_TEMP","0.2")),
+        "max_tokens": int(os.environ.get("ET_MAXTOK","512"))
+    }
+    r = requests.post(f"{BASE}/chat/completions", headers=headers, json=payload, timeout=120)
+    r.raise_for_status()
+    data = r.json()
+    print(data["choices"][0]["message"]["content"].strip())
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print('uso: et-ask-rag "sua pergunta"', file=sys.stderr); sys.exit(1)
+    ask(" ".join(sys.argv[1:]))

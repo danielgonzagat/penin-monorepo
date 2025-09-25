@@ -1,0 +1,24 @@
+[Unit]
+Description=Arquiteto Silencioso v10.0 - Sistema de Evolução Darwiniana
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/Adala
+ExecStart=/root/.local/bin/poetry run python prometheus_agent/architect_final.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Configurações de recursos
+MemoryLimit=2G
+CPUQuota=200%
+
+# Variáveis de ambiente
+Environment=MISTRAL_API_KEY=AMTeAQrzudpGvU2jkU9hVRvSsYr1hcni
+Environment=PYTHONPATH=/root/Adala/prometheus_agent
+
+[Install]
+WantedBy=multi-user.target

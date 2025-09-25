@@ -1,0 +1,11 @@
+[Unit]
+Description=Run 8GPU sync every 30 minutes
+Requires=8gpu-sync.service
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=30min
+Unit=8gpu-sync.service
+
+[Install]
+WantedBy=timers.target

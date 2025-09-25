@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+LAST="$(ls -1dt /opt/lemniscata/_artifacts/dgm/* 2>/dev/null | head -n1 || true)"
+test -n "$LAST" || { echo "[show-eval] nenhum artifact DGM ainda."; exit 0; }
+echo "[show-eval] eval: $LAST/eval.json"
+jq . "$LAST/eval.json"

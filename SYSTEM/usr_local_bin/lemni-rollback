@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /opt/lemniscata
+git reset --hard HEAD~1 || true
+docker compose up -d --build
+echo "$(date -Is) ROLLBACK 1" >> .ledger

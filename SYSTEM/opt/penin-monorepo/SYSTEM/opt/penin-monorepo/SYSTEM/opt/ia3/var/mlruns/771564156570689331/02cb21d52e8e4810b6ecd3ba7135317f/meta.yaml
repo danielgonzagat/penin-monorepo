@@ -1,0 +1,14 @@
+artifact_uri: file:///opt/ia3/var/mlruns/771564156570689331/02cb21d52e8e4810b6ecd3ba7135317f/artifacts
+end_time: 1758506652541
+entry_point_name: ''
+experiment_id: '771564156570689331'
+lifecycle_stage: active
+run_id: 02cb21d52e8e4810b6ecd3ba7135317f
+run_name: IA3_Generation_0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758506647763
+status: 3
+tags: []
+user_id: root

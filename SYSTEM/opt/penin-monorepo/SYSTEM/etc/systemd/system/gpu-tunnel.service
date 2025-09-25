@@ -1,0 +1,18 @@
+[Unit]
+Description=Tunnel CPU->RunPod for vLLM
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=root
+Restart=always
+RestartSec=3
+ExecStart=/usr/bin/autossh -M 0 -N \
+  -o ServerAliveInterval=30 -o ServerAliveCountMax=3 \
+  -L 18001:127.0.0.1:18001 \
+  -p 17911 -i /root/.ssh/id_ed25519 \
+  root@64.247.196.118
+
+[Install]
+WantedBy=multi-user.target

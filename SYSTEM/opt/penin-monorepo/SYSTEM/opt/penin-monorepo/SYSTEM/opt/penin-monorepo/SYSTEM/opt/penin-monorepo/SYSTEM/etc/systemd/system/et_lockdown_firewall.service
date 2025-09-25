@@ -1,0 +1,13 @@
+[Unit]
+Description=Firewall de egress por UID (etbot)
+Before=et_brain_operacional.service
+Wants=network-pre.target
+After=network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/et_ultimate/bin/et_lockdown_firewall.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

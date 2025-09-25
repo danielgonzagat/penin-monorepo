@@ -1,0 +1,29 @@
+[Unit]
+Description=PENIN Turbo Mirror - Espelhamento Total 24/7
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/penin-autosync
+
+# Script que roda em loop
+ExecStart=/bin/bash -c 'while true; do /opt/penin-autosync/turbo_mirror.sh; sleep 30; done'
+
+# Restart sempre
+Restart=always
+RestartSec=10
+
+# Performance
+Nice=-10
+IOSchedulingClass=realtime
+IOSchedulingPriority=0
+
+# Limites
+LimitNOFILE=1048576
+LimitNPROC=infinity
+
+[Install]
+WantedBy=multi-user.target

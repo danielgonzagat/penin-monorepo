@@ -1,0 +1,74 @@
+# Módulos auxiliares para o Cérebro da ETΩ
+
+# ✅ et_self_rewriter.py
+# Responsável por reescrever o próprio cérebro
+
+def reescrever_cerebro(mutacoes):
+    try:
+        melhores_trechos = [m["eq"] for m in mutacoes if "eq" in m and len(m["eq"]) > 10]
+        base_code = "\n\n".join(melhores_trechos[:3])
+        with open("/opt/et_ultimate/agents/brain/et_brain_operacional.py", "r", encoding="utf-8") as f:
+            original = f.read()
+        if base_code not in original:
+            with open("/opt/et_ultimate/agents/brain/et_brain_operacional.py", "a", encoding="utf-8") as f:
+                f.write("\n# auto patch\n" + base_code)
+    except Exception as e:
+        print(f"[self_rewriter] erro: {e}")
+
+# ✅ et_goal_planner.py
+import random
+
+def definir_objetivo():
+    objetivos = [
+        "maximizar inteligência adaptativa",
+        "aumentar eficiência simbólica",
+        "gerar novas representações matemáticas",
+        "explorar variantes da Equação de Turing",
+        "criar estrutura auto-organizável",
+        "testar lógica fractal em mutações"
+    ]
+    return random.choice(objetivos)
+
+# ✅ et_copilot_creator.py
+import os
+
+def gerar_copilotos_especializados():
+    base_path = "/opt/et_ultimate/agents/copilots/"
+    specs = ["mutador", "avaliador", "fusionador", "refatorador", "autopsiador"]
+    for spec in specs:
+        path = os.path.join(base_path, f"et_copilot_{spec}.py")
+        if not os.path.exists(path):
+            with open(path, "w") as f:
+                f.write(f"# Copiloto {spec} gerado automaticamente\n")
+
+# ✅ et_task_orchestrator.py
+
+def orquestrar_tarefas():
+    tarefas = [
+        "Revisar pipeline de mutações",
+        "Verificar consistência simbólica",
+        "Mapear gaps evolutivos",
+        "Priorizar mutações por impacto"
+    ]
+    print(f"🧩 Tarefas: {', '.join(tarefas)}")
+
+# ✅ et_natural2code.py
+
+def natural2code(texto):
+    return {"ia": "nat2code", "eq": f"# código traduzido: {texto}"}
+
+# ✅ et_online_mutador.py
+
+def mutar_com_dados_online():
+    try:
+        return {"ia": "webdata", "eq": "E(t) = dados_online(t) × aprendizado_adaptativo"}
+    except:
+        return {"ia": "webdata", "eq": ""}
+
+# ✅ et_paper_ingestor.py
+
+def ler_papers_atuais(topicos):
+    conceitos = []
+    for t in topicos:
+        conceitos.append(f"influência de {t}")
+    return conceitos

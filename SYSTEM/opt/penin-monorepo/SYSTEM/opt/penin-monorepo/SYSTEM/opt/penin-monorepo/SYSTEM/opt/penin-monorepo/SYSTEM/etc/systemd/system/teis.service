@@ -1,0 +1,13 @@
+[Unit]
+Description=TEIS V2 Enhanced 24x7
+After=network.target
+
+[Service]
+ExecStart=/root/bin/run_teis.sh
+Restart=always
+RestartSec=2
+WorkingDirectory=/root
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

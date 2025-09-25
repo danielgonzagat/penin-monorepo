@@ -1,0 +1,23 @@
+[Unit]
+Description=Darwin Canary - 10-20% Traffic
+After=network.target teis-metrics.service
+
+[Service]
+Type=simple
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/darwin_canary.py
+Restart=on-failure
+RestartSec=30
+StandardOutput=append:/root/darwin_canary.log
+StandardError=append:/root/darwin_canary.log
+
+# Resource limits
+CPUQuota=20%
+MemoryLimit=2G
+TasksMax=50
+
+# Kill switch
+ExecStopPost=/usr/bin/python3 -c "print('Darwin paused - check I metrics')"
+
+[Install]
+WantedBy=multi-user.target

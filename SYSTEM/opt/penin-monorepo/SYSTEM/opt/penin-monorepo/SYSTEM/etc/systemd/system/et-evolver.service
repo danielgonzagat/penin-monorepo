@@ -1,0 +1,19 @@
+[Unit]
+Description=ET Evolver (ETΩ auto-improvement loop)
+After=network.target et-replica1.service
+
+[Service]
+Type=simple
+EnvironmentFile=/opt/et_ultimate/agents/evolver.env
+ExecStart=/opt/et_ultimate/agents/et_evolver.py
+WorkingDirectory=/opt/et_ultimate/agents
+Restart=always
+RestartSec=5
+# Prioridade educada
+Nice=10
+IOSchedulingClass=best-effort
+CPUSchedulingPolicy=other
+# Logs vão para journal + /var/log/et_ultimate/evolver.log via logging do script
+
+[Install]
+WantedBy=multi-user.target

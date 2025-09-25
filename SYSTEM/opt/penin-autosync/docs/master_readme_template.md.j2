@@ -1,0 +1,274 @@
+# {{ project.name }}
+
+> **{{ project.description }}**
+> 
+> Sistema de sincronização automática CPU → GitHub com README mestre sempre atualizado
+> 
+> **Autor:** {{ project.author }} | **GitHub:** [@{{ project.github_user }}](https://github.com/{{ project.github_user }})
+
+---
+
+## 🚀 Visão Geral
+
+Este repositório é um **monorepo** que espelha automaticamente múltiplas pastas do sistema local para o GitHub, mantendo um README mestre sempre atualizado que documenta a evolução do sistema PENIN do zero ao state-of-the-art.
+
+### ✨ Características Principais
+
+- 🔄 **Sincronização Automática**: Mudanças locais são refletidas no GitHub em tempo real
+- 📚 **README Mestre**: Documentação sempre atualizada com evolução do sistema
+- 🤖 **Agentes Cursor**: Integração com API de Agentes em Segundo Plano para melhorias automáticas
+- 🔒 **Segurança**: Proteção contra vazamento de segredos e arquivos sensíveis
+- 📊 **Estatísticas**: Métricas automáticas de código e commits
+
+---
+
+## 📊 Estatísticas do Repositório
+
+| Métrica | Valor |
+|---------|-------|
+| **Total de Arquivos** | {{ repo_stats.total_files }} |
+| **Total de Linhas** | {{ repo_stats.total_lines }} |
+| **Última Atualização** | {{ generated_at }} |
+| **Último Commit** | {{ git_info.last_commit.hash if git_info.last_commit else 'N/A' }} |
+
+### 🗂️ Distribuição por Linguagem
+
+{% for ext, count in repo_stats.languages.items() %}
+- **{{ ext }}**: {{ count }} arquivos
+{% endfor %}
+
+### 📁 Estrutura de Diretórios
+
+{% for dir, count in repo_stats.directories.items() %}
+- **{{ dir }}**: {{ count }} arquivos
+{% endfor %}
+
+---
+
+## 🏗️ Componentes do Sistema
+
+### 🧠 ET Ultimate
+**Caminho:** `{{ components.et_ultimate.path }}`  
+**Status:** {{ components.et_ultimate.status }}  
+**Descrição:** {{ components.et_ultimate.description }}
+
+**Módulos Principais:**
+{% for module in components.et_ultimate.modules[:10] %}
+- `{{ module }}`
+{% endfor %}
+{% if components.et_ultimate.modules|length > 10 %}
+- ... e mais {{ components.et_ultimate.modules|length - 10 }} módulos
+{% endif %}
+
+### 🚀 Projetos Diversos
+**Caminho:** `{{ components.projetos.path }}`  
+**Status:** {{ components.projetos.status }}  
+**Descrição:** {{ components.projetos.description }}
+
+**Módulos Principais:**
+{% for module in components.projetos.modules[:10] %}
+- `{{ module }}`
+{% endfor %}
+{% if components.projetos.modules|length > 10 %}
+- ... e mais {{ components.projetos.modules|length - 10 }} módulos
+{% endif %}
+
+### 🤖 Machine Learning
+**Caminho:** `{{ components.ml.path }}`  
+**Status:** {{ components.ml.status }}  
+**Descrição:** {{ components.ml.description }}
+
+**Módulos Principais:**
+{% for module in components.ml.modules[:10] %}
+- `{{ module }}`
+{% endfor %}
+{% if components.ml.modules|length > 10 %}
+- ... e mais {{ components.ml.modules|length - 10 }} módulos
+{% endif %}
+
+### ⚡ PENIN Omega
+**Caminho:** `{{ components.penin_omega.path }}`  
+**Status:** {{ components.penin_omega.status }}  
+**Descrição:** {{ components.penin_omega.description }}
+
+**Módulos Principais:**
+{% for module in components.penin_omega.modules[:10] %}
+- `{{ module }}`
+{% endfor %}
+{% if components.penin_omega.modules|length > 10 %}
+- ... e mais {{ components.penin_omega.modules|length - 10 }} módulos
+{% endif %}
+
+---
+
+## 📚 Documentação Detalhada
+
+{% for section_name, section_content in sections.items() %}
+### {{ section_name.replace('_', ' ').title() }}
+
+{{ section_content }}
+
+---
+
+{% endfor %}
+
+---
+
+## 🔄 Histórico Recente
+
+### Últimos Commits
+
+{% for commit in repo_stats.recent_commits[:10] %}
+- **{{ commit.date }}** — {{ commit.message }} _({{ commit.author }})_
+{% endfor %}
+
+{% if git_info.last_commit %}
+### Último Commit Detalhado
+
+- **Hash:** `{{ git_info.last_commit.hash }}`
+- **Autor:** {{ git_info.last_commit.author }} ({{ git_info.last_commit.email }})
+- **Data:** {{ git_info.last_commit.date }}
+- **Mensagem:** {{ git_info.last_commit.message }}
+{% endif %}
+
+---
+
+## 🛠️ Como Usar Este Sistema
+
+### Pré-requisitos
+
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install -y git git-lfs python3 python3-venv rsync inotify-tools
+
+# Instalar dependências Python
+pip install watchdog pyyaml jinja2 requests gitpython
+```
+
+### Configuração Inicial
+
+1. **Clone este repositório**
+   ```bash
+   git clone https://github.com/{{ project.github_user }}/{{ config.repo.path.split('/')[-1] }}.git
+   cd {{ config.repo.path.split('/')[-1] }}
+   ```
+
+2. **Configure as variáveis de ambiente**
+   ```bash
+   export CURSOR_API_KEY="sua_chave_api_cursor"
+   ```
+
+3. **Execute o sistema de sincronização**
+   ```bash
+   python3 /opt/penin-autosync/tools/auto_sync.py /opt/penin-autosync/config/config.yaml
+   ```
+
+### Configuração de Mapeamentos
+
+Edite `/opt/penin-autosync/config/config.yaml` para configurar quais diretórios serão sincronizados:
+
+```yaml
+mappings:
+  - src: "/opt/et_ultimate"
+    dst: "opt/et_ultimate"
+  - src: "/root/projetos"
+    dst: "projetos"
+  # Adicione mais mapeamentos conforme necessário
+```
+
+---
+
+## 🤖 Agentes Cursor API
+
+Este sistema integra com a API de Agentes em Segundo Plano do Cursor para:
+
+- 🔍 **Code Review**: Revisão automática de código
+- 🐛 **Bug Fixing**: Correção automática de bugs
+- 📖 **Documentation**: Atualização automática de documentação
+- 🔒 **Security**: Escaneamento de vulnerabilidades
+
+### Configuração dos Agentes
+
+Os agentes são configurados automaticamente no arquivo `config.yaml`:
+
+```yaml
+cursor_api:
+  enabled: true
+  agents:
+    - name: "code-reviewer"
+      prompt: "Review code changes and suggest improvements"
+    - name: "bug-fixer"
+      prompt: "Automatically detect and fix bugs"
+```
+
+---
+
+## 🔒 Segurança
+
+### Proteções Implementadas
+
+- ✅ **Detecção de Segredos**: Bloqueio de commits com credenciais
+- ✅ **Arquivos Grandes**: Limitação de tamanho de arquivos
+- ✅ **Exclusões**: Lista abrangente de arquivos ignorados
+- ✅ **Git LFS**: Suporte para arquivos grandes quando necessário
+
+### Arquivos Protegidos
+
+O sistema automaticamente exclui:
+- Chaves SSH e certificados
+- Arquivos de configuração sensíveis
+- Caches e arquivos temporários
+- Modelos e datasets grandes
+- Logs e arquivos de debug
+
+---
+
+## 📈 Roadmap
+
+- [ ] **Integração com CI/CD**: GitHub Actions para validação automática
+- [ ] **Métricas Avançadas**: Análise de qualidade de código
+- [ ] **Backup Automático**: Sincronização com múltiplos repositórios
+- [ ] **Interface Web**: Dashboard para monitoramento
+- [ ] **Notificações**: Alertas para mudanças importantes
+
+---
+
+## 🤝 Contribuindo
+
+Este é um sistema pessoal de sincronização, mas sugestões são bem-vindas!
+
+### Como Contribuir
+
+1. Fork o repositório
+2. Crie uma branch para sua feature
+3. Faça suas alterações
+4. Submeta um Pull Request
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+---
+
+## 📞 Contato
+
+- **Autor:** {{ project.author }}
+- **GitHub:** [@{{ project.github_user }}](https://github.com/{{ project.github_user }})
+- **Email:** [Configure seu email no Git]
+
+---
+
+<div align="center">
+
+**Sistema PENIN - Evolução Contínua**  
+*Do Zero ao State-of-the-Art*
+
+---
+
+*README gerado automaticamente em {{ generated_at }}*  
+*Versão: {{ git_info.last_commit.hash if git_info.last_commit else 'N/A' }}*
+
+</div>

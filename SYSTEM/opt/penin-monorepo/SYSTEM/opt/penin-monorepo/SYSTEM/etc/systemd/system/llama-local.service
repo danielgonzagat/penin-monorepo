@@ -1,0 +1,17 @@
+[Unit]
+Description=llama.cpp local server (GGUF)
+After=network.target
+
+[Service]
+Type=simple
+Environment=MODEL_PATH=/opt/ensemble_llm/llama-3.1-8b-instruct-gguf/Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf
+Environment=PORT=8001
+Environment=HOST=0.0.0.0
+ExecStart=/root/fusion-agi/start_llama_cpp.sh
+Restart=always
+RestartSec=5
+User=root
+WorkingDirectory=/root/fusion-agi
+
+[Install]
+WantedBy=multi-user.target

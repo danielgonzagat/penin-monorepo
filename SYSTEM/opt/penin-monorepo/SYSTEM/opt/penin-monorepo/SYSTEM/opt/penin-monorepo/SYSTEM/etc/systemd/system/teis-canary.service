@@ -1,0 +1,29 @@
+[Unit]
+Description=TEIS Canary Runner (ΔL∞, CAOS+, SR, rho/ECE → Gate → WORM)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/default/teis-canary
+User=root
+WorkingDirectory=/root
+# Endurecimento mínimo sem bloquear acesso ao WORM/logs
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/root /var/log/teis
+NoNewPrivileges=yes
+LockPersonality=yes
+PrivateTmp=yes
+PrivateDevices=yes
+CapabilityBoundingSet=
+MemoryMax=1G
+CPUQuota=80%
+# Executável
+ExecStart=/usr/local/bin/teis_canary.sh
+StandardOutput=journal
+StandardError=journal
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target

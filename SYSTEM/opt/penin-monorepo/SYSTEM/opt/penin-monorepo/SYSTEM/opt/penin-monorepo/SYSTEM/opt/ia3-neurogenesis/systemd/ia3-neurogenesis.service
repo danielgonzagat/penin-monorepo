@@ -1,0 +1,32 @@
+[Unit]
+Description=IA3 Neurogenesis Engine Advanced v2 - Sistema Celular Neuroevolutivo
+Documentation=https://github.com/ia3-neurogenesis/darwin-v2
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/ia3-neurogenesis
+Environment=PYTHONPATH=/opt/ia3-neurogenesis
+Environment=IA3_METRICS_PORT=9091
+Environment=IA3_MODE=advanced_v2
+ExecStart=/bin/bash -c 'exec /opt/ia3-neurogenesis/bin/ia3-neurogenesis --event status'
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ia3-neurogenesis
+
+# Resource limits para CPU
+LimitNOFILE=65536
+MemoryMax=2G
+CPUQuota=400%
+
+[Install]
+WantedBy=multi-user.target
