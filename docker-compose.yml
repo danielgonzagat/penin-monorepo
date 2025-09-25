@@ -1,0 +1,288 @@
+# PENIN Evolution System - Docker Compose Configuration
+# Complete stack with all services
+
+version: '3.8'
+
+services:
+  # Main PENIN API Service
+  penin-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: penin-api
+    ports:
+      - "8000:8000"
+      - "9090:9090"  # Metrics port
+    environment:
+      - PENIN_ENV=production
+      - DB_HOST=penin-db
+      - DB_USER=penin
+      - DB_PASSWORD=${DB_PASSWORD:-penin_secret}
+      - REDIS_URL=redis://penin-redis:6379
+      - API_SECRET_KEY=${API_SECRET_KEY:-your-secret-key-here}
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./models:/app/models
+    depends_on:
+      - penin-db
+      - penin-redis
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - penin-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.penin-api.rule=Host(`api.penin.local`)"
+      - "traefik.http.services.penin-api.loadbalancer.server.port=8000"
+
+  # PostgreSQL Database
+  penin-db:
+    image: postgres:15-alpine
+    container_name: penin-db
+    environment:
+      - POSTGRES_DB=penin_db
+      - POSTGRES_USER=penin
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-penin_secret}
+    volumes:
+      - penin-db-data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U penin -d penin_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - penin-network
+
+  # Redis Cache
+  penin-redis:
+    image: redis:7-alpine
+    container_name: penin-redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redis_secret}
+    volumes:
+      - penin-redis-data:/data
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - penin-network
+
+  # Nginx Reverse Proxy
+  penin-nginx:
+    image: nginx:alpine
+    container_name: penin-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./static:/var/www/static:ro
+    depends_on:
+      - penin-api
+    restart: unless-stopped
+    networks:
+      - penin-network
+
+  # Prometheus Monitoring
+  penin-prometheus:
+    image: prom/prometheus:latest
+    container_name: penin-prometheus
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - penin-prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    networks:
+      - penin-network
+
+  # Grafana Dashboard
+  penin-grafana:
+    image: grafana/grafana:latest
+    container_name: penin-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - penin-grafana-data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    depends_on:
+      - penin-prometheus
+    restart: unless-stopped
+    networks:
+      - penin-network
+
+  # Elasticsearch for Logs
+  penin-elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    container_name: penin-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    volumes:
+      - penin-elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    restart: unless-stopped
+    networks:
+      - penin-network
+
+  # Kibana for Log Visualization
+  penin-kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.0
+    container_name: penin-kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://penin-elasticsearch:9200
+    depends_on:
+      - penin-elasticsearch
+    restart: unless-stopped
+    networks:
+      - penin-network
+
+  # Celery Worker for Background Tasks
+  penin-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: penin-worker
+    command: celery -A penin.tasks worker --loglevel=info
+    environment:
+      - PENIN_ENV=production
+      - DB_HOST=penin-db
+      - DB_USER=penin
+      - DB_PASSWORD=${DB_PASSWORD:-penin_secret}
+      - REDIS_URL=redis://penin-redis:6379
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./models:/app/models
+    depends_on:
+      - penin-db
+      - penin-redis
+    restart: unless-stopped
+    networks:
+      - penin-network
+
+  # Celery Beat for Scheduled Tasks
+  penin-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: penin-scheduler
+    command: celery -A penin.tasks beat --loglevel=info
+    environment:
+      - PENIN_ENV=production
+      - DB_HOST=penin-db
+      - DB_USER=penin
+      - DB_PASSWORD=${DB_PASSWORD:-penin_secret}
+      - REDIS_URL=redis://penin-redis:6379
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    depends_on:
+      - penin-db
+      - penin-redis
+    restart: unless-stopped
+    networks:
+      - penin-network
+
+  # Jupyter Notebook for Development/Analysis
+  penin-jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: penin-jupyter
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=${JUPYTER_TOKEN:-penin}
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./data:/app/data
+      - ./models:/app/models
+    networks:
+      - penin-network
+    profiles:
+      - development
+
+# Development override
+  penin-api-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: penin-api-dev
+    ports:
+      - "8001:8000"
+    environment:
+      - PENIN_ENV=development
+      - DB_HOST=penin-db
+      - DB_USER=penin
+      - DB_PASSWORD=${DB_PASSWORD:-penin_secret}
+      - REDIS_URL=redis://penin-redis:6379
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+    depends_on:
+      - penin-db
+      - penin-redis
+    restart: unless-stopped
+    networks:
+      - penin-network
+    profiles:
+      - development
+
+# Networks
+networks:
+  penin-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# Volumes
+volumes:
+  penin-db-data:
+    driver: local
+  penin-redis-data:
+    driver: local
+  penin-prometheus-data:
+    driver: local
+  penin-grafana-data:
+    driver: local
+  penin-elasticsearch-data:
+    driver: local

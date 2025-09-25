@@ -1,0 +1,211 @@
+# PENIN System Configuration
+# Sistema de configuração centralizada para todos os componentes
+
+system:
+  name: "PENIN Evolution System"
+  version: "2.0.0"
+  environment: "production"
+  debug: false
+  log_level: "INFO"
+
+# Neural Core Configuration
+neural_core:
+  version: "2.0.0"
+  processing_mode: "hybrid"  # analytical, creative, hybrid, adaptive
+  learning_rate: 0.01
+  confidence_threshold: 0.7
+  max_evolutions: 20
+  auto_evolution: true
+  
+  modules:
+    language:
+      enabled: true
+      vocabulary_size: 50000
+      context_window: 4096
+      model_type: "transformer"
+      
+    reasoning:
+      enabled: true
+      knowledge_base_size: 100000
+      inference_engine: "logical"
+      max_reasoning_depth: 10
+      
+    memory:
+      enabled: true
+      short_term_capacity: 1000
+      long_term_capacity: 100000
+      consolidation_threshold: 0.8
+      memory_decay_rate: 0.01
+
+# PENIN Omega Configuration
+penin_omega:
+  version: "1.0.0"
+  auto_modification: true
+  evolution_frequency: "daily"  # hourly, daily, weekly
+  safety_checks: true
+  backup_before_evolution: true
+  
+  optimization:
+    performance_threshold: 0.85
+    memory_optimization: true
+    code_refactoring: true
+    dependency_updates: true
+
+# Machine Learning Configuration
+ml:
+  models_path: "./ml/models/"
+  data_path: "./ml/data/"
+  training:
+    batch_size: 32
+    epochs: 100
+    early_stopping: true
+    validation_split: 0.2
+    
+  nlp:
+    model_type: "bert"
+    max_sequence_length: 512
+    embedding_dim: 768
+    
+  computer_vision:
+    model_type: "resnet"
+    image_size: [224, 224]
+    channels: 3
+    
+  reinforcement_learning:
+    algorithm: "ppo"
+    learning_rate: 0.0003
+    gamma: 0.99
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  timeout: 30
+  cors_enabled: true
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 100
+    
+  authentication:
+    enabled: true
+    method: "jwt"
+    secret_key: "${API_SECRET_KEY}"
+    token_expiry: 3600
+
+# Database Configuration
+database:
+  type: "postgresql"
+  host: "${DB_HOST}"
+  port: 5432
+  name: "penin_db"
+  username: "${DB_USER}"
+  password: "${DB_PASSWORD}"
+  pool_size: 10
+  max_overflow: 20
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "./logs/penin.log"
+  max_file_size: "10MB"
+  backup_count: 5
+  
+  loggers:
+    neural_core: "DEBUG"
+    penin_omega: "INFO"
+    api: "INFO"
+    ml: "DEBUG"
+
+# Monitoring Configuration
+monitoring:
+  enabled: true
+  metrics_port: 9090
+  health_check_interval: 30
+  
+  alerts:
+    email_notifications: true
+    slack_webhook: "${SLACK_WEBHOOK}"
+    
+  metrics:
+    - system_health
+    - neural_performance
+    - api_response_time
+    - memory_usage
+    - evolution_count
+
+# Security Configuration
+security:
+  encryption:
+    algorithm: "AES-256"
+    key_rotation_days: 90
+    
+  access_control:
+    rbac_enabled: true
+    session_timeout: 1800
+    max_login_attempts: 5
+    
+  audit:
+    enabled: true
+    log_all_actions: true
+    retention_days: 365
+
+# Development Configuration
+development:
+  hot_reload: true
+  debug_toolbar: true
+  profiling: true
+  test_coverage_threshold: 80
+  
+  testing:
+    framework: "pytest"
+    parallel_execution: true
+    mock_external_services: true
+
+# Production Optimizations
+production:
+  caching:
+    enabled: true
+    redis_url: "${REDIS_URL}"
+    default_ttl: 3600
+    
+  cdn:
+    enabled: true
+    provider: "cloudflare"
+    
+  scaling:
+    auto_scaling: true
+    min_instances: 2
+    max_instances: 10
+    cpu_threshold: 70
+    memory_threshold: 80
+
+# Backup Configuration
+backup:
+  enabled: true
+  frequency: "daily"
+  retention_days: 30
+  storage_type: "s3"
+  bucket_name: "${BACKUP_BUCKET}"
+  encryption: true
+
+# Integration Configuration
+integrations:
+  github:
+    enabled: true
+    webhook_secret: "${GITHUB_WEBHOOK_SECRET}"
+    auto_sync: true
+    
+  cursor:
+    api_enabled: true
+    background_agent: true
+    
+  external_apis:
+    openai:
+      api_key: "${OPENAI_API_KEY}"
+      model: "gpt-4"
+      
+    huggingface:
+      api_key: "${HF_API_KEY}"
+      cache_models: true
