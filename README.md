@@ -1,151 +1,142 @@
 # PENIN Monorepo - Sistema de Evolução Contínua
 
-<div align="center">
-
 ![Status](https://img.shields.io/badge/status-active-success)
 ![Sync](https://img.shields.io/badge/sync-bidirectional-blue)
-![Agents](https://img.shields.io/badge/agents-8_active-green)
-![Files](https://img.shields.io/badge/files-8-orange)
-![Lines](https://img.shields.io/badge/lines-231-yellow)
+![Files](https://img.shields.io/badge/files-1133-orange)
+![Lines](https://img.shields.io/badge/lines-316438-yellow)
 
-**Sistema PENIN com Sincronização Bidirecional GitHub ↔ Servidor**  
-*Evolução Automática do Zero ao State-of-the-Art*
-
-</div>
-
----
+> **Sistema PENIN com Sincronização Bidirecional GitHub ↔ Servidor**  
+> *Evolução Automática do Zero ao State-of-the-Art*
 
 ## 🚀 Status do Sistema
 
 | Métrica | Valor |
 |---------|-------|
-| **Última Sincronização** | 2025-09-25T19:13:17.912772 |
-| **Total de Arquivos** | 8 |
-| **Total de Linhas** | 231 |
-| **Agentes Ativos** | 8 |
-| **Modo de Operação** | Bidirecional 24/7 |
-
-## 🤖 Agentes Cursor Ativos
-
-Os seguintes agentes estão monitorando e evoluindo o código continuamente:
-
-| Agente | Função | Status |
-|--------|--------|--------|
-| **Code Optimizer** | Otimização de performance e refatoração | ✅ Ativo |
-| **Security Guardian** | Análise de segurança e correção de vulnerabilidades | ✅ Ativo |
-| **Evolution Engine** | Implementação de melhorias e novos recursos | ✅ Ativo |
-| **Sync Coordinator** | Coordenação de sincronização bidirecional | ✅ Ativo |
-
-## 📊 Distribuição de Código
-
-### Linguagens
-- **.md**: 6 arquivos (75.0%)
-- **.py**: 1 arquivos (12.5%)
-
+| **Última Sincronização** | 2025-09-25 19:23:27 |
+| **Total de Arquivos** | 1,133 |
+| **Total de Linhas de Código** | 316,438 |
+| **Status** | ✅ Operacional 24/7 |
+| **Repositório** | [github.com/danielgonzagat/penin-monorepo](https://github.com/danielgonzagat/penin-monorepo) |
 
 ## 🔄 Sincronização Bidirecional
 
-### Como Funciona
+Este sistema mantém sincronização contínua entre:
+- **Servidor Local** → **GitHub** (push automático)
+- **GitHub** → **Servidor Local** (pull automático)
 
-1. **Servidor → GitHub**: Mudanças locais são detectadas e enviadas automaticamente
-2. **GitHub → Servidor**: Mudanças no GitHub (PRs, commits diretos) são puxadas automaticamente
-3. **Resolução de Conflitos**: Agentes resolvem conflitos automaticamente
-4. **Monitoramento 24/7**: Sistema roda continuamente sem intervenção
+### Diretórios Sincronizados
 
-### Fluxo de Dados
+| Local | Repositório | Descrição |
+|-------|-------------|-----------|
+| `/opt/et_ultimate` | `opt/et_ultimate/` | Sistema ET Ultimate - Cérebro Principal |
+| `/opt/ml` | `ml/` | Modelos de Machine Learning |
+| `/opt/penin_omega` | `penin_omega/` | Sistema de Evolução |
+| `/root/projetos` | `projetos/` | Projetos Diversos |
+| `/opt/penin-autosync` | `penin_system/` | Sistema de Sincronização |
 
-```mermaid
-graph LR
-    A[Servidor Local] <--> B[Git Repository]
-    B <--> C[GitHub]
-    C <--> D[Cursor Agents]
-    D --> C
-    C --> B
-    B --> A
+## 🤖 Agentes Cursor
+
+Configure agentes em segundo plano para evolução automática:
+
+1. Acesse [Cursor Dashboard](https://cursor.com/dashboard)
+2. Crie agentes apontando para este repositório
+3. Os agentes trabalharão autonomamente 24/7
+
+### Agentes Recomendados
+
+- **Code Optimizer**: Otimização contínua de código
+- **Bug Fixer**: Correção automática de bugs
+- **Documentation**: Atualização de documentação
+- **Security Scanner**: Análise de segurança
+
+## 📊 Arquitetura do Sistema
+
+```
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│  Servidor Local │ ←→  │   Git/GitHub    │ ←→  │  Cursor Agents  │
+│   (Este CPU)    │     │  (Repositório)  │     │   (Cloud AI)    │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+        ↑                       ↑                        ↓
+        │                       │                        │
+        └───────────────────────┴────────────────────────┘
+                    Sincronização Bidirecional
 ```
 
-## 🛠️ Componentes do Sistema
+## 🛠️ Componentes Principais
 
-### ET Ultimate
-- **Caminho**: `opt/et_ultimate/`
-- **Descrição**: Sistema de IA central
-- **Módulos**: Neural core, processamento, memória
+### ET Ultimate (`opt/et_ultimate/`)
+Sistema de inteligência artificial central com:
+- Neural core para processamento
+- Memória associativa
+- Tomada de decisões
+- Auto-evolução
 
-### Machine Learning
-- **Caminho**: `ml/`
-- **Descrição**: Modelos e algoritmos de ML
-- **Status**: Em evolução contínua
+### Machine Learning (`ml/`)
+Modelos e algoritmos de ML:
+- Redes neurais
+- Processamento de linguagem
+- Visão computacional
+- Aprendizado por reforço
 
-### PENIN Omega
-- **Caminho**: `penin_omega/`
-- **Descrição**: Sistema de auto-evolução
-- **Status**: Ativo
+### PENIN Omega (`penin_omega/`)
+Sistema de evolução automática:
+- Auto-modificação de código
+- Otimização contínua
+- Adaptação dinâmica
+- Métricas de evolução
 
-### Projetos
-- **Caminho**: `projetos/`
-- **Descrição**: Projetos experimentais
-- **Status**: Múltiplos ativos
+### Sistema de Sincronização (`penin_system/`)
+Infraestrutura de sincronização:
+- Scripts Python
+- Configurações YAML
+- Logs e monitoramento
+- Integração com APIs
 
-## 📈 Evolução Automática
+## 📈 Evolução Contínua
 
 O sistema evolui automaticamente através de:
 
-1. **Análise Contínua**: Agentes analisam o código 24/7
-2. **Melhorias Automáticas**: Implementação de otimizações
-3. **Correções Proativas**: Bugs são corrigidos antes de causar problemas
-4. **Documentação Viva**: README e docs sempre atualizados
-5. **Aprendizado Contínuo**: Sistema aprende com cada iteração
+1. **Monitoramento 24/7**: Detecta mudanças instantaneamente
+2. **Sincronização Bidirecional**: Mantém tudo sincronizado
+3. **Agentes Inteligentes**: Melhoram o código autonomamente
+4. **Documentação Viva**: README sempre atualizado
+
+## 🔧 Comandos Úteis
+
+```bash
+# Ver status do sistema
+systemctl status penin-sync
+
+# Ver logs em tempo real
+journalctl -u penin-sync -f
+
+# Sincronização manual
+python /opt/penin-autosync/start_sync.py
+
+# Interface de controle
+penin
+```
 
 ## 🔒 Segurança
 
-- ✅ Análise contínua de vulnerabilidades
-- ✅ Detecção de secrets e credenciais
-- ✅ Correção automática de issues de segurança
-- ✅ Compliance com melhores práticas
+- ✅ Tokens seguros configurados
+- ✅ Sincronização via HTTPS
+- ✅ Logs para auditoria
+- ✅ Exclusão de arquivos sensíveis
 
-## 📝 Logs e Monitoramento
+## 📝 Licença
 
-Acompanhe o sistema em tempo real:
-
-```bash
-# Ver logs do sistema
-journalctl -u penin-sync -f
-
-# Status dos agentes
-penin status
-
-# Logs de sincronização
-tail -f /opt/penin-autosync/logs/bidirectional_sync.log
-```
-
-## 🌐 Webhooks e Integração
-
-- **GitHub Webhooks**: Configurados para notificar mudanças
-- **Cursor API**: Integração completa com agentes
-- **Slack**: Notificações de eventos importantes (opcional)
-
-## 🚦 Como Contribuir
-
-Este sistema aceita contribuições através de:
-
-1. **Pull Requests no GitHub**: Serão analisados pelos agentes
-2. **Commits Diretos**: Para colaboradores autorizados
-3. **Issues**: Agentes respondem e implementam soluções
-
-## 📄 Licença
-
-MIT License - Sistema de código aberto para evolução contínua
+MIT License - Sistema de código aberto
 
 ---
 
 <div align="center">
 
 **Sistema PENIN - Evolução Infinita**  
-*Sincronizado em 2025-09-25 19:13:17*  
-*Versão: Auto-evolutiva*
+*Sincronizado automaticamente em 2025-09-25 19:23:27*
 
-[GitHub](https://github.com/danielgonzagat/penin-monorepo) | 
+[Ver no GitHub](https://github.com/danielgonzagat/penin-monorepo) | 
 [Cursor Dashboard](https://cursor.com/dashboard) | 
-[Documentação](https://github.com/danielgonzagat/penin-monorepo/wiki)
+[Logs do Sistema](/opt/penin-autosync/logs/)
 
 </div>
