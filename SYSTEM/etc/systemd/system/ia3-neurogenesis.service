@@ -1,0 +1,13 @@
+[Unit]
+Description=IA3 Neurogenesis Engine (Prometheus on 9092)
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/bin/bash -c 'cd /opt/ia3-neurogenesis && nohup bin/ia3-neurogenesis --event status > /var/log/ia3-neurogenesis.log 2>&1 &'
+Restart=on-failure
+User=root
+Environment=PYTHONPATH=/opt/ia3-neurogenesis
+
+[Install]
+WantedBy=multi-user.target

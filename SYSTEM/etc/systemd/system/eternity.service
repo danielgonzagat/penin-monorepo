@@ -1,0 +1,19 @@
+[Unit]
+Description=ETΩ - Daemon da Eternidade
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/et_ultimate/
+ExecStart=/bin/bash -c '
+  systemctl restart et-autonomy et-evolver et-executor;
+  python3 /opt/et_ultimate/webapp/app.py &>> /opt/et_ultimate/webapp/log.txt &
+  tail -f /dev/null
+'
+Restart=always
+RestartSec=15
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

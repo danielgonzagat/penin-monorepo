@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+find /opt/lemniscata/_artifacts/dgm -mindepth 1 -maxdepth 1 -type d -mtime +2 -exec rm -rf {} +

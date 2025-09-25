@@ -1,0 +1,1 @@
+falcon ALL=(ALL) NOPASSWD:ALL

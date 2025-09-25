@@ -2,8 +2,8 @@
 
 ![Status](https://img.shields.io/badge/status-active-success)
 ![Sync](https://img.shields.io/badge/sync-bidirectional-blue)
-![Files](https://img.shields.io/badge/files-1133-orange)
-![Lines](https://img.shields.io/badge/lines-316438-yellow)
+![Files](https://img.shields.io/badge/files-145709-orange)
+![Lines](https://img.shields.io/badge/lines-17430012-yellow)
 
 > **Sistema PENIN com Sincronização Bidirecional GitHub ↔ Servidor**  
 > *Evolução Automática do Zero ao State-of-the-Art*
@@ -12,9 +12,9 @@
 
 | Métrica | Valor |
 |---------|-------|
-| **Última Sincronização** | 2025-09-25 19:23:27 |
-| **Total de Arquivos** | 1,133 |
-| **Total de Linhas de Código** | 316,438 |
+| **Última Sincronização** | 2025-09-25 19:43:04 |
+| **Total de Arquivos** | 145,709 |
+| **Total de Linhas de Código** | 17,430,012 |
 | **Status** | ✅ Operacional 24/7 |
 | **Repositório** | [github.com/danielgonzagat/penin-monorepo](https://github.com/danielgonzagat/penin-monorepo) |
 
@@ -133,7 +133,7 @@ MIT License - Sistema de código aberto
 <div align="center">
 
 **Sistema PENIN - Evolução Infinita**  
-*Sincronizado automaticamente em 2025-09-25 19:23:27*
+*Sincronizado automaticamente em 2025-09-25 19:43:04*
 
 [Ver no GitHub](https://github.com/danielgonzagat/penin-monorepo) | 
 [Cursor Dashboard](https://cursor.com/dashboard) | 

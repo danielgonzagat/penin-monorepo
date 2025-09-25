@@ -1,0 +1,15 @@
+[Unit]
+Description=ET Autonomous Executor (safe harness)
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=root
+ExecStart=/opt/et_ultimate/actions/executor.py
+Restart=always
+RestartSec=2
+RuntimeMaxSec=1h
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,31 @@
+[Unit]
+Description=LiteLLM Proxy - GPT-5 na porta 8003
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# Rode com o usuário que você preferir; root funciona mas é melhor um usuário de serviço
+User=root
+Group=root
+
+# Pasta base só para referência (logs/temp, se necessário)
+WorkingDirectory=/opt/ensemble_llm
+
+# Carrega a chave do /etc/opt/litellm-gpt5.env
+EnvironmentFile=/etc/opt/litellm-gpt5.env
+
+# Usa o executável da venv diretamente
+ExecStart=/opt/ensemble_llm/gpt-proxy-venv/bin/litellm --host 0.0.0.0 --port 8003 --model gpt-5
+
+# Reinicia em caso de falha
+Restart=on-failure
+RestartSec=3
+
+# Dá um tempinho para parar com graça
+TimeoutStopSec=10
+
+# Limpa variáveis potencialmente sensíveis do ambiente
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

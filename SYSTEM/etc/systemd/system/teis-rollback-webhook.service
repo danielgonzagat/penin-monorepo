@@ -1,0 +1,26 @@
+[Unit]
+Description=TEIS Rollback Webhook (recebe alertas e aciona rollback)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/opt/teis
+Environment=TEIS_WEBHOOK_SECRET=teis-secret-2025
+Environment=TEIS_SYMLINK=/root/current_model
+Environment=TEIS_WORM=/root/teis_worm.log
+Environment=TEIS_CHAMPION=/root/models/final_stable.json
+Environment=PROMOTE_SCRIPT=/usr/local/bin/promote_on_allow.sh
+ExecStart=/usr/bin/python3 /opt/teis/rollback_webhook.py
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes
+# Simplificado para funcionar
+# ProtectSystem=full
+# ProtectHome=read-only
+# ReadWritePaths=/root /var/log/teis /opt/teis
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

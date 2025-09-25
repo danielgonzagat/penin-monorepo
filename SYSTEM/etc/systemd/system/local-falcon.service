@@ -1,0 +1,17 @@
+[Unit]
+Description=Local Falcon-Mamba 7B (OpenAI-compatible) - CPU
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/penin-construtor
+Environment=PYTHONUNBUFFERED=1
+Environment=HF_HOME=/root/.cache/huggingface
+ExecStart=/usr/bin/python3 /root/penin-construtor/local_llm_server.py --model-path /models/falcon-mamba-7b --served-model-name falcon-mamba-7b 
+--host 0.0.0.0 --port 8010
+Restart=always
+RestartSec=5
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,33 @@
+[Unit]
+Description=Copilot Immune Healing System - Auto-cura 24/7
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 /root/copilot_immune_healing_system.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Configurações de recursos
+LimitCPU=infinity
+LimitMEMLOCK=infinity
+LimitNOFILE=65536
+LimitNPROC=65536
+
+# Configurações de segurança
+NoNewPrivileges=false
+PrivateTmp=false
+ProtectSystem=false
+ProtectHome=false
+
+# Configurações de ambiente
+Environment=PYTHONPATH=/root:/root/penin_immune_system
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+[Unit]
+Description=PENIN-Ω Behavior Harness
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/.penin_omega/modules
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /root/.penin_omega/modules/penin_behavior_harness.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

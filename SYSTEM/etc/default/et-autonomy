@@ -1,0 +1,8 @@
+# Config do et-autonomy
+ET_URL="http://127.0.0.1:8080/v1"
+ET_API_KEY="DANIEL"
+ET_MODEL=""
+# Troque para 0 se quiser 100% livre
+SAFE_MODE=0
+AUTO_PLAN=1
+ET_OBJECTIVE="Evoluir a Equação de Turing até o infinito maximizando Expected Improvement sob os guardrails da ETΩ."

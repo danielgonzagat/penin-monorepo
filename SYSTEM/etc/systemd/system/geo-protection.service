@@ -1,0 +1,14 @@
+[Unit]
+Description=Sistema de Proteção Geográfica
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/root/firewall_geo_protection.sh start
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

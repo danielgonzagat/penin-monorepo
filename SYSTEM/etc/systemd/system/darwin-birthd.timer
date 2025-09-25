@@ -1,0 +1,11 @@
+[Unit]
+Description=Darwin Birth Window Timer (every 5 minutes)
+Requires=darwin-birthd.service
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

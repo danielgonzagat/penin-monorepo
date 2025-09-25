@@ -1,0 +1,8 @@
+/opt/lemniscata/.ledger {
+  daily
+  rotate 14
+  copytruncate
+  compress
+  missingok
+  notifempty
+}

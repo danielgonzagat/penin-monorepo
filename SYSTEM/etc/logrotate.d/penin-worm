@@ -1,0 +1,10 @@
+/root/penin_cpu_mvp/audit/worm.log {
+  daily
+  rotate 14
+  size 50M
+  compress
+  delaycompress
+  missingok
+  notifempty
+  create 0640 root root
+}
